@@ -30,14 +30,6 @@ public class visibleScoreBoardController implements Initializable{
     redTimyoIm.setImage(image);
     blueTimyoIm.setImage(image);
 
-
-        roundsLabel.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent mouseEvent) {
-                    roundsLabel.setText("Почивка 1");
-            }
-        });
-
     }
 
 

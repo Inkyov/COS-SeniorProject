@@ -13,7 +13,7 @@
    <children>
       <ImageView fx:id="redTimyoIm" fitHeight="150.0" fitWidth="200.0" layoutX="275.0" layoutY="306.0" opacity="0.1" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="275.0" />
       <ImageView fx:id="blueTimyoIm" fitHeight="150.0" fitWidth="200.0" layoutX="888.0" layoutY="306.0" opacity="0.1" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="275.0" />
-      <HBox layoutX="14.0" layoutY="659.0" prefHeight="100.0" prefWidth="300.0" AnchorPane.bottomAnchor="137.0" AnchorPane.leftAnchor="25.0">
+      <HBox layoutX="14.0" layoutY="659.0" prefHeight="100.0" prefWidth="290.0" AnchorPane.bottomAnchor="137.0" AnchorPane.leftAnchor="25.0">
          <children>
             <Circle fx:id="rChuiCirc6" fill="#a8a8a8" opacity="0.2" radius="50.0" stroke="BLACK" strokeType="INSIDE" />
             <Circle fx:id="rChuiCirc5" fill="#a8a8a8" opacity="0.2" radius="50.0" stroke="BLACK" strokeType="INSIDE" />
@@ -71,12 +71,12 @@
       </HBox>
       <HBox layoutX="14.0" layoutY="14.0" prefHeight="103.0" prefWidth="600.0" AnchorPane.leftAnchor="25.0">
          <children>
-            <Rectangle fx:id="J4Rect" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="103.0" stroke="WHITE" strokeType="INSIDE" visible="false" width="459.0" />
-            <Label fx:id="rSJ4Label" alignment="CENTER" contentDisplay="CENTER" prefHeight="114.0" prefWidth="72.0" text="0" textFill="RED">
+            <Rectangle fx:id="J4Rect" arcHeight="5.0" arcWidth="5.0" fill="LIGHTGRAY" height="103.0" stroke="WHITE" strokeType="INSIDE" width="459.0" />
+            <Label fx:id="rSJ4Label" alignment="CENTER" contentDisplay="CENTER" prefHeight="114.0" prefWidth="72.0" text="-4" textFill="RED">
                <font>
                   <Font name="System Bold" size="70.0" />
                </font></Label>
-            <Label fx:id="bSJ4Label" alignment="CENTER" contentDisplay="CENTER" prefHeight="100.0" prefWidth="70.0" text="0" textAlignment="RIGHT" textFill="BLUE">
+            <Label fx:id="bSJ4Label" alignment="CENTER" contentDisplay="CENTER" prefHeight="100.0" prefWidth="70.0" text="-4" textAlignment="RIGHT" textFill="BLUE">
                <font>
                   <Font name="System Bold" size="70.0" />
                </font></Label>
@@ -84,41 +84,41 @@
       </HBox>
       <HBox layoutX="25.0" layoutY="117.0" prefHeight="103.0" prefWidth="600.0" AnchorPane.leftAnchor="25.0">
          <children>
-            <Rectangle fx:id="J3Rect" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="103.0" stroke="WHITE" strokeType="INSIDE" visible="false" width="459.0" />
-            <Label fx:id="rSJ3Label" alignment="CENTER" contentDisplay="CENTER" prefHeight="114.0" prefWidth="72.0" text="0" textFill="RED">
+            <Rectangle fx:id="J3Rect" arcHeight="5.0" arcWidth="5.0" fill="LIGHTGRAY" height="103.0" stroke="WHITE" strokeType="INSIDE" width="459.0" />
+            <Label fx:id="rSJ3Label" alignment="CENTER" contentDisplay="CENTER" prefHeight="114.0" prefWidth="72.0" text="-4" textFill="RED">
                <font>
                   <Font name="System Bold" size="70.0" />
                </font></Label>
-            <Label fx:id="bSJ3Label" alignment="CENTER" contentDisplay="CENTER" prefHeight="100.0" prefWidth="70.0" text="0" textAlignment="RIGHT" textFill="BLUE">
+            <Label fx:id="bSJ3Label" alignment="CENTER" contentDisplay="CENTER" prefHeight="100.0" prefWidth="70.0" text="-4" textAlignment="RIGHT" textFill="BLUE">
                <font>
                   <Font name="System Bold" size="70.0" />
                </font></Label>
          </children>
       </HBox>
-      <HBox layoutX="886.0" layoutY="14.0" prefHeight="103.0" prefWidth="600.0" AnchorPane.rightAnchor="25.0">
+      <HBox layoutX="738.0" layoutY="14.0" prefHeight="103.0" prefWidth="600.0" AnchorPane.rightAnchor="25.0">
          <children>
-            <Label fx:id="rSJ1Label" alignment="CENTER" contentDisplay="CENTER" prefHeight="114.0" prefWidth="72.0" text="0" textFill="RED">
+            <Label fx:id="rSJ1Label" alignment="CENTER" contentDisplay="CENTER" prefHeight="114.0" prefWidth="72.0" text="-4" textFill="RED">
                <font>
                   <Font name="System Bold" size="70.0" />
                </font></Label>
-            <Label fx:id="bSJ1Label" alignment="CENTER" contentDisplay="CENTER" prefHeight="100.0" prefWidth="70.0" text="0" textAlignment="RIGHT" textFill="BLUE">
+            <Label fx:id="bSJ1Label" alignment="CENTER" contentDisplay="CENTER" prefHeight="100.0" prefWidth="70.0" text="-4" textAlignment="RIGHT" textFill="BLUE">
                <font>
                   <Font name="System Bold" size="70.0" />
                </font></Label>
-            <Rectangle fx:id="J1Rect" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="103.0" stroke="WHITE" strokeType="INSIDE" visible="false" width="459.0" />
+            <Rectangle fx:id="J1Rect" arcHeight="5.0" arcWidth="5.0" fill="LIGHTGRAY" height="103.0" stroke="WHITE" strokeType="INSIDE" width="459.0" />
          </children>
       </HBox>
-      <HBox layoutX="886.0" layoutY="114.0" prefHeight="103.0" prefWidth="600.0" AnchorPane.rightAnchor="25.0">
+      <HBox layoutX="738.0" layoutY="117.0" prefHeight="103.0" prefWidth="600.0" AnchorPane.rightAnchor="25.0">
          <children>
-            <Label fx:id="rSJ2Label" alignment="CENTER" contentDisplay="CENTER" prefHeight="114.0" prefWidth="72.0" text="0" textFill="RED">
+            <Label fx:id="rSJ2Label" alignment="CENTER" contentDisplay="CENTER" prefHeight="114.0" prefWidth="72.0" text="-4" textFill="RED">
                <font>
                   <Font name="System Bold" size="70.0" />
                </font></Label>
-            <Label fx:id="bSJ2Label" alignment="CENTER" contentDisplay="CENTER" prefHeight="100.0" prefWidth="70.0" text="0" textAlignment="RIGHT" textFill="BLUE">
+            <Label fx:id="bSJ2Label" alignment="CENTER" contentDisplay="CENTER" prefHeight="100.0" prefWidth="70.0" text="-4" textAlignment="RIGHT" textFill="BLUE">
                <font>
                   <Font name="System Bold" size="70.0" />
                </font></Label>
-            <Rectangle fx:id="J2Rect" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="103.0" stroke="WHITE" strokeType="INSIDE" visible="false" width="459.0" />
+            <Rectangle fx:id="J2Rect" arcHeight="5.0" arcWidth="5.0" fill="LIGHTGRAY" height="103.0" stroke="WHITE" strokeType="INSIDE" width="459.0" />
          </children>
       </HBox>
       <Rectangle fx:id="redChuiBackground" arcHeight="5.0" arcWidth="5.0" fill="RED" height="220.0" layoutX="25.0" layoutY="653.0" opacity="0.4" stroke="BLACK" strokeType="INSIDE" visible="false" width="600.0" />
@@ -159,6 +159,11 @@
       <Label fx:id="roundsLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="548.0" layoutY="254.0" prefHeight="105.0" prefWidth="283.0" text="Рунд 1" AnchorPane.leftAnchor="548.0" AnchorPane.rightAnchor="532.0">
          <font>
             <Font name="System Bold" size="72.0" />
+         </font>
+      </Label>
+      <Label layoutX="489.0" layoutY="220.0" prefHeight="45.0" prefWidth="400.0">
+         <font>
+            <Font size="30.0" />
          </font>
       </Label>
    </children>

@@ -6,7 +6,6 @@ import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.*;
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
@@ -14,10 +13,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.*;
 import javafx.scene.input.*;
-import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
-import javax.swing.event.ChangeEvent;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.Scanner;
@@ -44,28 +41,30 @@ public class Controller implements Initializable{
     public Label bPJ4Label;
     public Label rKChLabel;
     public Label bKChLabel;
-    public Label rChLbl1;
-    public Label bPJ3Label1;
+    public Label rPLbl1;
+    public Label bPLbl1;
+    public Label result;
     public ComboBox categories;
     public Button showScoreBoard;
     public Label roundsLabel;
+    public Button leftArrow;
     public Button rightArrow;
     public Label secondLabel;
     public Label minutesLabel;
-    public Button leftArrow;
     private int redChui;
     private int blueChui;
     private int redKCh;
     private int blueKCh;
-    private int rPJ1;
-    private int bPJ1;
-    private int rPJ2;
-    private int bPJ2;
-    private int rPJ3;
-    private int bPJ3;
-    private int rPJ4;
-    private int bPJ4;
-    private int i;
+    private int rPJ1 = -4;
+    private int bPJ1 = -4;
+    private int rPJ2 = -4;
+    private int bPJ2 = -4;
+    private int rPJ3 = -4;
+    private int bPJ3 = -4;
+    private int rPJ4 = -4;
+    private int bPJ4 = -4;
+    private boolean rOpacity = false;
+    private boolean bOpacity = false;
     Socket clientSocket = null;
     ServerSocket serverSocket = null;
     Scanner in1;
@@ -79,75 +78,128 @@ public class Controller implements Initializable{
 
       //Red Timyo indicator
       redTimyo.addEventHandler(MouseEvent.MOUSE_CLICKED, mouseEvent -> {
-          if (MouseButton.PRIMARY.equals(mouseEvent.getButton())) {
+          if (MouseButton.PRIMARY.equals(mouseEvent.getButton()) && !rOpacity) {
               redTimyo.setOpacity(1);
+              rPJ1+= 4;
+              rPJ2+= 4;
+              rPJ3+= 4;
+              rPJ4+= 4;
+              rPJ1Label.setText(Integer.toString(rPJ1));
+              rPJ2Label.setText(Integer.toString(rPJ2));
+              rPJ3Label.setText(Integer.toString(rPJ3));
+              rPJ4Label.setText(Integer.toString(rPJ4));
+              rOpacity = true;
 
           }
-          else if (MouseButton.SECONDARY.equals(mouseEvent.getButton())) {
+          else if (MouseButton.SECONDARY.equals(mouseEvent.getButton()) && rOpacity) {
               redTimyo.setOpacity(0.1);
+              rPJ1-= 4;
+              rPJ2-= 4;
+              rPJ3-= 4;
+              rPJ4-= 4;
+              rPJ1Label.setText(Integer.toString(rPJ1));
+              rPJ2Label.setText(Integer.toString(rPJ2));
+              rPJ3Label.setText(Integer.toString(rPJ3));
+              rPJ4Label.setText(Integer.toString(rPJ4));
+              rOpacity = false;
+
           }
       });
 
       //Blue Timyo indicator
       blueTimyo.addEventHandler(MouseEvent.MOUSE_CLICKED, mouseEvent -> {
-          if (MouseButton.PRIMARY.equals(mouseEvent.getButton())) {
+          if (MouseButton.PRIMARY.equals(mouseEvent.getButton()) && !bOpacity) {
               blueTimyo.setOpacity(1);
+              bPJ1+= 4;
+              bPJ2+= 4;
+              bPJ3+= 4;
+              bPJ4+= 4;
+              bPJ1Label.setText(Integer.toString(bPJ1));
+              bPJ2Label.setText(Integer.toString(bPJ2));
+              bPJ3Label.setText(Integer.toString(bPJ3));
+              bPJ4Label.setText(Integer.toString(bPJ4));
+              bOpacity = true;
           }
-          else if (MouseButton.SECONDARY.equals(mouseEvent.getButton())) {
+          else if (MouseButton.SECONDARY.equals(mouseEvent.getButton()) && bOpacity) {
               blueTimyo.setOpacity(0.1);
+              bPJ1-= 4;
+              bPJ2-= 4;
+              bPJ3-= 4;
+              bPJ4-= 4;
+              bPJ1Label.setText(Integer.toString(bPJ1));
+              bPJ2Label.setText(Integer.toString(bPJ2));
+              bPJ3Label.setText(Integer.toString(bPJ3));
+              bPJ4Label.setText(Integer.toString(bPJ4));
+              bOpacity = false;
+
           }
       });
-
 
       //Red Chuis
       rChLbl.addEventHandler(MouseEvent.MOUSE_CLICKED, mouseEvent -> {
           if (MouseButton.PRIMARY.equals(mouseEvent.getButton())) {
               redChui++;
               rChLbl.setText(Integer.toString(redChui));
-             {
               if(redChui % 3 == 0){
                   redDecreaseScore();
               }
-          }}
+          }
           else if (MouseButton.SECONDARY.equals(mouseEvent.getButton())) {
               redChui--;
               rChLbl.setText(Integer.toString(redChui));
-              if (rChLbl.getText().equals("0")) {
-                  rPJ1Label.setText("0");
-                  rPJ2Label.setText("0");
-                  rPJ3Label.setText("0");
-                  rPJ4Label.setText("0");
-                  redChui = 0;
+              if(redChui % 3 == 0){
+                  redIncreaseScore();
+                  if (rChLbl.getText().equals("0") && !rOpacity) {
+                      rPJ1Label.setText("-4");
+                      rPJ2Label.setText("-4");
+                      rPJ3Label.setText("-4");
+                      rPJ4Label.setText("-4");
+                      redChui = 0;
+                      rPJ1=-4;
+                      rPJ2=-4;
+                      rPJ3=-4;
+                      rPJ4=-4;
+                  }
               }
           }
       });
 
       //Blue Chuis
       bChLbl.addEventHandler(MouseEvent.MOUSE_CLICKED, mouseEvent -> {
-
           if (MouseButton.PRIMARY.equals(mouseEvent.getButton())) {
-              i++;
-              bChLbl.setText(Integer.toString(i));
-
+              blueChui++;
+              bChLbl.setText(Integer.toString(blueChui));
+                  if(blueChui % 3 == 0){
+                      blueDecreaseScore();
+                  }
           }
           else if (MouseButton.SECONDARY.equals(mouseEvent.getButton())) {
-              i--;
-              bChLbl.setText(Integer.toString(i));
+              blueChui--;
+              bChLbl.setText(Integer.toString(blueChui));
+              if(blueChui % 3 == 0){
+                  blueIncreaseScore();
+                  if(bChLbl.getText().equals("0") && !bOpacity){
+                      bPJ1Label.setText("-4");
+                      bPJ2Label.setText("-4");
+                      bPJ3Label.setText("-4");
+                      bPJ4Label.setText("-4");
+                      blueChui = 0;
+                      bPJ1=-4;
+                      bPJ2=-4;
+                      bPJ3=-4;
+                      bPJ4=-4;
+                  }
+              }
 
           }
       });
 
-      bChLbl.textProperty().addListener(new ChangeListener<String>() {
-          @Override
-          public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
-              blueChui = Integer.parseInt(bChLbl.getText());
-              System.out.println(blueChui);
-              if (bChLbl.getText().equals("0")) {
-                 blueDecreaseScore();
-              }else if (blueChui > 0 && blueChui % 3 == 0) {
-                  blueDecreaseScore();
-              }
-
+      bChLbl.textProperty().addListener((observable, oldValue, newValue) -> {
+          blueChui = Integer.parseInt(bChLbl.getText());
+          if (bChLbl.getText().equals("0")) {
+             blueDecreaseScore();
+          }else if (blueChui > 0 && blueChui % 3 == 0) {
+              blueDecreaseScore();
           }
       });
 
@@ -204,6 +256,8 @@ public class Controller implements Initializable{
           }
       });
 
+      rightArrow.setOnAction(e -> refresh());
+
 
       }
 
@@ -223,16 +277,14 @@ public class Controller implements Initializable{
          }*/
     public void redDecreaseScore(){
 
-        rPJ1--;
-        rPJ2--;
-        rPJ3--;
-        rPJ4--;
-        rPJ1Label.setText(Integer.toString(rPJ1));
-        rPJ2Label.setText(Integer.toString(rPJ2));
-        rPJ3Label.setText(Integer.toString(rPJ3));
-        rPJ4Label.setText(Integer.toString(rPJ4));
-        //rSJ1Label.setText(Integer.toString(rPJ1));
-
+            rPJ1--;
+            rPJ2--;
+            rPJ3--;
+            rPJ4--;
+            rPJ1Label.setText(Integer.toString(rPJ1));
+            rPJ2Label.setText(Integer.toString(rPJ2));
+            rPJ3Label.setText(Integer.toString(rPJ3));
+            rPJ4Label.setText(Integer.toString(rPJ4));
 
     }
 
@@ -251,16 +303,6 @@ public class Controller implements Initializable{
 
     public void blueDecreaseScore(){
 
-        if (bChLbl.getText().equals("0")) {
-            bPJ1 = 0;
-            bPJ2 = 0;
-            bPJ3 = 0;
-            bPJ4 = 0;
-            bPJ1Label.setText(Integer.toString(bPJ1));
-            bPJ2Label.setText(Integer.toString(bPJ2));
-            bPJ3Label.setText(Integer.toString(bPJ3));
-            bPJ4Label.setText(Integer.toString(bPJ4));
-        }else {
             bPJ1--;
             bPJ2--;
             bPJ3--;
@@ -269,7 +311,7 @@ public class Controller implements Initializable{
             bPJ2Label.setText(Integer.toString(bPJ2));
             bPJ3Label.setText(Integer.toString(bPJ3));
             bPJ4Label.setText(Integer.toString(bPJ4));
-        }
+
     }
 
     public void blueIncreaseScore(){
@@ -282,6 +324,40 @@ public class Controller implements Initializable{
         bPJ2Label.setText(Integer.toString(bPJ2));
         bPJ3Label.setText(Integer.toString(bPJ3));
         bPJ4Label.setText(Integer.toString(bPJ4));
+
+    }
+
+    public void refresh(){
+        bPJ1=-4;
+        bPJ2=-4;
+        bPJ3=-4;
+        bPJ4=-4;
+        rPJ1=-4;
+        rPJ2=-4;
+        rPJ3=-4;
+        rPJ4=-4;
+        redKCh=0;
+        blueKCh=0;
+        redChui=0;
+        blueChui=0;
+        rPJ1Label.setText("-4");
+        rPJ2Label.setText("-4");
+        rPJ3Label.setText("-4");
+        rPJ4Label.setText("-4");
+        bPJ1Label.setText("-4");
+        bPJ2Label.setText("-4");
+        bPJ3Label.setText("-4");
+        bPJ4Label.setText("-4");
+        rKChLabel.setText("0");
+        bKChLabel.setText("0");
+        rChLbl.setText("0");
+        bChLbl.setText("0");
+        rPLbl1.setText("0");
+        bPLbl1.setText("0");
+        blueTimyo.setOpacity(0.1);
+        redTimyo.setOpacity(0.1);
+        bOpacity = false;
+        rOpacity = false;
 
     }
 
@@ -393,5 +469,18 @@ public class Controller implements Initializable{
             }
         }
 
+    }
+
+    public void evaluate(){
+        int blue = Integer.parseInt(bPLbl1.getText());
+        int red = Integer.parseInt(rPLbl1.getText());
+
+        if(blue == red){
+            result.setText("Резултатът е равен");
+        }else if(blue > red && blue >= 2){
+            result.setText("Синият е победител");
+        }else if(blue < red && red >= 2){
+            result.setText("Червеният е победител");
+        }
     }
 }
