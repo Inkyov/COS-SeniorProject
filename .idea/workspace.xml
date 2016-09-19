@@ -2,18 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/great/sample/Controller$1.class" afterPath="$PROJECT_DIR$/out/production/great/sample/Controller$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/great/sample/Controller$2.class" afterPath="$PROJECT_DIR$/out/production/great/sample/Controller$2.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/great/sample/Controller$AutoCompleteComboBoxListener$1.class" afterPath="$PROJECT_DIR$/out/production/great/sample/Controller$AutoCompleteComboBoxListener$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/great/sample/Controller$AutoCompleteComboBoxListener$2.class" afterPath="$PROJECT_DIR$/out/production/great/sample/Controller$AutoCompleteComboBoxListener$2.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/great/sample/Controller$AutoCompleteComboBoxListener.class" afterPath="$PROJECT_DIR$/out/production/great/sample/Controller$AutoCompleteComboBoxListener.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/great/sample/Controller.class" afterPath="$PROJECT_DIR$/out/production/great/sample/Controller.class" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/great/sample/visibleScoreBoardController$1.class" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/great/sample/visibleScoreBoardController.class" afterPath="$PROJECT_DIR$/out/production/great/sample/visibleScoreBoardController.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/great/views/visibleScoreBoard.fxml" afterPath="$PROJECT_DIR$/out/production/great/views/visibleScoreBoard.fxml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/great/views/scoreBoard.fxml" afterPath="$PROJECT_DIR$/out/production/great/views/scoreBoard.fxml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sample/Controller.java" afterPath="$PROJECT_DIR$/src/sample/Controller.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sample/visibleScoreBoardController.java" afterPath="$PROJECT_DIR$/src/sample/visibleScoreBoardController.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/views/scoreBoard.fxml" afterPath="$PROJECT_DIR$/src/views/scoreBoard.fxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/views/visibleScoreBoard.fxml" afterPath="$PROJECT_DIR$/src/views/visibleScoreBoard.fxml" />
     </list>
     <ignored path="JavaFxApplication.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -78,14 +72,17 @@
           <file leaf-file-name="Controller.java" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/sample/Controller.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="-0.60229886">
-                  <caret line="236" column="6" selection-start-line="236" selection-start-column="6" selection-end-line="236" selection-end-column="6" />
+                <state vertical-scroll-proportion="-1.3299712">
+                  <caret line="58" column="26" selection-start-line="58" selection-start-column="26" selection-end-line="58" selection-end-column="26" />
                   <folding>
                     <element signature="imports" expanded="true" />
                     <element signature="method#redDecreaseScore#0;class#Controller#0" expanded="false" />
+                    <element signature="method#redIncreaseScore#0;class#Controller#0" expanded="false" />
                     <element signature="method#blueDecreaseScore#0;class#Controller#0" expanded="false" />
+                    <element signature="method#blueIncreaseScore#0;class#Controller#0" expanded="false" />
                     <element signature="method#refresh#0;class#Controller#0" expanded="false" />
                     <element signature="class#AutoCompleteComboBoxListener#0;class#Controller#0" expanded="false" />
+                    <element signature="method#evaluate#0;class#Controller#0" expanded="false" />
                   </folding>
                 </state>
               </provider>
@@ -106,7 +103,9 @@
               <provider selected="true" editor-type-id="text-editor">
                 <state vertical-scroll-proportion="0.0">
                   <caret line="30" column="32" selection-start-line="30" selection-start-column="32" selection-end-line="30" selection-end-column="32" />
-                  <folding />
+                  <folding>
+                    <element signature="imports" expanded="true" />
+                  </folding>
                 </state>
               </provider>
             </entry>
@@ -118,8 +117,8 @@
           <file leaf-file-name="Controller.java" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/sample/Controller.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.570115">
-                  <caret line="315" column="0" selection-start-line="315" selection-start-column="0" selection-end-line="315" selection-end-column="0" />
+                <state vertical-scroll-proportion="0.37319884">
+                  <caret line="290" column="59" selection-start-line="290" selection-start-column="59" selection-end-line="290" selection-end-column="59" />
                   <folding>
                     <element signature="imports" expanded="true" />
                     <element signature="method#redDecreaseScore#0;class#Controller#0" expanded="false" />
@@ -139,8 +138,8 @@
                 <state />
               </provider>
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="-5.2909093">
-                  <caret line="21" column="38" selection-start-line="21" selection-start-column="37" selection-end-line="21" selection-end-column="38" />
+                <state vertical-scroll-proportion="-2.4166667">
+                  <caret line="21" column="26" selection-start-line="21" selection-start-column="25" selection-end-line="21" selection-end-column="26" />
                   <folding />
                 </state>
               </provider>
@@ -642,6 +641,13 @@
       <updated>1359379246138</updated>
       <workItem from="1359379250712" duration="1302000" />
     </task>
+    <task id="LOCAL-00001" summary="Updated the grading system, chuis work fine, function displaying the winner is done, refresh function is done">
+      <created>1474288457604</created>
+      <option name="number" value="00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1474288457604</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -666,7 +672,7 @@
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32962137" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.19599108" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19599108" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32739422" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1359275" sideWeight="0.6703755" order="1" side_tool="false" content_ui="combo" />
@@ -732,11 +738,12 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <option name="LAST_COMMIT_MESSAGE" value="" />
+    <MESSAGE value="Updated the grading system, chuis work fine, function displaying the winner is done, refresh function is done" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated the grading system, chuis work fine, function displaying the winner is done, refresh function is done" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="16" />
+      <option name="time" value="17" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -752,7 +759,9 @@
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#redDecreaseScore#0;class#Controller#0" expanded="false" />
+            <element signature="method#redIncreaseScore#0;class#Controller#0" expanded="false" />
             <element signature="method#blueDecreaseScore#0;class#Controller#0" expanded="false" />
+            <element signature="method#blueIncreaseScore#0;class#Controller#0" expanded="false" />
             <element signature="method#refresh#0;class#Controller#0" expanded="false" />
             <element signature="class#AutoCompleteComboBoxListener#0;class#Controller#0" expanded="false" />
           </folding>
@@ -771,7 +780,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="30" column="32" selection-start-line="30" selection-start-column="32" selection-end-line="30" selection-end-column="32" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -779,7 +790,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="20" column="28" selection-start-line="20" selection-start-column="28" selection-end-line="20" selection-end-column="28" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -787,7 +800,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -819,7 +834,9 @@
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#redDecreaseScore#0;class#Controller#0" expanded="false" />
+            <element signature="method#redIncreaseScore#0;class#Controller#0" expanded="false" />
             <element signature="method#blueDecreaseScore#0;class#Controller#0" expanded="false" />
+            <element signature="method#blueIncreaseScore#0;class#Controller#0" expanded="false" />
             <element signature="method#refresh#0;class#Controller#0" expanded="false" />
             <element signature="class#AutoCompleteComboBoxListener#0;class#Controller#0" expanded="false" />
           </folding>
@@ -830,7 +847,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="40" column="1" selection-start-line="40" selection-start-column="1" selection-end-line="40" selection-end-column="1" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -862,7 +881,9 @@
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#redDecreaseScore#0;class#Controller#0" expanded="false" />
+            <element signature="method#redIncreaseScore#0;class#Controller#0" expanded="false" />
             <element signature="method#blueDecreaseScore#0;class#Controller#0" expanded="false" />
+            <element signature="method#blueIncreaseScore#0;class#Controller#0" expanded="false" />
             <element signature="method#refresh#0;class#Controller#0" expanded="false" />
             <element signature="class#AutoCompleteComboBoxListener#0;class#Controller#0" expanded="false" />
           </folding>
@@ -873,7 +894,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -905,7 +928,9 @@
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#redDecreaseScore#0;class#Controller#0" expanded="false" />
+            <element signature="method#redIncreaseScore#0;class#Controller#0" expanded="false" />
             <element signature="method#blueDecreaseScore#0;class#Controller#0" expanded="false" />
+            <element signature="method#blueIncreaseScore#0;class#Controller#0" expanded="false" />
             <element signature="method#refresh#0;class#Controller#0" expanded="false" />
             <element signature="class#AutoCompleteComboBoxListener#0;class#Controller#0" expanded="false" />
           </folding>
@@ -916,7 +941,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -937,7 +964,9 @@
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#redDecreaseScore#0;class#Controller#0" expanded="false" />
+            <element signature="method#redIncreaseScore#0;class#Controller#0" expanded="false" />
             <element signature="method#blueDecreaseScore#0;class#Controller#0" expanded="false" />
+            <element signature="method#blueIncreaseScore#0;class#Controller#0" expanded="false" />
             <element signature="method#refresh#0;class#Controller#0" expanded="false" />
             <element signature="class#AutoCompleteComboBoxListener#0;class#Controller#0" expanded="false" />
           </folding>
@@ -948,7 +977,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="5" column="36" selection-start-line="5" selection-start-column="36" selection-end-line="5" selection-end-column="36" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -969,7 +1000,9 @@
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#redDecreaseScore#0;class#Controller#0" expanded="false" />
+            <element signature="method#redIncreaseScore#0;class#Controller#0" expanded="false" />
             <element signature="method#blueDecreaseScore#0;class#Controller#0" expanded="false" />
+            <element signature="method#blueIncreaseScore#0;class#Controller#0" expanded="false" />
             <element signature="method#refresh#0;class#Controller#0" expanded="false" />
             <element signature="class#AutoCompleteComboBoxListener#0;class#Controller#0" expanded="false" />
           </folding>
@@ -980,7 +1013,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="6" column="4" selection-start-line="6" selection-start-column="4" selection-end-line="6" selection-end-column="4" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1001,7 +1036,9 @@
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#redDecreaseScore#0;class#Controller#0" expanded="false" />
+            <element signature="method#redIncreaseScore#0;class#Controller#0" expanded="false" />
             <element signature="method#blueDecreaseScore#0;class#Controller#0" expanded="false" />
+            <element signature="method#blueIncreaseScore#0;class#Controller#0" expanded="false" />
             <element signature="method#refresh#0;class#Controller#0" expanded="false" />
             <element signature="class#AutoCompleteComboBoxListener#0;class#Controller#0" expanded="false" />
           </folding>
@@ -1036,7 +1073,9 @@
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#redDecreaseScore#0;class#Controller#0" expanded="false" />
+            <element signature="method#redIncreaseScore#0;class#Controller#0" expanded="false" />
             <element signature="method#blueDecreaseScore#0;class#Controller#0" expanded="false" />
+            <element signature="method#blueIncreaseScore#0;class#Controller#0" expanded="false" />
             <element signature="method#refresh#0;class#Controller#0" expanded="false" />
             <element signature="class#AutoCompleteComboBoxListener#0;class#Controller#0" expanded="false" />
           </folding>
@@ -1177,14 +1216,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/visibleScoreBoardController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="30" column="32" selection-start-line="30" selection-start-column="32" selection-end-line="30" selection-end-column="32" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/views/Participants.fxml">
       <provider editor-type-id="JavaFX-Scene-Builder">
         <state />
@@ -1193,6 +1224,16 @@
         <state vertical-scroll-proportion="0.4256651">
           <caret line="16" column="67" selection-start-line="16" selection-start-column="67" selection-end-line="16" selection-end-column="67" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/visibleScoreBoardController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="30" column="32" selection-start-line="30" selection-start-column="32" selection-end-line="30" selection-end-column="32" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1209,20 +1250,22 @@
         <state />
       </provider>
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.2909093">
-          <caret line="21" column="38" selection-start-line="21" selection-start-column="37" selection-end-line="21" selection-end-column="38" />
+        <state vertical-scroll-proportion="-2.4166667">
+          <caret line="21" column="26" selection-start-line="21" selection-start-column="25" selection-end-line="21" selection-end-column="26" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/Controller.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.60229886">
-          <caret line="236" column="6" selection-start-line="236" selection-start-column="6" selection-end-line="236" selection-end-column="6" />
+        <state vertical-scroll-proportion="0.37319884">
+          <caret line="290" column="59" selection-start-line="290" selection-start-column="59" selection-end-line="290" selection-end-column="59" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#redDecreaseScore#0;class#Controller#0" expanded="false" />
+            <element signature="method#redIncreaseScore#0;class#Controller#0" expanded="false" />
             <element signature="method#blueDecreaseScore#0;class#Controller#0" expanded="false" />
+            <element signature="method#blueIncreaseScore#0;class#Controller#0" expanded="false" />
             <element signature="method#refresh#0;class#Controller#0" expanded="false" />
             <element signature="class#AutoCompleteComboBoxListener#0;class#Controller#0" expanded="false" />
           </folding>

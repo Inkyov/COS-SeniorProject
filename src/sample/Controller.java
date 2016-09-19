@@ -1,6 +1,9 @@
 package sample;
 
 import com.sun.javafx.scene.control.skin.ComboBoxListViewSkin;
+import javafx.animation.Animation;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -13,7 +16,9 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.*;
 import javafx.scene.input.*;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 import java.net.ServerSocket;
 import java.net.Socket;
@@ -51,6 +56,7 @@ public class Controller implements Initializable{
     public Button rightArrow;
     public Label secondLabel;
     public Label minutesLabel;
+    public Pane timerPane;
     private int redChui;
     private int blueChui;
     private int redKCh;
@@ -65,6 +71,11 @@ public class Controller implements Initializable{
     private int bPJ4 = -4;
     private boolean rOpacity = false;
     private boolean bOpacity = false;
+    private int round = 1;
+    private int minutes = 2;
+    private int seconds = 59;
+    private boolean timerStop = false;
+    private Timeline timer;
     Socket clientSocket = null;
     ServerSocket serverSocket = null;
     Scanner in1;
@@ -256,8 +267,49 @@ public class Controller implements Initializable{
           }
       });
 
-      rightArrow.setOnAction(e -> refresh());
+      rightArrow.setOnAction(e -> {
+          switch(round){
+              case 1:
+                  roundsLabel.setText("Почивка 1");
+                  round = 2;
+                  break;
+              case 2:
+                  roundsLabel.setText("Рунд 2");
+                  round = 3;
+                  break;
+              case 3:
+                  roundsLabel.setText("Почивка 2");
+                  round = 4;
+                  break;
+              case 4:
+                  roundsLabel.setText("Рунд 3");
+                  round = 1;
+                  break;
+          }
+      });
 
+      timer = new Timeline(new KeyFrame(Duration.millis(1000), ae -> {
+          String formatted = String.format("%02d", seconds);
+          secondLabel.setText(formatted);
+          minutesLabel.setText(Integer.toString(minutes-1));
+          if(seconds == 0){
+              minutes--;
+              minutesLabel.setText(Integer.toString(minutes-1));
+              seconds = 59;
+              if(minutes == 0){
+                  minutesLabel.setText(Integer.toString(minutes));
+                  timer.stop();
+              }
+          }
+          seconds--;
+      }));
+      timer.setCycleCount(Animation.INDEFINITE);
+
+timerPane.addEventHandler(MouseEvent.MOUSE_CLICKED, mouseEvent -> {
+    if(MouseButton.SECONDARY.equals(mouseEvent.getButton())){
+        timer.pause();
+    }else timer.play();
+});
 
       }
 
@@ -354,6 +406,7 @@ public class Controller implements Initializable{
         bChLbl.setText("0");
         rPLbl1.setText("0");
         bPLbl1.setText("0");
+        roundsLabel.setText("Рунд 1");
         blueTimyo.setOpacity(0.1);
         redTimyo.setOpacity(0.1);
         bOpacity = false;
@@ -474,6 +527,11 @@ public class Controller implements Initializable{
     public void evaluate(){
         int blue = Integer.parseInt(bPLbl1.getText());
         int red = Integer.parseInt(rPLbl1.getText());
+        if(bPJ1 > rPJ1){
+            blue=+2;
+        }else if(bPJ1 < rPJ1){
+            red++;
+        }
 
         if(blue == red){
             result.setText("Резултатът е равен");
