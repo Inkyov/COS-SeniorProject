@@ -1,12 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.text.*?>
-<?import javafx.scene.canvas.*?>
 <?import javafx.scene.control.*?>
-<?import javafx.scene.paint.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.shape.*?>
-<?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="935.0" prefWidth="1363.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.visibleScoreBoardController">
@@ -15,58 +12,58 @@
       <ImageView fx:id="blueTimyoIm" fitHeight="150.0" fitWidth="200.0" layoutX="888.0" layoutY="306.0" opacity="0.1" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="275.0" />
       <HBox layoutX="14.0" layoutY="659.0" prefHeight="100.0" prefWidth="290.0" AnchorPane.bottomAnchor="137.0" AnchorPane.leftAnchor="25.0">
          <children>
-            <Circle fx:id="rChuiCirc6" fill="#a8a8a8" opacity="0.2" radius="50.0" stroke="BLACK" strokeType="INSIDE" />
-            <Circle fx:id="rChuiCirc5" fill="#a8a8a8" opacity="0.2" radius="50.0" stroke="BLACK" strokeType="INSIDE" />
-            <Circle fx:id="rChuiCirc4" fill="#a8a8a8" opacity="0.2" radius="50.0" stroke="BLACK" strokeType="INSIDE" />
+            <Circle fx:id="rChuiCirc1" fill="#a8a8a8" opacity="0.2" radius="50.0" stroke="BLACK" strokeType="INSIDE" />
+            <Circle fx:id="rChuiCirc2" fill="#a8a8a8" opacity="0.2" radius="50.0" stroke="BLACK" strokeType="INSIDE" />
+            <Circle fx:id="rChuiCirc3" fill="#a8a8a8" opacity="0.2" radius="50.0" stroke="BLACK" strokeType="INSIDE" />
          </children>
       </HBox>
       <HBox layoutX="800.0" layoutY="659.0" prefHeight="100.0" prefWidth="300.0" AnchorPane.bottomAnchor="137.0" AnchorPane.rightAnchor="25.0">
          <children>
-            <Circle fx:id="bChuiCirc4" fill="#a8a8a8" opacity="0.2" radius="50.0" stroke="BLACK" strokeType="INSIDE" />
-            <Circle fx:id="bChuiCirc5" fill="#a8a8a8" opacity="0.2" radius="50.0" stroke="BLACK" strokeType="INSIDE" />
-            <Circle fx:id="bChuiCirc6" fill="#a8a8a8" opacity="0.2" radius="50.0" stroke="BLACK" strokeType="INSIDE" />
+            <Circle fx:id="bChuiCirc3" fill="#a8a8a8" opacity="0.2" radius="50.0" stroke="BLACK" strokeType="INSIDE" />
+            <Circle fx:id="bChuiCirc2" fill="#a8a8a8" opacity="0.2" radius="50.0" stroke="BLACK" strokeType="INSIDE" />
+            <Circle fx:id="bChuiCirc1" fill="#a8a8a8" opacity="0.2" radius="50.0" stroke="BLACK" strokeType="INSIDE" />
          </children>
       </HBox>
       <HBox layoutX="14.0" layoutY="759.0" prefHeight="100.0" prefWidth="300.0" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="25.0">
          <children>
-            <Circle fx:id="rChuiCirc12" fill="#a8a8a8" opacity="0.2" radius="50.0" stroke="BLACK" strokeType="INSIDE" />
-            <Circle fx:id="rChuiCirc11" fill="#a8a8a8" opacity="0.2" radius="50.0" stroke="BLACK" strokeType="INSIDE" />
-            <Circle fx:id="rChuiCirc10" fill="#a8a8a8" opacity="0.2" radius="50.0" stroke="BLACK" strokeType="INSIDE" />
+            <Circle fx:id="rChuiCirc7" fill="#a8a8a8" opacity="0.2" radius="50.0" stroke="BLACK" strokeType="INSIDE" />
+            <Circle fx:id="rChuiCirc8" fill="#a8a8a8" opacity="0.2" radius="50.0" stroke="BLACK" strokeType="INSIDE" />
+            <Circle fx:id="rChuiCirc9" fill="#a8a8a8" opacity="0.2" radius="50.0" stroke="BLACK" strokeType="INSIDE" />
          </children>
       </HBox>
       <HBox layoutX="800.0" layoutY="759.0" prefHeight="100.0" prefWidth="300.0" AnchorPane.bottomAnchor="25.0" AnchorPane.rightAnchor="25.0">
          <children>
-            <Circle fx:id="bChuiCirc10" fill="#a8a8a8" opacity="0.2" radius="50.0" stroke="BLACK" strokeType="INSIDE" />
-            <Circle fx:id="bChuiCirc11" fill="#a8a8a8" opacity="0.2" radius="50.0" stroke="BLACK" strokeType="INSIDE" />
-            <Circle fx:id="bChuiCirc12" fill="#a8a8a8" opacity="0.2" radius="50.0" stroke="BLACK" strokeType="INSIDE" />
+            <Circle fx:id="bChuiCirc9" fill="#a8a8a8" opacity="0.2" radius="50.0" stroke="BLACK" strokeType="INSIDE" />
+            <Circle fx:id="bChuiCirc8" fill="#a8a8a8" opacity="0.2" radius="50.0" stroke="BLACK" strokeType="INSIDE" />
+            <Circle fx:id="bChuiCirc7" fill="#a8a8a8" opacity="0.2" radius="50.0" stroke="BLACK" strokeType="INSIDE" />
          </children>
       </HBox>
       <HBox layoutX="325.0" layoutY="659.0" prefHeight="100.0" prefWidth="300.0" AnchorPane.bottomAnchor="137.0" AnchorPane.leftAnchor="325.0">
          <children>
-            <Circle fx:id="rChuiCirc3" fill="#a8a8a8" opacity="0.2" radius="50.0" stroke="BLACK" strokeType="INSIDE" />
-            <Circle fx:id="rChuiCirc2" fill="#a8a8a8" opacity="0.2" radius="50.0" stroke="BLACK" strokeType="INSIDE" />
-            <Circle fx:id="rChuiCirc1" fill="#a8a8a8" opacity="0.2" radius="50.0" stroke="BLACK" strokeType="INSIDE" />
+            <Circle fx:id="rChuiCirc4" fill="#a8a8a8" opacity="0.2" radius="50.0" stroke="BLACK" strokeType="INSIDE" />
+            <Circle fx:id="rChuiCirc5" fill="#a8a8a8" opacity="0.2" radius="50.0" stroke="BLACK" strokeType="INSIDE" />
+            <Circle fx:id="rChuiCirc6" fill="#a8a8a8" opacity="0.2" radius="50.0" stroke="BLACK" strokeType="INSIDE" />
          </children>
       </HBox>
       <HBox layoutX="325.0" layoutY="759.0" prefHeight="100.0" prefWidth="300.0" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="325.0">
          <children>
-            <Circle fx:id="rChuiCirc9" fill="#a8a8a8" opacity="0.2" radius="50.0" stroke="BLACK" strokeType="INSIDE" />
-            <Circle fx:id="rChuiCirc8" fill="#a8a8a8" opacity="0.2" radius="50.0" stroke="BLACK" strokeType="INSIDE" />
-            <Circle fx:id="rChuiCirc7" fill="#a8a8a8" opacity="0.2" radius="50.0" stroke="BLACK" strokeType="INSIDE" />
+            <Circle fx:id="rChuiCirc10" fill="#a8a8a8" opacity="0.2" radius="50.0" stroke="BLACK" strokeType="INSIDE" />
+            <Circle fx:id="rChuiCirc11" fill="#a8a8a8" opacity="0.2" radius="50.0" stroke="BLACK" strokeType="INSIDE" />
+            <Circle fx:id="rChuiCirc12" fill="#a8a8a8" opacity="0.2" radius="50.0" stroke="BLACK" strokeType="INSIDE" />
          </children>
       </HBox>
       <HBox layoutX="689.0" layoutY="659.0" prefHeight="100.0" prefWidth="300.0" AnchorPane.bottomAnchor="137.0" AnchorPane.rightAnchor="325.0">
          <children>
-            <Circle fx:id="bChuiCirc1" fill="#a8a8a8" opacity="0.2" radius="50.0" stroke="BLACK" strokeType="INSIDE" />
-            <Circle fx:id="bChuiCirc2" fill="#a8a8a8" opacity="0.2" radius="50.0" stroke="BLACK" strokeType="INSIDE" />
-            <Circle fx:id="bChuiCirc3" fill="#a8a8a8" opacity="0.2" radius="50.0" stroke="BLACK" strokeType="INSIDE" />
+            <Circle fx:id="bChuiCirc6" fill="#a8a8a8" opacity="0.2" radius="50.0" stroke="BLACK" strokeType="INSIDE" />
+            <Circle fx:id="bChuiCirc5" fill="#a8a8a8" opacity="0.2" radius="50.0" stroke="BLACK" strokeType="INSIDE" />
+            <Circle fx:id="bChuiCirc4" fill="#a8a8a8" opacity="0.2" radius="50.0" stroke="BLACK" strokeType="INSIDE" />
          </children>
       </HBox>
       <HBox layoutX="689.0" layoutY="759.0" prefHeight="100.0" prefWidth="300.0" AnchorPane.bottomAnchor="25.0" AnchorPane.rightAnchor="325.0">
          <children>
-            <Circle fx:id="bChuiCirc7" fill="#a8a8a8" opacity="0.2" radius="50.0" stroke="BLACK" strokeType="INSIDE" />
-            <Circle fx:id="bChuiCirc8" fill="#a8a8a8" opacity="0.2" radius="50.0" stroke="BLACK" strokeType="INSIDE" />
-            <Circle fx:id="bChuiCirc9" fill="#a8a8a8" opacity="0.2" radius="50.0" stroke="BLACK" strokeType="INSIDE" />
+            <Circle fx:id="bChuiCirc12" fill="#a8a8a8" opacity="0.2" radius="50.0" stroke="BLACK" strokeType="INSIDE" />
+            <Circle fx:id="bChuiCirc11" fill="#a8a8a8" opacity="0.2" radius="50.0" stroke="BLACK" strokeType="INSIDE" />
+            <Circle fx:id="bChuiCirc10" fill="#a8a8a8" opacity="0.2" radius="50.0" stroke="BLACK" strokeType="INSIDE" />
          </children>
       </HBox>
       <HBox layoutX="14.0" layoutY="14.0" prefHeight="103.0" prefWidth="600.0" AnchorPane.leftAnchor="25.0">
