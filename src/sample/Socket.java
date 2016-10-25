@@ -32,15 +32,14 @@ class PointsSocket extends Task {
             serverSocket = new ServerSocket(port);
             System.out.println("Listening: " + port);
             clientSocket = serverSocket.accept();
+            System.out.println(clientSocket.isConnected());
+            System.out.println(serverSocket.isClosed());
             dataInputStream = new DataInputStream(clientSocket.getInputStream());
             //String msg;
             try{
-
-                System.out.println("message: " + dataInputStream.readUTF());
-                System.out.println(clientSocket.isConnected());
-                System.out.println(serverSocket.isClosed());
-
-
+                while(true) {
+                    System.out.println("message: " + dataInputStream.readUTF());
+                }
             }catch (EOFException e){
                 System.out.print("fuck");
             }

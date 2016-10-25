@@ -25,6 +25,7 @@ import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.Timer;
 
 
 public class Controller implements Initializable{
@@ -93,6 +94,7 @@ public class Controller implements Initializable{
           e.printStackTrace();
       }
       visibleScoreBoardController = fxmlLoader.getController();
+
       //Red Timyo indicator
       redTimyo.addEventHandler(MouseEvent.MOUSE_CLICKED, mouseEvent -> {
           if (MouseButton.PRIMARY.equals(mouseEvent.getButton()) && !rOpacity) {
@@ -193,9 +195,8 @@ public class Controller implements Initializable{
           if (MouseButton.PRIMARY.equals(mouseEvent.getButton())) {
               redChui++;
               rChLbl.setText(Integer.toString(redChui));
-              visibleScoreBoardController.rChuiCirc1.setFill(Color.RED);
-              visibleScoreBoardController.rChuiCirc1.setOpacity(1);
-              evaluate();
+              visibleScoreBoardController.setRedChuiCircles(redChui);
+              //evaluate();
               if(redChui % 3 == 0){
                   redDecreaseScore();
               }
@@ -203,9 +204,10 @@ public class Controller implements Initializable{
           else if (MouseButton.SECONDARY.equals(mouseEvent.getButton())) {
               redChui--;
               rChLbl.setText(Integer.toString(redChui));
+              visibleScoreBoardController.unsetRedChuiCircles(redChui);
               if(redChui % 3 == 0){
                   redIncreaseScore();
-                  if (rChLbl.getText().equals("0") && !rOpacity) {
+                  if  (rChLbl.getText().equals("0") && !rOpacity) {
                       rPJ1Label.setText("-4");
                       rPJ2Label.setText("-4");
                       rPJ3Label.setText("-4");
@@ -229,6 +231,7 @@ public class Controller implements Initializable{
           if (MouseButton.PRIMARY.equals(mouseEvent.getButton())) {
               blueChui++;
               bChLbl.setText(Integer.toString(blueChui));
+              visibleScoreBoardController.setBlueChuiCircles(blueChui);
                   if(blueChui % 3 == 0){
                       blueDecreaseScore();
                   }
@@ -236,9 +239,10 @@ public class Controller implements Initializable{
           else if (MouseButton.SECONDARY.equals(mouseEvent.getButton())) {
               blueChui--;
               bChLbl.setText(Integer.toString(blueChui));
+              visibleScoreBoardController.unsetBlueChuiCircles(blueChui);
               if(blueChui % 3 == 0){
                   blueIncreaseScore();
-                  if(bChLbl.getText().equals("0") && !bOpacity){
+                  if  (bChLbl.getText().equals("0") && !bOpacity){
                       bPJ1Label.setText("-4");
                       bPJ2Label.setText("-4");
                       bPJ3Label.setText("-4");
@@ -254,30 +258,21 @@ public class Controller implements Initializable{
                       bPJ4=-4;
                   }
               }
-
           }
       });
-
-      bChLbl.textProperty().addListener((observable, oldValue, newValue) -> {
-          blueChui = Integer.parseInt(bChLbl.getText());
-          if (bChLbl.getText().equals("0")) {
-             blueDecreaseScore();
-          }else if (blueChui > 0 && blueChui % 3 == 0) {
-              blueDecreaseScore();
-          }
-      });
-
 
       //Blue Kam Chum
       bKChLabel.addEventHandler(MouseEvent.MOUSE_CLICKED, mouseEvent -> {
           if (MouseButton.PRIMARY.equals(mouseEvent.getButton())) {
               blueKCh++;
               bKChLabel.setText(Integer.toString(blueKCh));
+              visibleScoreBoardController.setBlueKamChumRectangle(blueKCh, 1);
               blueDecreaseScore();
 
           } else if (MouseButton.SECONDARY.equals(mouseEvent.getButton())) {
               blueKCh--;
               bKChLabel.setText(Integer.toString(blueKCh));
+              visibleScoreBoardController.unsetBlueKamChumRectangle(blueKCh, 0);
               blueIncreaseScore();
           }
       });
@@ -287,11 +282,13 @@ public class Controller implements Initializable{
           if (MouseButton.PRIMARY.equals(mouseEvent.getButton())) {
               redKCh++;
               rKChLabel.setText(Integer.toString(redKCh));
+              visibleScoreBoardController.setRedKamChumRectangle(redKCh, 1);
               redDecreaseScore();
 
           } else if (MouseButton.SECONDARY.equals(mouseEvent.getButton())) {
               redKCh--;
               rKChLabel.setText(Integer.toString(redKCh));
+              visibleScoreBoardController.unsetRedKamChumRectangle(redKCh, 0);
               redIncreaseScore();
           }
       });
@@ -320,25 +317,58 @@ public class Controller implements Initializable{
       });*/
 
       rightArrow.setOnAction(e -> {
+          String formatted;
           switch(round){
               case 1:
+                  timer.stop();
                   roundsLabel.setText("Почивка 1");
                   visibleScoreBoardController.roundsLabel.setText("Почивка 1");
+                  minutes=0;
+                  seconds=30;
+                  formatted = String.format("%02d", seconds);
+                  minutesLabel.setText(Integer.toString(minutes));
+                  visibleScoreBoardController.minutesLabel.setText(Integer.toString(minutes));
+                  secondLabel.setText(formatted);
+                  visibleScoreBoardController.secondLabel.setText(formatted);
                   round = 2;
                   break;
               case 2:
+                  timer.stop();
                   roundsLabel.setText("Рунд 2");
                   visibleScoreBoardController.roundsLabel.setText("Рунд 2");
+                  minutes=2;
+                  seconds=0;
+                  formatted = String.format("%02d", seconds);
+                  minutesLabel.setText(Integer.toString(minutes));
+                  visibleScoreBoardController.minutesLabel.setText(Integer.toString(minutes));
+                  secondLabel.setText(formatted);
+                  visibleScoreBoardController.secondLabel.setText(formatted);
                   round = 3;
                   break;
               case 3:
+                  timer.stop();
                   roundsLabel.setText("Почивка 2");
                   visibleScoreBoardController.roundsLabel.setText("Почивка 2");
+                  minutes=0;
+                  seconds=30;
+                  formatted = String.format("%02d", seconds);
+                  minutesLabel.setText(Integer.toString(minutes));
+                  visibleScoreBoardController.minutesLabel.setText(Integer.toString(minutes));
+                  secondLabel.setText(formatted);
+                  visibleScoreBoardController.secondLabel.setText(formatted);
                   round = 4;
                   break;
               case 4:
+                  timer.stop();
                   roundsLabel.setText("Рунд 3");
                   visibleScoreBoardController.roundsLabel.setText("Рунд 3");
+                  minutes=1;
+                  seconds=0;
+                  formatted = String.format("%02d", seconds);
+                  minutesLabel.setText(Integer.toString(minutes));
+                  visibleScoreBoardController.minutesLabel.setText(Integer.toString(minutes));
+                  secondLabel.setText(formatted);
+                  visibleScoreBoardController.secondLabel.setText(formatted);
                   round=5;
                   break;
               case 5:
@@ -347,7 +377,7 @@ public class Controller implements Initializable{
           }
       });
 
-      timer = new Timeline(new KeyFrame(Duration.millis(1000), ae -> {
+      timer = new Timeline(new KeyFrame(Duration.millis(100), ae -> {
           String formatted = String.format("%02d", seconds);
           secondLabel.setText(formatted);
           visibleScoreBoardController.secondLabel.setText(formatted);
@@ -376,16 +406,16 @@ timerPane.addEventHandler(MouseEvent.MOUSE_CLICKED, mouseEvent -> {
 
       PointsSocket socket1 = new PointsSocket(8888);
       Thread socketThread1 = new Thread(socket1);
-      PointsSocket socket2 = new PointsSocket(8889);
+      /*PointsSocket socket2 = new PointsSocket(8889);
       Thread socketThread2 = new Thread(socket2);
       PointsSocket socket3 = new PointsSocket(8887);
       Thread socketThread3 = new Thread(socket3);
       PointsSocket socket4 = new PointsSocket(8886);
-      Thread socketThread4 = new Thread(socket4);
+      Thread socketThread4 = new Thread(socket4);*/
       socketThread1.start();
-      socketThread2.start();
+      /*socketThread2.start();
       socketThread3.start();
-      socketThread4.start();
+      socketThread4.start();*/
 
   }
 
@@ -471,7 +501,8 @@ timerPane.addEventHandler(MouseEvent.MOUSE_CLICKED, mouseEvent -> {
         blueKCh=0;
         redChui=0;
         blueChui=0;
-        seconds = 59;
+        seconds = 0;
+        String formatted = String.format("%02d", seconds);
         minutes = 2;
         round = 1;
         rPJ1Label.setText("-4");
@@ -507,8 +538,65 @@ timerPane.addEventHandler(MouseEvent.MOUSE_CLICKED, mouseEvent -> {
         timer.stop();
         minutesLabel.setText(Integer.toString(minutes));
         visibleScoreBoardController.minutesLabel.setText(Integer.toString(minutes));
-        secondLabel.setText(Integer.toString(seconds));
-        visibleScoreBoardController.secondLabel.setText(Integer.toString(seconds));
+        secondLabel.setText(formatted);
+        visibleScoreBoardController.secondLabel.setText(formatted);
+        visibleScoreBoardController.bChuiCirc1.setFill(Color.web("#d1d1d1"));
+        visibleScoreBoardController.bChuiCirc2.setFill(Color.web("#d1d1d1"));
+        visibleScoreBoardController.bChuiCirc3.setFill(Color.web("#d1d1d1"));
+        visibleScoreBoardController.bChuiCirc4.setFill(Color.web("#d1d1d1"));
+        visibleScoreBoardController.bChuiCirc5.setFill(Color.web("#d1d1d1"));
+        visibleScoreBoardController.bChuiCirc6.setFill(Color.web("#d1d1d1"));
+        visibleScoreBoardController.bChuiCirc7.setFill(Color.web("#d1d1d1"));
+        visibleScoreBoardController.bChuiCirc8.setFill(Color.web("#d1d1d1"));
+        visibleScoreBoardController.bChuiCirc9.setFill(Color.web("#d1d1d1"));
+        visibleScoreBoardController.bChuiCirc10.setFill(Color.web("#d1d1d1"));
+        visibleScoreBoardController.bChuiCirc11.setFill(Color.web("#d1d1d1"));
+        visibleScoreBoardController.bChuiCirc12.setFill(Color.web("#d1d1d1"));
+        visibleScoreBoardController.rChuiCirc1.setFill(Color.web("#d1d1d1"));
+        visibleScoreBoardController.rChuiCirc2.setFill(Color.web("#d1d1d1"));
+        visibleScoreBoardController.rChuiCirc3.setFill(Color.web("#d1d1d1"));
+        visibleScoreBoardController.rChuiCirc4.setFill(Color.web("#d1d1d1"));
+        visibleScoreBoardController.rChuiCirc5.setFill(Color.web("#d1d1d1"));
+        visibleScoreBoardController.rChuiCirc6.setFill(Color.web("#d1d1d1"));
+        visibleScoreBoardController.rChuiCirc7.setFill(Color.web("#d1d1d1"));
+        visibleScoreBoardController.rChuiCirc8.setFill(Color.web("#d1d1d1"));
+        visibleScoreBoardController.rChuiCirc9.setFill(Color.web("#d1d1d1"));
+        visibleScoreBoardController.rChuiCirc10.setFill(Color.web("#d1d1d1"));
+        visibleScoreBoardController.rChuiCirc11.setFill(Color.web("#d1d1d1"));
+        visibleScoreBoardController.rChuiCirc12.setFill(Color.web("#d1d1d1"));
+        visibleScoreBoardController.bChuiCirc1.setOpacity(0.2);
+        visibleScoreBoardController.bChuiCirc2.setOpacity(0.2);
+        visibleScoreBoardController.bChuiCirc3.setOpacity(0.2);
+        visibleScoreBoardController.bChuiCirc4.setOpacity(0.2);
+        visibleScoreBoardController.bChuiCirc5.setOpacity(0.2);
+        visibleScoreBoardController.bChuiCirc6.setOpacity(0.2);
+        visibleScoreBoardController.bChuiCirc7.setOpacity(0.2);
+        visibleScoreBoardController.bChuiCirc8.setOpacity(0.2);
+        visibleScoreBoardController.bChuiCirc9.setOpacity(0.2);
+        visibleScoreBoardController.bChuiCirc10.setOpacity(0.2);
+        visibleScoreBoardController.bChuiCirc11.setOpacity(0.2);
+        visibleScoreBoardController.bChuiCirc12.setOpacity(0.2);
+        visibleScoreBoardController.rChuiCirc1.setOpacity(0.2);
+        visibleScoreBoardController.rChuiCirc2.setOpacity(0.2);
+        visibleScoreBoardController.rChuiCirc3.setOpacity(0.2);
+        visibleScoreBoardController.rChuiCirc4.setOpacity(0.2);
+        visibleScoreBoardController.rChuiCirc5.setOpacity(0.2);
+        visibleScoreBoardController.rChuiCirc6.setOpacity(0.2);
+        visibleScoreBoardController.rChuiCirc7.setOpacity(0.2);
+        visibleScoreBoardController.rChuiCirc8.setOpacity(0.2);
+        visibleScoreBoardController.rChuiCirc9.setOpacity(0.2);
+        visibleScoreBoardController.rChuiCirc10.setOpacity(0.2);
+        visibleScoreBoardController.rChuiCirc11.setOpacity(0.2);
+        visibleScoreBoardController.rChuiCirc12.setOpacity(0.2);
+        visibleScoreBoardController.rKamChum1.setOpacity(0);
+        visibleScoreBoardController.bKamChum1.setOpacity(0);
+        visibleScoreBoardController.rKamChum2.setOpacity(0);
+        visibleScoreBoardController.bKamChum2.setOpacity(0);
+        visibleScoreBoardController.redChuiBackground.setVisible(false);
+        visibleScoreBoardController.blueChuiBackground.setVisible(false);
+        visibleScoreBoardController.manyBChLabel.setVisible(false);
+        visibleScoreBoardController.manyRChLabel.setVisible(false);
+
     }
 
     public class AutoCompleteComboBoxListener implements EventHandler<KeyEvent> {
