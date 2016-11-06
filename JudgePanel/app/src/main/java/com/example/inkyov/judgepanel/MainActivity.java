@@ -69,12 +69,7 @@ public class MainActivity extends AppCompatActivity {
                             dataOutputStream = new DataOutputStream(client.getOutputStream());
                             dataOutputStream.writeInt(point);
                             dataOutputStream.flush();
-
-                            dataInputStream = new DataInputStream(client.getInputStream());
-                            while(true){
-                                int k = dataInputStream.readInt();
-                                System.out.println(k+" ");
-                            }
+                            client.close();
                         } catch (IOException e) {
                             e.printStackTrace();
                         }
@@ -96,12 +91,7 @@ public class MainActivity extends AppCompatActivity {
                             dataOutputStream = new DataOutputStream(client.getOutputStream());
                             dataOutputStream.writeInt(point);
                             dataOutputStream.flush();
-
-                            dataInputStream = new DataInputStream(client.getInputStream());
-                            while(true){
-                                int k = dataInputStream.readInt();
-                                System.out.println(k+" ");
-                            }
+                            client.close();
                         } catch (IOException e) {
                             e.printStackTrace();
                         }
@@ -110,6 +100,183 @@ public class MainActivity extends AppCompatActivity {
                 }.start();}
         });
 
+        red3.setOnClickListener(new OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                point = 3;
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        try {
+                            client = new Socket(IP, Integer.parseInt(port));
+                            dataOutputStream = new DataOutputStream(client.getOutputStream());
+                            dataOutputStream.writeInt(point);
+                            dataOutputStream.flush();
+                            client.close();
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }){
+                }.start();}
+        });
+
+        red4.setOnClickListener(new OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                point = 4;
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        try {
+                            client = new Socket(IP, Integer.parseInt(port));
+                            dataOutputStream = new DataOutputStream(client.getOutputStream());
+                            dataOutputStream.writeInt(point);
+                            dataOutputStream.flush();
+                            client.close();
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }){
+                }.start();}
+        });
+
+        red5.setOnClickListener(new OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                point = 5;
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        try {
+                            client = new Socket(IP, Integer.parseInt(port));
+                            dataOutputStream = new DataOutputStream(client.getOutputStream());
+                            dataOutputStream.writeInt(point);
+                            dataOutputStream.flush();
+                            client.close();
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }){
+                }.start();}
+        });
+
+        blue1.setOnClickListener(new OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                point = 1;
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        try {
+                            client = new Socket(IP, Integer.parseInt(port));
+                            dataOutputStream = new DataOutputStream(client.getOutputStream());
+                            dataOutputStream.writeInt(point);
+                            dataOutputStream.flush();
+                            client.close();
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }){
+                }.start();}
+        });
+
+        blue2.setOnClickListener(new OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                point = 2;
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        try {
+                            client = new Socket(IP, Integer.parseInt(port));
+                            dataOutputStream = new DataOutputStream(client.getOutputStream());
+                            dataOutputStream.writeInt(point);
+                            dataOutputStream.flush();
+                            client.close();
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }) {
+                }.start();
+            }
+        });
+
+        blue3.setOnClickListener(new OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                point = 3;
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        try {
+                            client = new Socket(IP, Integer.parseInt(port));
+                            dataOutputStream = new DataOutputStream(client.getOutputStream());
+                            dataOutputStream.writeInt(point);
+                            dataOutputStream.flush();
+                            client.close();
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }) {
+                }.start();
+            }
+        });
+
+        blue4.setOnClickListener(new OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                point = 4;
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        try {
+                            client = new Socket(IP, Integer.parseInt(port));
+                            dataOutputStream = new DataOutputStream(client.getOutputStream());
+                            dataOutputStream.writeInt(point);
+                            dataOutputStream.flush();
+                            client.close();
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }){
+                }.start();}
+        });
+
+        blue5.setOnClickListener(new OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                point = 5;
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        try {
+                            client = new Socket(IP, Integer.parseInt(port));
+                            dataOutputStream = new DataOutputStream(client.getOutputStream());
+                            dataOutputStream.writeInt(point);
+                            dataOutputStream.flush();
+                            client.close();
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }){
+                }.start();}
+        });
     }
 
     protected void onResume(){

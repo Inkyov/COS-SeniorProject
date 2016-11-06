@@ -239,6 +239,9 @@ public class visibleScoreBoardController implements Initializable{
     }
 
     public void unsetBlueChuiCircles(int kCh){
+        if(kCh > 12){
+            manyBChLabel.setText(Integer.toString(kCh));
+        }
         switch (kCh){
             case 0:
                 bChuiCirc1.setFill(Color.web("#d1d1d1"));
@@ -287,6 +290,10 @@ public class visibleScoreBoardController implements Initializable{
             case 11:
                 bChuiCirc12.setFill(Color.web("#d1d1d1"));
                 bChuiCirc12.setOpacity(0.2);
+                break;
+            case 12:
+                blueChuiBackground.setVisible(false);
+                manyBChLabel.setVisible(false);
                 break;
         }
     }
@@ -351,6 +358,9 @@ public class visibleScoreBoardController implements Initializable{
     }
 
     public void unsetRedChuiCircles(int kCh) {
+        if(kCh > 12){
+            manyRChLabel.setText(Integer.toString(kCh));
+        }
             switch (kCh) {
                 case 0:
                     rChuiCirc1.setFill(Color.web("#d1d1d1"));
@@ -400,11 +410,11 @@ public class visibleScoreBoardController implements Initializable{
                     rChuiCirc12.setFill(Color.web("#d1d1d1"));
                     rChuiCirc12.setOpacity(0.2);
                     break;
+                case 12:
+                    redChuiBackground.setVisible(false);
+                    manyRChLabel.setVisible(false);
+                    break;
             }
         }
-
-
-
-
 
 }

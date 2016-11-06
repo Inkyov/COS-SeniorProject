@@ -2,14 +2,9 @@ package sample;
 
 import javafx.concurrent.Task;
 
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
-import java.io.EOFException;
-import java.io.IOException;
-import java.net.InetAddress;
+import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.util.Scanner;
 
 /**
  * Created by Inkyov on 9/26/2016.
@@ -20,7 +15,6 @@ class PointsSocket extends Task {
     Socket clientSocket = null;
     ServerSocket serverSocket = null;
     DataInputStream dataInputStream = null;
-    DataOutputStream dataOutputStream = null;
 
     PointsSocket(int port){
         this.port = port;
@@ -31,18 +25,15 @@ class PointsSocket extends Task {
         try{
             serverSocket = new ServerSocket(port);
             System.out.println("Listening: " + port);
-            clientSocket = serverSocket.accept();
-            System.out.println(clientSocket.isConnected());
-            System.out.println(serverSocket.isClosed());
-            dataInputStream = new DataInputStream(clientSocket.getInputStream());
-            //String msg;
-            try{
-                while(true) {
-                    System.out.println("message: " + dataInputStream.readUTF());
-                }
-            }catch (EOFException e){
-                System.out.print("fuck");
+            while (true) {
+                //while the connection is up accept the packets I need a flag or smth to check and execute the accept method
+                //accept the packets
+                clientSocket = serverSocket.accept();
+                dataInputStream = new DataInputStream(clientSocket.getInputStream());
+                int k = dataInputStream.readInt();
+                System.out.print(k);
             }
+
         }catch (Exception e) {
             e.printStackTrace();
         }

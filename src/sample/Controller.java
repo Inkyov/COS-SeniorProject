@@ -25,7 +25,6 @@ import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-import java.util.Timer;
 
 
 public class Controller implements Initializable{
@@ -377,7 +376,7 @@ public class Controller implements Initializable{
           }
       });
 
-      timer = new Timeline(new KeyFrame(Duration.millis(100), ae -> {
+      /*timer = new Timeline(new KeyFrame(Duration.millis(100), ae -> {
           String formatted = String.format("%02d", seconds);
           secondLabel.setText(formatted);
           visibleScoreBoardController.secondLabel.setText(formatted);
@@ -396,7 +395,7 @@ public class Controller implements Initializable{
           }
           seconds--;
       }));
-      timer.setCycleCount(Animation.INDEFINITE);
+      timer.setCycleCount(Animation.INDEFINITE);*/
 
 timerPane.addEventHandler(MouseEvent.MOUSE_CLICKED, mouseEvent -> {
     if(MouseButton.SECONDARY.equals(mouseEvent.getButton())){
@@ -406,15 +405,15 @@ timerPane.addEventHandler(MouseEvent.MOUSE_CLICKED, mouseEvent -> {
 
       PointsSocket socket1 = new PointsSocket(8888);
       Thread socketThread1 = new Thread(socket1);
-      /*PointsSocket socket2 = new PointsSocket(8889);
+      PointsSocket socket2 = new PointsSocket(8889);
       Thread socketThread2 = new Thread(socket2);
-      PointsSocket socket3 = new PointsSocket(8887);
+      /*PointsSocket socket3 = new PointsSocket(8887);
       Thread socketThread3 = new Thread(socket3);
       PointsSocket socket4 = new PointsSocket(8886);
       Thread socketThread4 = new Thread(socket4);*/
       socketThread1.start();
-      /*socketThread2.start();
-      socketThread3.start();
+      socketThread2.start();
+      /*socketThread3.start();
       socketThread4.start();*/
 
   }
