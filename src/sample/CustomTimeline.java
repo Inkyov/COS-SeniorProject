@@ -1,6 +1,7 @@
 package sample;
 
 import javafx.animation.Animation;
+import javafx.animation.AnimationTimer;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.concurrent.Task;
@@ -10,8 +11,7 @@ import javafx.util.Duration;
  * Created by Inkyov on 10/28/2016.
  */
 
-public class CustomTimeline extends Task {
-    private Timeline timer;
+public class CustomTimeline{
     private int minutes, seconds;
     private Controller controller;
     private visibleScoreBoardController visibleScoreBoardController;
@@ -23,29 +23,25 @@ public class CustomTimeline extends Task {
         this.seconds = seconds;
     }
 
-    @Override
-    protected Object call() throws Exception {
-
-    timer = new Timeline(new KeyFrame(Duration.millis(100), ae -> {
-        String formatted = String.format("%02d", seconds);
-        controller.secondLabel.setText(formatted);
-        visibleScoreBoardController.secondLabel.setText(formatted);
-        controller.minutesLabel.setText(Integer.toString(minutes-1));
-        visibleScoreBoardController.minutesLabel.setText(Integer.toString(minutes-1));
+    /*public void runMe(){
+        //controller.setMinutes(minutes);
+        //controller.setSeconds(seconds);
+        controller.setSeconds(seconds);
+        controller.setMinutes(minutes-1);
+          /*minutesLabel.setText(Integer.toString(minutesTemp-1));
+          visibleScoreBoardController.minutesLabel.setText(Integer.toString(minutesTemp-1));
         if(seconds == 0){
             minutes--;
-            controller.minutesLabel.setText(Integer.toString(minutes-1));
-            visibleScoreBoardController.minutesLabel.setText(Integer.toString(minutes-1));
+            controller.setMinutes(minutes);
+              /*minutesLabel.setText(Integer.toString(minutesTemp));
+              visibleScoreBoardController.minutesLabel.setText(Integer.toString(minutesTemp));
             seconds = 59;
             if(minutes == 0){
-                controller.minutesLabel.setText(Integer.toString(minutes));
-                visibleScoreBoardController.minutesLabel.setText(Integer.toString(minutes));
-                timer.stop();
+                controller.setMinutes(minutes);
+                  /*minutesLabel.setText(Integer.toString(minutesTemp));
+                  visibleScoreBoardController.minutesLabel.setText(Integer.toString(minutesTemp));
             }
         }
         seconds--;
-    }));
-    timer.setCycleCount(Animation.INDEFINITE);
-        return null;
-    }
+    }*/
 }

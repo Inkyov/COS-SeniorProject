@@ -11,7 +11,7 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
         Parent root = FXMLLoader.load(getClass().getResource("../views/scoreBoard.fxml"));
-        primaryStage.setScene(new Scene(root, 1680, 850));
+        primaryStage.setScene(new Scene(root, 800, 600));
         primaryStage.setMaximized(true);
         primaryStage.show();
 

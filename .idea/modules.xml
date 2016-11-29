@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/great.iml" filepath="$PROJECT_DIR$/great.iml" />
+      <module fileurl="file://$PROJECT_DIR$/MatchGradingSystem.iml" filepath="$PROJECT_DIR$/MatchGradingSystem.iml" />
     </modules>
   </component>
 </project>

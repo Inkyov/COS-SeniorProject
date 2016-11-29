@@ -72,11 +72,11 @@
       <HBox layoutX="14.0" layoutY="14.0" prefHeight="100.0" prefWidth="700.0" AnchorPane.leftAnchor="25.0">
          <children>
             <Rectangle fx:id="J2Rect" arcHeight="5.0" arcWidth="5.0" fill="LIGHTGRAY" height="100.0" stroke="WHITE" strokeType="INSIDE" width="460.0" />
-            <Label fx:id="rSJ2Label" alignment="CENTER" contentDisplay="CENTER" prefHeight="100.0" prefWidth="120.0" text="-4" textFill="RED">
+            <Label fx:id="rPJ4Label" alignment="CENTER" contentDisplay="CENTER" prefHeight="100.0" prefWidth="120.0" text="-2" textFill="RED">
                <font>
                   <Font name="System Bold" size="70.0" />
                </font></Label>
-            <Label fx:id="bSJ2Label" alignment="CENTER" contentDisplay="CENTER" prefHeight="100.0" prefWidth="120.0" text="-4" textAlignment="RIGHT" textFill="BLUE">
+            <Label fx:id="bPJ4Label" alignment="CENTER" contentDisplay="CENTER" prefHeight="100.0" prefWidth="120.0" text="-2" textAlignment="RIGHT" textFill="BLUE">
                <font>
                   <Font name="System Bold" size="70.0" />
                </font></Label>
@@ -85,11 +85,11 @@
       <HBox layoutX="25.0" layoutY="117.0" prefHeight="100.0" prefWidth="700.0" AnchorPane.leftAnchor="25.0">
          <children>
             <Rectangle fx:id="J1Rect" arcHeight="5.0" arcWidth="5.0" fill="LIGHTGRAY" height="100.0" stroke="WHITE" strokeType="INSIDE" width="460.0" />
-            <Label fx:id="rSJ1Label" alignment="CENTER" contentDisplay="CENTER" prefHeight="100.0" prefWidth="120.0" text="-4" textFill="RED">
+            <Label fx:id="rPJ3Label" alignment="CENTER" contentDisplay="CENTER" prefHeight="100.0" prefWidth="120.0" text="-2" textFill="RED">
                <font>
                   <Font name="System Bold" size="70.0" />
                </font></Label>
-            <Label fx:id="bSJ1Label" alignment="CENTER" contentDisplay="CENTER" prefHeight="100.0" prefWidth="120.0" text="-4" textAlignment="RIGHT" textFill="BLUE">
+            <Label fx:id="bPJ3Label" alignment="CENTER" contentDisplay="CENTER" prefHeight="100.0" prefWidth="120.0" text="-2" textAlignment="RIGHT" textFill="BLUE">
                <font>
                   <Font name="System Bold" size="70.0" />
                </font></Label>
@@ -97,11 +97,11 @@
       </HBox>
       <HBox layoutX="738.0" layoutY="14.0" prefHeight="100.0" prefWidth="700.0" AnchorPane.rightAnchor="25.0">
          <children>
-            <Label fx:id="rSJ3Label" alignment="CENTER" contentDisplay="CENTER" prefHeight="100.0" prefWidth="120.0" text="-4" textFill="RED">
+            <Label fx:id="rPJ1Label" alignment="CENTER" contentDisplay="CENTER" prefHeight="100.0" prefWidth="120.0" text="-2" textFill="RED">
                <font>
                   <Font name="System Bold" size="70.0" />
                </font></Label>
-            <Label fx:id="bSJ3Label" alignment="CENTER" contentDisplay="CENTER" prefHeight="100.0" prefWidth="120.0" text="-4" textAlignment="RIGHT" textFill="BLUE">
+            <Label fx:id="bPJ1Label" alignment="CENTER" contentDisplay="CENTER" prefHeight="100.0" prefWidth="120.0" text="-2" textAlignment="RIGHT" textFill="BLUE">
                <font>
                   <Font name="System Bold" size="70.0" />
                </font></Label>
@@ -110,11 +110,11 @@
       </HBox>
       <HBox layoutX="738.0" layoutY="117.0" prefHeight="100.0" prefWidth="700.0" AnchorPane.rightAnchor="25.0">
          <children>
-            <Label fx:id="rSJ4Label" alignment="CENTER" contentDisplay="CENTER" prefHeight="100.0" prefWidth="120.0" text="-4" textFill="RED">
+            <Label fx:id="rPJ2Label" alignment="CENTER" contentDisplay="CENTER" prefHeight="100.0" prefWidth="120.0" text="-2" textFill="RED">
                <font>
                   <Font name="System Bold" size="70.0" />
                </font></Label>
-            <Label fx:id="bSJ4Label" alignment="CENTER" contentDisplay="CENTER" prefHeight="100.0" prefWidth="120.0" text="-4" textAlignment="RIGHT" textFill="BLUE">
+            <Label fx:id="bPJ2Label" alignment="CENTER" contentDisplay="CENTER" prefHeight="100.0" prefWidth="120.0" text="-2" textAlignment="RIGHT" textFill="BLUE">
                <font>
                   <Font name="System Bold" size="70.0" />
                </font></Label>
@@ -156,7 +156,7 @@
             </Pane>
          </children>
       </HBox>
-      <Label fx:id="roundsLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="548.0" layoutY="254.0" prefHeight="105.0" prefWidth="283.0" text="Рунд 1" AnchorPane.leftAnchor="548.0" AnchorPane.rightAnchor="532.0">
+      <Label fx:id="roundsLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="502.0" layoutY="253.0" prefHeight="105.0" prefWidth="359.0" text="Round 1" AnchorPane.leftAnchor="502.0" AnchorPane.rightAnchor="502.0">
          <font>
             <Font name="System Bold" size="72.0" />
          </font>

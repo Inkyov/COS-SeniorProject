@@ -47,14 +47,14 @@ public class visibleScoreBoardController implements Initializable{
     public Circle bChuiCirc8;
     public Circle bChuiCirc9;
     //score labels of the four judges
-    public Label rSJ4Label;
-    public Label bSJ4Label;
-    public Label rSJ3Label;
-    public Label bSJ3Label;
-    public Label rSJ1Label;
-    public Label bSJ1Label;
-    public Label rSJ2Label;
-    public Label bSJ2Label;
+    public Label rPJ4Label;
+    public Label bPJ4Label;
+    public Label rPJ3Label;
+    public Label bPJ3Label;
+    public Label rPJ1Label;
+    public Label bPJ1Label;
+    public Label rPJ2Label;
+    public Label bPJ2Label;
     //penalties controls
     public Rectangle redChuiBackground;
     public Rectangle blueChuiBackground;
@@ -79,20 +79,20 @@ public class visibleScoreBoardController implements Initializable{
     private int blueScore4;
 
     public void initialize(URL location, ResourceBundle resources){
-    File file = new File("E:/Downloads/kick.jpg");
+    File file = new File("E:/Downloads/kick.png");
     Image image = new Image(file.toURI().toString());
     redTimyoIm.setImage(image);
     blueTimyoIm.setImage(image);
 
-        //integer representation of the point labels
-        redScore1 = Integer.parseInt(rSJ1Label.getText());
-        redScore2 = Integer.parseInt(rSJ2Label.getText());
-        redScore3 = Integer.parseInt(rSJ3Label.getText());
-        redScore4 = Integer.parseInt(rSJ4Label.getText());
-        blueScore1 = Integer.parseInt(bSJ1Label.getText());
-        blueScore2 = Integer.parseInt(bSJ2Label.getText());
-        blueScore3 = Integer.parseInt(bSJ3Label.getText());
-        blueScore4 = Integer.parseInt(bSJ4Label.getText());
+    //integer representation of the point labels
+    redScore1 = Integer.parseInt(rPJ1Label.getText());
+    redScore2 = Integer.parseInt(rPJ2Label.getText());
+    redScore3 = Integer.parseInt(rPJ3Label.getText());
+    redScore4 = Integer.parseInt(rPJ4Label.getText());
+    blueScore1 = Integer.parseInt(bPJ1Label.getText());
+    blueScore2 = Integer.parseInt(bPJ2Label.getText());
+    blueScore3 = Integer.parseInt(bPJ3Label.getText());
+    blueScore4 = Integer.parseInt(bPJ4Label.getText());
     }
 
     public void getWinner(){

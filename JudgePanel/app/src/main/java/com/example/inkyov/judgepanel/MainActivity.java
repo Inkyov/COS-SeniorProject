@@ -5,6 +5,7 @@ import java.io.DataOutputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.ObjectOutputStream;
 import java.io.PrintWriter;
 import java.net.Socket;
 
@@ -32,10 +33,7 @@ public class MainActivity extends AppCompatActivity {
     private Button blue4;
     private Button blue5;
     private Socket client;
-    private PrintWriter printWriter;
     private int point;
-    DataInputStream dataInputStream = null;
-    FileOutputStream fileOutputStream = null;
     DataOutputStream dataOutputStream = null;
     SharedPreferences sharedPreferences;
     String IP;
@@ -56,23 +54,16 @@ public class MainActivity extends AppCompatActivity {
         blue4 = (Button)findViewById(R.id.blue4);
         blue5 = (Button)findViewById(R.id.blue5);
 
+
+
         red1.setOnClickListener(new OnClickListener() {
 
             @Override
             public void onClick(View v) {
-                point = 1;
                 new Thread(new Runnable() {
                     @Override
                     public void run() {
-                        try {
-                            client = new Socket(IP, Integer.parseInt(port));
-                            dataOutputStream = new DataOutputStream(client.getOutputStream());
-                            dataOutputStream.writeInt(point);
-                            dataOutputStream.flush();
-                            client.close();
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        }
+                        sendPoint("red", 1);
                     }
                 }){
             }.start();}
@@ -82,19 +73,10 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                point = 2;
                 new Thread(new Runnable() {
                     @Override
                     public void run() {
-                        try {
-                            client = new Socket(IP, Integer.parseInt(port));
-                            dataOutputStream = new DataOutputStream(client.getOutputStream());
-                            dataOutputStream.writeInt(point);
-                            dataOutputStream.flush();
-                            client.close();
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        }
+                        sendPoint("red", 2);
                     }
                 }){
                 }.start();}
@@ -108,15 +90,7 @@ public class MainActivity extends AppCompatActivity {
                 new Thread(new Runnable() {
                     @Override
                     public void run() {
-                        try {
-                            client = new Socket(IP, Integer.parseInt(port));
-                            dataOutputStream = new DataOutputStream(client.getOutputStream());
-                            dataOutputStream.writeInt(point);
-                            dataOutputStream.flush();
-                            client.close();
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        }
+                        sendPoint("red", 3);
                     }
                 }){
                 }.start();}
@@ -130,15 +104,7 @@ public class MainActivity extends AppCompatActivity {
                 new Thread(new Runnable() {
                     @Override
                     public void run() {
-                        try {
-                            client = new Socket(IP, Integer.parseInt(port));
-                            dataOutputStream = new DataOutputStream(client.getOutputStream());
-                            dataOutputStream.writeInt(point);
-                            dataOutputStream.flush();
-                            client.close();
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        }
+                        sendPoint("red", 4);
                     }
                 }){
                 }.start();}
@@ -152,15 +118,7 @@ public class MainActivity extends AppCompatActivity {
                 new Thread(new Runnable() {
                     @Override
                     public void run() {
-                        try {
-                            client = new Socket(IP, Integer.parseInt(port));
-                            dataOutputStream = new DataOutputStream(client.getOutputStream());
-                            dataOutputStream.writeInt(point);
-                            dataOutputStream.flush();
-                            client.close();
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        }
+                        sendPoint("red", 5);
                     }
                 }){
                 }.start();}
@@ -174,15 +132,7 @@ public class MainActivity extends AppCompatActivity {
                 new Thread(new Runnable() {
                     @Override
                     public void run() {
-                        try {
-                            client = new Socket(IP, Integer.parseInt(port));
-                            dataOutputStream = new DataOutputStream(client.getOutputStream());
-                            dataOutputStream.writeInt(point);
-                            dataOutputStream.flush();
-                            client.close();
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        }
+                        sendPoint("blue", 1);
                     }
                 }){
                 }.start();}
@@ -196,15 +146,7 @@ public class MainActivity extends AppCompatActivity {
                 new Thread(new Runnable() {
                     @Override
                     public void run() {
-                        try {
-                            client = new Socket(IP, Integer.parseInt(port));
-                            dataOutputStream = new DataOutputStream(client.getOutputStream());
-                            dataOutputStream.writeInt(point);
-                            dataOutputStream.flush();
-                            client.close();
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        }
+                        sendPoint("blue", 2);
                     }
                 }) {
                 }.start();
@@ -219,15 +161,7 @@ public class MainActivity extends AppCompatActivity {
                 new Thread(new Runnable() {
                     @Override
                     public void run() {
-                        try {
-                            client = new Socket(IP, Integer.parseInt(port));
-                            dataOutputStream = new DataOutputStream(client.getOutputStream());
-                            dataOutputStream.writeInt(point);
-                            dataOutputStream.flush();
-                            client.close();
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        }
+                        sendPoint("blue", 3);
                     }
                 }) {
                 }.start();
@@ -242,15 +176,7 @@ public class MainActivity extends AppCompatActivity {
                 new Thread(new Runnable() {
                     @Override
                     public void run() {
-                        try {
-                            client = new Socket(IP, Integer.parseInt(port));
-                            dataOutputStream = new DataOutputStream(client.getOutputStream());
-                            dataOutputStream.writeInt(point);
-                            dataOutputStream.flush();
-                            client.close();
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        }
+                        sendPoint("blue", 4);
                     }
                 }){
                 }.start();}
@@ -264,18 +190,11 @@ public class MainActivity extends AppCompatActivity {
                 new Thread(new Runnable() {
                     @Override
                     public void run() {
-                        try {
-                            client = new Socket(IP, Integer.parseInt(port));
-                            dataOutputStream = new DataOutputStream(client.getOutputStream());
-                            dataOutputStream.writeInt(point);
-                            dataOutputStream.flush();
-                            client.close();
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        }
+                        sendPoint("blue", 5);
                     }
-                }){
-                }.start();}
+                }) {
+                }.start();
+            }
         });
     }
 
@@ -293,6 +212,19 @@ public class MainActivity extends AppCompatActivity {
         }else{
             IP = sharedPreferences.getString("IP", "127.0.0.1");
             port = sharedPreferences.getString("PORT", "8080");
+        }
+    }
+
+
+    private void sendPoint(String player, int point){
+        try {
+            client = new Socket(IP, Integer.parseInt(port));
+            ObjectOutputStream objectOutputStream = new ObjectOutputStream(client.getOutputStream());
+            objectOutputStream.writeObject(new Point(player, point, Integer.parseInt(port)));
+            objectOutputStream.flush();
+            client.close();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
