@@ -18,12 +18,12 @@ public class Judge extends Task{
     private int port = 0;
     Socket clientSocket = null;
     ServerSocket serverSocket = null;
-    visibleScoreBoardController visibleScoreBoardController;
+    VisibleScoreBoardController visibleScoreBoardController;
     private Controller controller;
     private SimpleIntegerProperty redProperty;
     private SimpleIntegerProperty blueProperty;
 
-    public Judge(int port, Controller controller, visibleScoreBoardController visibleScoreBoardController, SimpleIntegerProperty redProperty, SimpleIntegerProperty blueProperty) {
+    public Judge(int port, Controller controller, VisibleScoreBoardController visibleScoreBoardController, SimpleIntegerProperty redProperty, SimpleIntegerProperty blueProperty) {
         this.controller = controller;
         this.port = port;
         this.visibleScoreBoardController = visibleScoreBoardController;
@@ -47,7 +47,6 @@ public class Judge extends Task{
                     assignRedPoint +=  point.getPoint();
                     final int finalAssignPoint = assignRedPoint;
                     Platform.runLater(()-> redProperty.setValue(finalAssignPoint));
-                    //Platform.runLater(()->controller.setRedPoint4(finalAssignPoint));
                 }else{
                     assignBluePoint +=  point.getPoint();
                     final int finalAssignPoint = assignBluePoint;

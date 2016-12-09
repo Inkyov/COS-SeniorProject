@@ -1,9 +1,7 @@
 package sample;
 
 import com.sun.javafx.scene.control.skin.ComboBoxListViewSkin;
-import javafx.animation.Animation;
-import javafx.animation.KeyFrame;
-import javafx.animation.Timeline;
+import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ChangeListener;
@@ -17,16 +15,21 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.control.ListView;
 import javafx.scene.image.*;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.*;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
-import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
-import javafx.util.Duration;
 
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.ResourceBundle;
 
 
@@ -67,7 +70,7 @@ public class Controller implements Initializable{
     @FXML
     public Label result;
     @FXML
-    public ComboBox categories;
+    public ComboBox<String> categories;
     @FXML
     public Label roundsLabel;
     @FXML
@@ -80,20 +83,13 @@ public class Controller implements Initializable{
     public Label minutesLabel;
     @FXML
     public Pane timerPane;
-    private int redChui;
-    private int blueChui;
-    private int redKCh;
-    private int blueKCh;
-    public static int redPoints1 = -2;
-    public static int bluePoints1 = -2;
-    private boolean rOpacity = false;
-    private boolean bOpacity = false;
+    @FXML
+    public MenuItem participantsMenuItem;
     private int round = 1;
-    private int minutesTemp = 2;
-    private int secondsTemp = 59;
-    private Timeline timer;
+    //private Timeline timer;
+    CustomTimeline customTimeline;
     Parent root;
-    visibleScoreBoardController visibleScoreBoardController;
+    VisibleScoreBoardController visibleScoreBoardController;
 
     private SimpleIntegerProperty redPoint1 = new SimpleIntegerProperty(-2);
     public SimpleIntegerProperty redPoint1Property() { return redPoint1; }
@@ -113,12 +109,58 @@ public class Controller implements Initializable{
     private SimpleIntegerProperty bluePoint4 = new SimpleIntegerProperty(-2);
     public SimpleIntegerProperty bluePoint4Property() { return bluePoint4; }
 
-
     private SimpleIntegerProperty minutes = new SimpleIntegerProperty(2);
     public SimpleIntegerProperty minutesProperty() { return minutes; }
 
     private SimpleStringProperty secondsLabel = new SimpleStringProperty("00");
     public SimpleStringProperty secondsLabelProperty() {return secondsLabel;}
+
+    private SimpleStringProperty resultLabel = new SimpleStringProperty("The match is equal");
+    public SimpleStringProperty resultLabelProperty() {return resultLabel;}
+
+    private SimpleIntegerProperty redResult = new SimpleIntegerProperty(0);
+    public SimpleIntegerProperty redResultProperty() { return redResult; }
+
+    private SimpleIntegerProperty  blueResult = new SimpleIntegerProperty(0);
+    public SimpleIntegerProperty blueResultProperty() { return blueResult; }
+
+    private SimpleBooleanProperty pointGiven1 = new SimpleBooleanProperty(false);
+    public SimpleBooleanProperty pointGiven1Property() { return pointGiven1; }
+    private SimpleBooleanProperty redGiven1 = new SimpleBooleanProperty(false);
+    public SimpleBooleanProperty redGiven1Property() { return redGiven1; }
+    private SimpleBooleanProperty blueGiven1 = new SimpleBooleanProperty(false);
+    public SimpleBooleanProperty blueGiven1Property() { return blueGiven1; }
+    private SimpleBooleanProperty pointGiven2 = new SimpleBooleanProperty(false);
+    public SimpleBooleanProperty pointGiven2Property() { return pointGiven2; }
+    private SimpleBooleanProperty redGiven2 = new SimpleBooleanProperty(false);
+    public SimpleBooleanProperty redGiven2Property() { return redGiven2; }
+    private SimpleBooleanProperty blueGiven2 = new SimpleBooleanProperty(false);
+    public SimpleBooleanProperty blueGiven2Property() { return blueGiven2; }
+    private SimpleBooleanProperty pointGiven3 = new SimpleBooleanProperty(false);
+    public SimpleBooleanProperty pointGiven3Property() { return pointGiven3; }
+    private SimpleBooleanProperty redGiven3 = new SimpleBooleanProperty(false);
+    public SimpleBooleanProperty redGiven3Property() { return redGiven3; }
+    private SimpleBooleanProperty blueGiven3 = new SimpleBooleanProperty(false);
+    public SimpleBooleanProperty blueGiven3Property() { return blueGiven3; }
+    private SimpleBooleanProperty pointGiven4 = new SimpleBooleanProperty(false);
+    public SimpleBooleanProperty pointGiven4Property() { return pointGiven4; }
+    private SimpleBooleanProperty redGiven4 = new SimpleBooleanProperty(false);
+    public SimpleBooleanProperty redGiven4Property() { return redGiven4; }
+    private SimpleBooleanProperty blueGiven4 = new SimpleBooleanProperty(false);
+    public SimpleBooleanProperty blueGiven4Property() { return blueGiven4; }
+    private SimpleBooleanProperty redOpacity = new SimpleBooleanProperty(false);
+    private SimpleBooleanProperty blueOpacity = new SimpleBooleanProperty(false);
+    private SimpleIntegerProperty blueChui = new SimpleIntegerProperty(0);
+    public SimpleIntegerProperty blueChuiProperty() { return blueChui; }
+    private SimpleIntegerProperty redChui = new SimpleIntegerProperty(0);
+    public SimpleIntegerProperty redChuiProperty() { return redChui; }
+    private SimpleIntegerProperty redKamChum = new SimpleIntegerProperty(0);
+    public SimpleIntegerProperty redKamChumProperty() { return redKamChum; }
+    private SimpleIntegerProperty blueKamChum = new SimpleIntegerProperty(0);
+    public SimpleIntegerProperty blueKamChumProperty() { return blueKamChum; }
+
+    private SimpleStringProperty roundLabel = new SimpleStringProperty("Round 1");
+    public SimpleStringProperty roundLabelProperty() { return roundLabel; }
 
     public void initialize(URL location, ResourceBundle resources){
 
@@ -159,230 +201,116 @@ public class Controller implements Initializable{
       visibleScoreBoardController.minutesLabel.textProperty().bind(minutesProperty().asString());
       secondLabel.textProperty().bind(secondsLabelProperty());
       visibleScoreBoardController.secondLabel.textProperty().bind(secondsLabelProperty());
-
-
+      rPLbl1.textProperty().bind(redResultProperty().asString());
+      bPLbl1.textProperty().bind(blueResultProperty().asString());
+      result.textProperty().bind(resultLabelProperty());
+      roundsLabel.textProperty().bind(roundLabelProperty());
+      visibleScoreBoardController.roundsLabel.textProperty().bind(roundLabelProperty());
+      bChLbl.textProperty().bind(blueChuiProperty().asString());
+      rChLbl.textProperty().bind(redChuiProperty().asString());
+      bKChLabel.textProperty().bind(blueKamChumProperty().asString());
+      rKChLabel.textProperty().bind(redKamChumProperty().asString());
+      redResultProperty().addListener((observable, oldValue, newValue) -> winner() );
+      blueResultProperty().addListener((observable, oldValue, newValue) ->  winner() );
+      redPoint1Property().addListener(new PointListener(redPoint1Property(),bluePoint1Property(), this, pointGiven1Property(), redGiven1Property(), blueGiven1Property(), visibleScoreBoardController.J1Rect));
+      redPoint2Property().addListener(new PointListener(redPoint2Property(),bluePoint2Property(), this, pointGiven2Property(), redGiven2Property(), blueGiven2Property(), visibleScoreBoardController.J2Rect));
+      redPoint3Property().addListener(new PointListener(redPoint3Property(),bluePoint3Property(), this, pointGiven3Property(), redGiven3Property(), blueGiven3Property(), visibleScoreBoardController.J3Rect));
+      redPoint4Property().addListener(new PointListener(redPoint4Property(),bluePoint4Property(), this, pointGiven4Property(), redGiven4Property(), blueGiven4Property(), visibleScoreBoardController.J4Rect));
+      bluePoint1Property().addListener(new PointListener(redPoint1Property(),bluePoint1Property(), this, pointGiven1Property(), redGiven1Property(), blueGiven1Property(), visibleScoreBoardController.J1Rect));
+      bluePoint2Property().addListener(new PointListener(redPoint2Property(),bluePoint2Property(), this, pointGiven2Property(), redGiven2Property(), blueGiven2Property(), visibleScoreBoardController.J2Rect));
+      bluePoint3Property().addListener(new PointListener(redPoint3Property(),bluePoint3Property(), this, pointGiven3Property(), redGiven3Property(), blueGiven3Property(), visibleScoreBoardController.J3Rect));
+      bluePoint4Property().addListener(new PointListener(redPoint4Property(),bluePoint4Property(), this, pointGiven4Property(), redGiven4Property(), blueGiven4Property(), visibleScoreBoardController.J4Rect));
 
       //Red Timyo indicator
-      redTimyo.addEventHandler(MouseEvent.MOUSE_CLICKED, mouseEvent -> {
-          if (MouseButton.PRIMARY.equals(mouseEvent.getButton()) && !rOpacity) {
-              redTimyo.setOpacity(1);
-              try {
-                  visibleScoreBoardController.setRedTimyoIm(1);
-              }catch (NullPointerException e){
-                  e.printStackTrace();
-              }
-              redPoints1 += 2;
-              ChangeRedLabels(redPoints1);
-              rOpacity = true;
-
-          }
-          else if (MouseButton.SECONDARY.equals(mouseEvent.getButton()) && rOpacity) {
-              redTimyo.setOpacity(0.1);
-              try {
-                  visibleScoreBoardController.setRedTimyoIm(0.1);
-              }catch (NullPointerException e){
-                  e.printStackTrace();
-              }
-              redPoints1 -= 2;
-              ChangeRedLabels(redPoints1);
-              rOpacity = false;
-
-          }
-      });
+      redTimyo.addEventHandler(MouseEvent.MOUSE_CLICKED, mouseEvent -> timyoIndicator(mouseEvent, redOpacity, redTimyo, visibleScoreBoardController.redTimyoIm, redPoint1Property(), redPoint2Property(), redPoint3Property(), redPoint4Property()));
 
       //Blue Timyo indicator
-      blueTimyo.addEventHandler(MouseEvent.MOUSE_CLICKED, mouseEvent -> {
-          if (MouseButton.PRIMARY.equals(mouseEvent.getButton()) && !bOpacity) {
-              blueTimyo.setOpacity(1);
-              try {
-                  visibleScoreBoardController.setBlueTimyoIm(1);
-              }catch (NullPointerException e){
-                  e.printStackTrace();
-              }
-              bluePoints1 += 2;
-              ChangeBlueLabels(bluePoints1);
-              bOpacity = true;
-          }
-          else if (MouseButton.SECONDARY.equals(mouseEvent.getButton()) && bOpacity) {
-              blueTimyo.setOpacity(0.1);
-              try {
-                  visibleScoreBoardController.setBlueTimyoIm(0.1);
-              }catch (NullPointerException e){
-                  e.printStackTrace();
-              }
-              bluePoints1 -= 2;
-              ChangeBlueLabels(bluePoints1);
-              bOpacity = false;
-
-          }
-      });
+      blueTimyo.addEventHandler(MouseEvent.MOUSE_CLICKED, mouseEvent -> timyoIndicator(mouseEvent, blueOpacity, blueTimyo, visibleScoreBoardController.blueTimyoIm, bluePoint1Property(), bluePoint2Property(), bluePoint3Property(), bluePoint4Property()));
 
       //Red Chuis
-      rChLbl.addEventHandler(MouseEvent.MOUSE_CLICKED, mouseEvent -> {
-          if (MouseButton.PRIMARY.equals(mouseEvent.getButton())) {
-              redChui++;
-              rChLbl.setText(Integer.toString(redChui));
-              visibleScoreBoardController.setRedChuiCircles(redChui);
-              if(redChui % 3 == 0){
-                  redPoints1--;
-                  ChangeRedLabels(redPoints1);
-              }
-          }
-          else if (MouseButton.SECONDARY.equals(mouseEvent.getButton())) {
-              redChui--;
-              rChLbl.setText(Integer.toString(redChui));
-              visibleScoreBoardController.unsetRedChuiCircles(redChui);
-              if(redChui % 3 == 0){
-                  redPoints1++;
-                  ChangeRedLabels(redPoints1);
-
-                  if  (rChLbl.getText().equals("0") && !rOpacity) {
-                      redChui = 0;
-                      redPoints1 =-2;
-                      ChangeRedLabels(redPoints1);
-                  }
-              }
-          }
-      });
+      rChLbl.addEventHandler(MouseEvent.MOUSE_CLICKED, mouseEvent -> setChuis(mouseEvent, redChui, redOpacity, redPoint1Property(), redPoint2Property(), redPoint3Property(), redPoint4Property(), 3, 4));
 
       //Blue Chuis
-      bChLbl.addEventHandler(MouseEvent.MOUSE_CLICKED, mouseEvent -> {
-          if (MouseButton.PRIMARY.equals(mouseEvent.getButton())) {
-              blueChui++;
-              bChLbl.setText(Integer.toString(blueChui));
-              visibleScoreBoardController.setBlueChuiCircles(blueChui);
-                  if(blueChui % 3 == 0){
-                      bluePoints1--;
-                      ChangeBlueLabels(bluePoints1);
-                  }
-          }
-          else if (MouseButton.SECONDARY.equals(mouseEvent.getButton())) {
-              blueChui--;
-              bChLbl.setText(Integer.toString(blueChui));
-              visibleScoreBoardController.unsetBlueChuiCircles(blueChui);
-              if(blueChui % 3 == 0){
-                  bluePoints1++;
-                  ChangeBlueLabels(bluePoints1);
-                  if  (bChLbl.getText().equals("0") && !bOpacity){
-                      blueChui = 0;
-                      bluePoints1 =-2;
-                      ChangeBlueLabels(bluePoints1);
-                  }
-              }
-          }
-      });
+      bChLbl.addEventHandler(MouseEvent.MOUSE_CLICKED, mouseEvent -> setChuis(mouseEvent, blueChui, blueOpacity, bluePoint1Property(), bluePoint2Property(), bluePoint3Property(),bluePoint4Property(), 1, 2));
 
       //Blue Kam Chum
-      bKChLabel.addEventHandler(MouseEvent.MOUSE_CLICKED, mouseEvent -> {
-          if (MouseButton.PRIMARY.equals(mouseEvent.getButton())) {
-              blueKCh++;
-              bKChLabel.setText(Integer.toString(blueKCh));
-              visibleScoreBoardController.setBlueKamChumRectangle(blueKCh, 1);
-              bluePoints1--;
-              ChangeBlueLabels(bluePoints1);
-          } else if (MouseButton.SECONDARY.equals(mouseEvent.getButton())) {
-              blueKCh--;
-              bKChLabel.setText(Integer.toString(blueKCh));
-              visibleScoreBoardController.unsetBlueKamChumRectangle(blueKCh, 0);
-              bluePoints1++;
-              ChangeBlueLabels(bluePoints1);
-          }
-      });
+      bKChLabel.addEventHandler(MouseEvent.MOUSE_CLICKED, mouseEvent -> setKamChum(mouseEvent, blueKamChum, bluePoint1Property(), bluePoint2Property(), bluePoint3Property(),bluePoint4Property(), visibleScoreBoardController.bKamChum1, visibleScoreBoardController.bKamChum2));
 
       //Red Kam Chum
-      rKChLabel.addEventHandler(MouseEvent.MOUSE_CLICKED, mouseEvent -> {
-          if (MouseButton.PRIMARY.equals(mouseEvent.getButton())) {
-              redKCh++;
-              rKChLabel.setText(Integer.toString(redKCh));
-              visibleScoreBoardController.setRedKamChumRectangle(redKCh, 1);
-              redPoints1--;
-              ChangeRedLabels(redPoints1);
-          } else if (MouseButton.SECONDARY.equals(mouseEvent.getButton())) {
-              redKCh--;
-              rKChLabel.setText(Integer.toString(redKCh));
-              visibleScoreBoardController.unsetRedKamChumRectangle(redKCh, 0);
-              redPoints1++;
-              ChangeRedLabels(redPoints1);
-          }
-      });
-
-      //ComboBox
-      AutoCompleteComboBoxListener comboBox = new AutoCompleteComboBoxListener(categories);
-      categories.setItems(FXCollections.observableArrayList("Юноши(14-15) -45кг", "Юноши(14-15) -51кг", "Юноши(14-15) -57кг", "Юноши(14-15) -63кг", "Юноши(14-15) -69кг", "Юноши(14-15) -75кг", "Юноши(14-15) +75кг", "Юноши(16-17) -45кг", "Юноши(16-17) -51кг", "Юноши(16-17) -57кг", "Юноши(16-17) -63кг", "Юноши(16-17) -69кг", "Юноши(16-17) -75кг", "Юноши(16-17) +75кг", "Мъже -51кг", "Мъже -57кг", "Мъже -64кг", "Мъже -71кг", "Мъже -78кг", "Мъже -85кг", "Мъже +85кг", "Жени -45кг", "Жени -51кг", "Жени -57кг", "Жени -63кг", "Жени -69кг", "Жени -75кг", "Жени +75кг", "Юнощи 14-15 (отборно)", "Юнощи 16-17 (отборно)", "Мъже (отборно)", "Жени (отборно)"));
-      categories.getSelectionModel().selectedIndexProperty().addListener((observable, oldValue, newValue) -> {
-
-      });
+      rKChLabel.addEventHandler(MouseEvent.MOUSE_CLICKED, mouseEvent-> setKamChum(mouseEvent, redKamChum, redPoint1Property(), redPoint2Property(), redPoint3Property(), redPoint4Property(), visibleScoreBoardController.rKamChum1, visibleScoreBoardController.rKamChum2));
 
 
-      /*showScoreBoard.setOnAction(new EventHandler<ActionEvent>() {
+      participantsMenuItem.setOnAction(new EventHandler<ActionEvent>() {
           @Override
           public void handle(ActionEvent event) {
               try{
-                  root = FXMLLoader.load(getClass().getResource("../views/visibleScoreBoard.fxml"));
+                  FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../views/ShowParticipants.fxml"));
+                  root = fxmlLoader.load();
                   Stage stage = new Stage();
-                  stage.setScene(new Scene(root, 1680, 850));
-                  stage.setMaximized(true);
+                  stage.setTitle("Participants");
+                  stage.setScene(new Scene(root));
                   stage.show();
-              }catch (IOException e){
+              }catch (Exception e){
                   e.printStackTrace();
               }
           }
-      });*/
+      });
+      //ComboBox
+      AutoCompleteComboBoxListener comboBox = new AutoCompleteComboBoxListener(categories);
+      categories.setItems(FXCollections.observableArrayList("Юноши(14-15) -45кг", "Юноши(14-15) -51кг", "Юноши(14-15) -57кг", "Юноши(14-15) -63кг", "Юноши(14-15) -69кг", "Юноши(14-15) -75кг", "Юноши(14-15) +75кг", "Юноши(16-17) -45кг", "Юноши(16-17) -51кг", "Юноши(16-17) -57кг", "Юноши(16-17) -63кг", "Юноши(16-17) -69кг", "Юноши(16-17) -75кг", "Юноши(16-17) +75кг", "Мъже -51кг", "Мъже -57кг", "Мъже -64кг", "Мъже -71кг", "Мъже -78кг", "Мъже -85кг", "Мъже +85кг", "Жени -45кг", "Жени -51кг", "Жени -57кг", "Жени -63кг", "Жени -69кг", "Жени -75кг", "Жени +75кг"));
+      categories.getSelectionModel().selectedIndexProperty().addListener((observable, oldValue, newValue) -> {
+          refresh();
+      });
+
+      customTimeline = new CustomTimeline(this, 2, 59);
+      Thread timerThread = new Thread(customTimeline);
+      timerThread.start();
 
       rightArrow.setOnAction(e -> {
           switch(round){
               case 1:
-                  timer.stop();
-                  roundsLabel.setText("Почивка 1");
-                  visibleScoreBoardController.roundsLabel.setText("Почивка 1");
-                  minutesProperty().setValue(1);
-                  minutesTemp= 1;
-                  secondsLabelProperty().setValue(String.format("%02d", 0));
-                  secondsTemp = 59;
-                  round = 2;
+                      customTimeline.pause();
+                      roundLabelProperty().setValue("Rest 1");
+                      secondsLabelProperty().setValue(String.format("%02d", 0));
+                      minutesProperty().setValue(1);
+                      customTimeline = new CustomTimeline(this, 1, 59);
+                      round = 2;
                   break;
               case 2:
-                  timer.stop();
-                  roundsLabel.setText("Рунд 2");
-                  visibleScoreBoardController.roundsLabel.setText("Рунд 2");
-                  minutesProperty().setValue(2);
-                  minutesTemp=2;
-                  secondsLabelProperty().setValue(String.format("%02d", 0));
-                  secondsTemp = 59;
-                  round = 3;
-                  if(blueTimyo.getOpacity() != 1){
-                      ChangeBlueLabels(bluePoint1Property().get()-2);
-                  }else{
-                      blueTimyo.setOpacity(0.1);
-                      ChangeBlueLabels(bluePoint1Property().get()-2);
-                  }
-                  if(redTimyo.getOpacity() != 1){
-                      ChangeRedLabels(redPoint1Property().get()-2);
-                  }else{
-                      redTimyo.setOpacity(0.1);
-                      ChangeRedLabels(redPoint1Property().get()-2);
-                  }
+                      customTimeline.pause();
+                      roundLabelProperty().setValue("Round 2");
+                      secondsLabelProperty().setValue(String.format("%02d", 0));
+                      minutesProperty().setValue(2);
+                      customTimeline = new CustomTimeline(this, 2, 59);
+                      round = 3;
+                      if(blueTimyo.getOpacity() != 1){
+                          ChangeLabels(-2, bluePoint1Property(), bluePoint2Property(), bluePoint3Property(), bluePoint4Property());
+                      }else{
+                          blueTimyo.setOpacity(0.1);
+                          ChangeLabels(-2, bluePoint1Property(), bluePoint2Property(), bluePoint3Property(), bluePoint4Property());
+                      }
+                      if(redTimyo.getOpacity() != 1){
+                          ChangeLabels(-2, redPoint1Property(), redPoint2Property(), redPoint3Property(), redPoint4Property());
+                      }else{
+                          redTimyo.setOpacity(0.1);
+                          ChangeLabels(-2, redPoint1Property(), redPoint2Property(), redPoint3Property(), redPoint4Property());
+                      }
                   break;
               case 3:
-                  timer.stop();
-                  roundsLabel.setText("Почивка 2");
-                  visibleScoreBoardController.roundsLabel.setText("Почивка 2");
-                  minutesProperty().setValue(0);
-                  minutesTemp=1;
-                  secondsLabelProperty().setValue(String.format("%02d", 30));
-                  secondsTemp = 30;
-                  round = 4;
+                      customTimeline.pause();
+                      roundLabelProperty().setValue("Rest 2");
+                      minutesProperty().setValue(0);
+                      secondsLabelProperty().setValue(String.format("%02d", 30));
+                      customTimeline = new CustomTimeline(this, 1, 30);
+                      round = 4;
                   break;
               case 4:
-                  timer.stop();
-                  roundsLabel.setText("Рунд 3");
-                  visibleScoreBoardController.roundsLabel.setText("Рунд 3");
-
-                  minutesProperty().setValue(1);
-                  minutesTemp = 1;
-                  secondsLabelProperty().setValue(String.format("%02d", 0));
-                  secondsTemp = 59;
-                  round=5;
+                      customTimeline.pause();
+                      roundLabelProperty().setValue("Round 3");
+                      minutesProperty().setValue(1);
+                      secondsLabelProperty().setValue(String.format("%02d", 0));
+                      customTimeline = new CustomTimeline(this, 1, 59);
+                      round = 5;
                   break;
               case 5:
                   refresh();
@@ -390,32 +318,10 @@ public class Controller implements Initializable{
           }
       });
 
-      timer = new Timeline(new KeyFrame(Duration.millis(100), ae -> {
-          String formatted = String.format("%02d", secondsTemp);
-          secondsLabelProperty().setValue(formatted);
-          minutesProperty().setValue(minutesTemp-1);
-          if(secondsTemp == 0){
-              minutesTemp--;
-              minutesProperty().setValue(minutesTemp);
-              secondsTemp = 59;
-              secondsLabelProperty().setValue(Integer.toString(secondsTemp));
-              if(minutesTemp == 0){
-                      minutesProperty().setValue(minutesTemp);
-                      minutesTemp = minutesProperty().get();
-                      secondsTemp = 0;
-                      formatted = String.format("%02d", secondsTemp);
-                      secondsLabelProperty().setValue(formatted);
-                      timer.stop();
-              }
-          }else {
-              secondsTemp--;
-          }}));
-      timer.setCycleCount(Animation.INDEFINITE);
-
     timerPane.addEventHandler(MouseEvent.MOUSE_CLICKED, mouseEvent -> {
     if(MouseButton.PRIMARY.equals(mouseEvent.getButton())){
-        timer.play();
-    }else timer.stop();
+        customTimeline.play();
+    }else customTimeline.pause();
 });
 
       Judge socket1 = new Judge(8886, this, visibleScoreBoardController,redPoint1Property(), bluePoint1Property());
@@ -433,114 +339,65 @@ public class Controller implements Initializable{
 
   }
 
-    private void ChangeBlueLabels(int point){
-        bluePoint1Property().setValue(point);
-        bluePoint2Property().setValue(point);
-        bluePoint3Property().setValue(point);
-        bluePoint4Property().setValue(point);
-    }
-
-    private void ChangeRedLabels(int point){
-        redPoint1Property().setValue(point);
-        redPoint2Property().setValue(point);
-        redPoint3Property().setValue(point);
-        redPoint4Property().setValue(point);
+    public void winner(){
+        if (redResult.get() > blueResult.get() && redResult.get() >= 2){
+            resultLabel.setValue("Red is winning");
+        }else if(redResult.get() < blueResult.get() && blueResult.get() >= 2) {
+            resultLabel.setValue("Blue is winning");
+        }else if(redResult.get() == blueResult.get() || redResult.get() == 1 || blueResult.get() == 1){
+            resultLabel.setValue("The match is equal");
+        }
     }
 
     public void refresh(){
-        bluePoints1 =-2;
-        redPoints1 =-2;
-        redKCh=0;
-        blueKCh=0;
-        redChui=0;
-        blueChui=0;
-        secondsLabelProperty().setValue("00");
-        //String formatted = String.format("%02d", secondsProperty().get());
-        minutesProperty().setValue(2);
-        round = 1;
-        ChangeBlueLabels(bluePoints1);
-        ChangeRedLabels(redPoints1);
-        rKChLabel.setText("0");
-        bKChLabel.setText("0");
-        rChLbl.setText("0");
-        bChLbl.setText("0");
-        rPLbl1.setText("0");
-        bPLbl1.setText("0");
-        roundsLabel.setText("Рунд 1");
-        visibleScoreBoardController.roundsLabel.setText("Рунд 1");
-        blueTimyo.setOpacity(0.1);
-        visibleScoreBoardController.setBlueTimyoIm(0.1);
-        redTimyo.setOpacity(0.1);
-        visibleScoreBoardController.setRedTimyoIm(0.1);
-        bOpacity = false;
-        rOpacity = false;
-        timer.stop();
-        visibleScoreBoardController.bChuiCirc1.setFill(Color.web("#d1d1d1"));
-        visibleScoreBoardController.bChuiCirc2.setFill(Color.web("#d1d1d1"));
-        visibleScoreBoardController.bChuiCirc3.setFill(Color.web("#d1d1d1"));
-        visibleScoreBoardController.bChuiCirc4.setFill(Color.web("#d1d1d1"));
-        visibleScoreBoardController.bChuiCirc5.setFill(Color.web("#d1d1d1"));
-        visibleScoreBoardController.bChuiCirc6.setFill(Color.web("#d1d1d1"));
-        visibleScoreBoardController.bChuiCirc7.setFill(Color.web("#d1d1d1"));
-        visibleScoreBoardController.bChuiCirc8.setFill(Color.web("#d1d1d1"));
-        visibleScoreBoardController.bChuiCirc9.setFill(Color.web("#d1d1d1"));
-        visibleScoreBoardController.bChuiCirc10.setFill(Color.web("#d1d1d1"));
-        visibleScoreBoardController.bChuiCirc11.setFill(Color.web("#d1d1d1"));
-        visibleScoreBoardController.bChuiCirc12.setFill(Color.web("#d1d1d1"));
-        visibleScoreBoardController.rChuiCirc1.setFill(Color.web("#d1d1d1"));
-        visibleScoreBoardController.rChuiCirc2.setFill(Color.web("#d1d1d1"));
-        visibleScoreBoardController.rChuiCirc3.setFill(Color.web("#d1d1d1"));
-        visibleScoreBoardController.rChuiCirc4.setFill(Color.web("#d1d1d1"));
-        visibleScoreBoardController.rChuiCirc5.setFill(Color.web("#d1d1d1"));
-        visibleScoreBoardController.rChuiCirc6.setFill(Color.web("#d1d1d1"));
-        visibleScoreBoardController.rChuiCirc7.setFill(Color.web("#d1d1d1"));
-        visibleScoreBoardController.rChuiCirc8.setFill(Color.web("#d1d1d1"));
-        visibleScoreBoardController.rChuiCirc9.setFill(Color.web("#d1d1d1"));
-        visibleScoreBoardController.rChuiCirc10.setFill(Color.web("#d1d1d1"));
-        visibleScoreBoardController.rChuiCirc11.setFill(Color.web("#d1d1d1"));
-        visibleScoreBoardController.rChuiCirc12.setFill(Color.web("#d1d1d1"));
-        visibleScoreBoardController.bChuiCirc1.setOpacity(0.2);
-        visibleScoreBoardController.bChuiCirc2.setOpacity(0.2);
-        visibleScoreBoardController.bChuiCirc3.setOpacity(0.2);
-        visibleScoreBoardController.bChuiCirc4.setOpacity(0.2);
-        visibleScoreBoardController.bChuiCirc5.setOpacity(0.2);
-        visibleScoreBoardController.bChuiCirc6.setOpacity(0.2);
-        visibleScoreBoardController.bChuiCirc7.setOpacity(0.2);
-        visibleScoreBoardController.bChuiCirc8.setOpacity(0.2);
-        visibleScoreBoardController.bChuiCirc9.setOpacity(0.2);
-        visibleScoreBoardController.bChuiCirc10.setOpacity(0.2);
-        visibleScoreBoardController.bChuiCirc11.setOpacity(0.2);
-        visibleScoreBoardController.bChuiCirc12.setOpacity(0.2);
-        visibleScoreBoardController.rChuiCirc1.setOpacity(0.2);
-        visibleScoreBoardController.rChuiCirc2.setOpacity(0.2);
-        visibleScoreBoardController.rChuiCirc3.setOpacity(0.2);
-        visibleScoreBoardController.rChuiCirc4.setOpacity(0.2);
-        visibleScoreBoardController.rChuiCirc5.setOpacity(0.2);
-        visibleScoreBoardController.rChuiCirc6.setOpacity(0.2);
-        visibleScoreBoardController.rChuiCirc7.setOpacity(0.2);
-        visibleScoreBoardController.rChuiCirc8.setOpacity(0.2);
-        visibleScoreBoardController.rChuiCirc9.setOpacity(0.2);
-        visibleScoreBoardController.rChuiCirc10.setOpacity(0.2);
-        visibleScoreBoardController.rChuiCirc11.setOpacity(0.2);
-        visibleScoreBoardController.rChuiCirc12.setOpacity(0.2);
-        visibleScoreBoardController.rKamChum1.setOpacity(0);
-        visibleScoreBoardController.bKamChum1.setOpacity(0);
-        visibleScoreBoardController.rKamChum2.setOpacity(0);
-        visibleScoreBoardController.bKamChum2.setOpacity(0);
-        visibleScoreBoardController.redChuiBackground.setVisible(false);
-        visibleScoreBoardController.blueChuiBackground.setVisible(false);
-        visibleScoreBoardController.manyBChLabel.setVisible(false);
-        visibleScoreBoardController.manyRChLabel.setVisible(false);
+      redKamChum.setValue(0);
+      blueKamChum.setValue(0);
+      redChui.setValue(0);
+      blueChui.setValue(0);
+      round = 1;
+      secondsLabelProperty().setValue("00");
+      minutesProperty().setValue(2);
+      bluePoint1Property().setValue(-2);
+      bluePoint2Property().setValue(-2);
+      bluePoint3Property().setValue(-2);
+      bluePoint4Property().setValue(-2);
+      redPoint1Property().setValue(-2);
+      redPoint2Property().setValue(-2);
+      redPoint3Property().setValue(-2);
+      redPoint4Property().setValue(-2);
+      redKamChum.setValue(0);
+      blueKamChum.setValue(0);
+      redChui.setValue(0);
+      blueChui.setValue(0);
+      redResultProperty().setValue(0);
+      blueResultProperty().setValue(0);
+      roundLabelProperty().setValue("Round 1");
+      blueTimyo.setOpacity(0.1);
+      visibleScoreBoardController.setTimyoIm(0.1, visibleScoreBoardController.blueTimyoIm);
+      redTimyo.setOpacity(0.1);
+      visibleScoreBoardController.setTimyoIm(0.1, visibleScoreBoardController.redTimyoIm);
+      redOpacity.setValue(false);
+      blueOpacity.setValue(false);
+      visibleScoreBoardController.setColor();
+      visibleScoreBoardController.setOpacity();
+      visibleScoreBoardController.rKamChum1.setOpacity(0);
+      visibleScoreBoardController.bKamChum1.setOpacity(0);
+      visibleScoreBoardController.rKamChum2.setOpacity(0);
+      visibleScoreBoardController.bKamChum2.setOpacity(0);
+      visibleScoreBoardController.redChuiBackground.setVisible(false);
+      visibleScoreBoardController.blueChuiBackground.setVisible(false);
+      visibleScoreBoardController.manyBChLabel.setVisible(false);
+      visibleScoreBoardController.manyRChLabel.setVisible(false);
 
     }
 
     public class AutoCompleteComboBoxListener implements EventHandler<KeyEvent> {
 
-        private ComboBox comboBox;
+        private ComboBox<String> comboBox;
         private StringBuilder sb;
         private int lastLength;
 
-        public AutoCompleteComboBoxListener(ComboBox comboBox) {
+        public AutoCompleteComboBoxListener(ComboBox<String> comboBox) {
             this.comboBox = comboBox;
             sb = new StringBuilder();
 
@@ -593,7 +450,7 @@ public class Controller implements Initializable{
                 sb.delete(ir.getStart(), sb.length());
             } catch (Exception e) { }
 
-            ObservableList items = comboBox.getItems();
+            ObservableList<String> items = comboBox.getItems();
             for (int i=0; i<items.size(); i++) {
                 if (items.get(i).toString().toLowerCase().startsWith(comboBox.getEditor().getText().toLowerCase())
                         )
@@ -620,7 +477,7 @@ public class Controller implements Initializable{
          *
          */
         private void selectClosestResultBasedOnTextFieldValue(boolean affect, boolean inFocus) {
-            ObservableList items = AutoCompleteComboBoxListener.this.comboBox.getItems();
+            ObservableList<String> items = AutoCompleteComboBoxListener.this.comboBox.getItems();
             boolean found = false;
             for (int i=0; i<items.size(); i++) {
                 if (AutoCompleteComboBoxListener.this.comboBox.getEditor().getText().toLowerCase().equals(items.get(i).toString().toLowerCase())) {
@@ -644,23 +501,65 @@ public class Controller implements Initializable{
 
     }
 
-    public void evaluate(){
-        int blue = Integer.parseInt(bPLbl1.getText());
-        int red = Integer.parseInt(rPLbl1.getText());
-        if(bluePoints1 > redPoints1){
-            blue=+2;
-            bPLbl1.setText(Integer.toString(blue));
-        }else if(bluePoints1 < redPoints1){
-            red++;
-            rPLbl1.setText(Integer.toString(red));
-        }
+    private synchronized void ChangeLabels(int point, SimpleIntegerProperty sIntProp1, SimpleIntegerProperty sIntProp2, SimpleIntegerProperty sIntProp3, SimpleIntegerProperty sIntProp4 ){
+        List<SimpleIntegerProperty> simpleIntegerProperties = new ArrayList<>(Arrays.asList(sIntProp1,sIntProp2, sIntProp3, sIntProp4));
+        simpleIntegerProperties.forEach(e-> e.setValue(e.get() + point));
+    }
 
-        if(blue == red){
-            result.setText("Резултатът е равен");
-        }else if(blue > red && blue >= 2){
-            result.setText("Синият е победител");
-        }else if(blue < red && red >= 2){
-            result.setText("Червеният е победител");
+    public void setKamChum(MouseEvent mouseEvent, SimpleIntegerProperty kamChum, SimpleIntegerProperty sIntP1, SimpleIntegerProperty sIntP2, SimpleIntegerProperty sIntP3, SimpleIntegerProperty sIntP4, Rectangle rectangle1, Rectangle rectangle2){
+        if (MouseButton.PRIMARY.equals(mouseEvent.getButton())) {
+            kamChum.setValue(kamChum.get()+1);
+            visibleScoreBoardController.setKamChum(kamChum.get(), 1, rectangle1, rectangle2);
+            ChangeLabels(-1, sIntP1, sIntP2, sIntP3, sIntP4);
+        } else if (MouseButton.SECONDARY.equals(mouseEvent.getButton())) {
+            kamChum.setValue(kamChum.get()-1);
+            visibleScoreBoardController.setKamChum(kamChum.get(), 0, rectangle1, rectangle2);
+            ChangeLabels(1, sIntP1, sIntP2, sIntP3, sIntP4);
+        }
+    }
+
+    public void timyoIndicator(MouseEvent e, SimpleBooleanProperty op, ImageView controllerImgView, ImageView visibleControllerImgView, SimpleIntegerProperty sIntP1, SimpleIntegerProperty sIntP2, SimpleIntegerProperty sIntP3, SimpleIntegerProperty sIntP4){
+        if (MouseButton.PRIMARY.equals(e.getButton()) && !op.get()) {
+            controllerImgView.setOpacity(1);
+            try {
+                visibleScoreBoardController.setTimyoIm(1, visibleControllerImgView);
+            }catch (NullPointerException ex){
+                ex.printStackTrace();
+            }
+            ChangeLabels(2, sIntP1, sIntP2, sIntP3, sIntP4);
+            op.setValue(true);
+        }
+        else if (MouseButton.SECONDARY.equals(e.getButton()) && op.get()) {
+            controllerImgView.setOpacity(0.1);
+            try {
+                visibleScoreBoardController.setTimyoIm(0.1, visibleControllerImgView);
+            }catch (NullPointerException ex){
+                ex.printStackTrace();
+            }
+            ChangeLabels(-2, sIntP1, sIntP2, sIntP3, sIntP4);
+            op.setValue(false);
+
+        }
+    }
+
+    public void setChuis(MouseEvent mouseEvent, SimpleIntegerProperty chuis, SimpleBooleanProperty op, SimpleIntegerProperty sIntProp1, SimpleIntegerProperty sIntProp2, SimpleIntegerProperty sIntProp3, SimpleIntegerProperty sIntProp4, int set, int unset){
+        if (MouseButton.PRIMARY.equals(mouseEvent.getButton())) {
+            chuis.setValue(chuis.get()+1);
+            visibleScoreBoardController.setChuiCircles(chuis.get(), set);
+            if(chuis.get() % 3 == 0){
+                ChangeLabels(-1, sIntProp1, sIntProp2, sIntProp3, sIntProp4);
+            }
+        }
+        else if (MouseButton.SECONDARY.equals(mouseEvent.getButton())) {
+            chuis.setValue(chuis.get()-1);
+            visibleScoreBoardController.setChuiCircles(chuis.get(), unset);
+            if(chuis.get() % 3 == 0){
+                ChangeLabels(1, sIntProp1, sIntProp2, sIntProp3, sIntProp4);
+                if  (chuis.get() == 0 && !op.get()){
+                    blueChui.setValue(0);
+                    ChangeLabels(0, sIntProp1, sIntProp2, sIntProp3, sIntProp4);
+                }
+            }
         }
     }
 }

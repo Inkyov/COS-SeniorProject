@@ -1,9 +1,8 @@
 package sample;
 
-import javafx.animation.Animation;
-import javafx.animation.AnimationTimer;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
+import javafx.beans.property.SimpleBooleanProperty;
 import javafx.concurrent.Task;
 import javafx.util.Duration;
 
@@ -11,37 +10,58 @@ import javafx.util.Duration;
  * Created by Inkyov on 10/28/2016.
  */
 
-public class CustomTimeline{
+public class CustomTimeline extends Task{
     private int minutes, seconds;
     private Controller controller;
-    private visibleScoreBoardController visibleScoreBoardController;
+    Timeline timer;
+    public SimpleBooleanProperty interrupted = new SimpleBooleanProperty(false);
 
-    CustomTimeline(Controller controller,visibleScoreBoardController visibleScoreBoardController, int minutes, int seconds){
+    CustomTimeline(Controller controller, int minutes, int seconds){
         this.controller = controller;
-        this.visibleScoreBoardController = visibleScoreBoardController;
         this.minutes = minutes;
         this.seconds = seconds;
     }
 
-    /*public void runMe(){
-        //controller.setMinutes(minutes);
-        //controller.setSeconds(seconds);
-        controller.setSeconds(seconds);
-        controller.setMinutes(minutes-1);
-          /*minutesLabel.setText(Integer.toString(minutesTemp-1));
-          visibleScoreBoardController.minutesLabel.setText(Integer.toString(minutesTemp-1));
-        if(seconds == 0){
-            minutes--;
-            controller.setMinutes(minutes);
-              /*minutesLabel.setText(Integer.toString(minutesTemp));
-              visibleScoreBoardController.minutesLabel.setText(Integer.toString(minutesTemp));
-            seconds = 59;
-            if(minutes == 0){
-                controller.setMinutes(minutes);
-                  /*minutesLabel.setText(Integer.toString(minutesTemp));
-                  visibleScoreBoardController.minutesLabel.setText(Integer.toString(minutesTemp));
+    @Override
+    protected Object call() throws Exception {
+        performTask();
+        return null;
+
+    }
+
+    private void performTask(){
+        timer = new Timeline(new KeyFrame(Duration.millis(100), ae -> {
+            String formatted = String.format("%02d", seconds);
+            controller.secondsLabelProperty().setValue(formatted);
+            controller.minutesProperty().setValue(minutes-1);
+            if(seconds == 0){
+                minutes--;
+                controller.minutesProperty().setValue(minutes);
+                seconds = 59;
+                controller.secondsLabelProperty().setValue(Integer.toString(seconds));
+                if(minutes == 0){
+                    controller.minutesProperty().setValue(minutes);
+                    minutes = controller.minutesProperty().get();
+                    seconds = 0;
+                    formatted = String.format("%02d", seconds);
+                    controller.secondsLabelProperty().setValue(formatted);
+                    timer.stop();
+                    interrupted.setValue(true);
+                }
+            }else {
+                seconds--;
             }
         }
-        seconds--;
-    }*/
+        ));
+        timer.setCycleCount(Timeline.INDEFINITE);
+        }
+
+    public synchronized void pause(){
+        timer.pause();
+    }
+
+    public synchronized void play(){
+        performTask();
+        timer.play();
+    }
 }

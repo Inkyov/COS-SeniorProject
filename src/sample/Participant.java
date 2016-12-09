@@ -1,13 +1,48 @@
 package sample;
 
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
+
 /**
  * Created by Inkyov on 3/22/2016.
  */
 public class Participant {
 
+    private SimpleIntegerProperty id;
+    private SimpleStringProperty name;
+    private SimpleStringProperty club;
+    private SimpleStringProperty rank;
+    private SimpleStringProperty category;
+    private SimpleStringProperty age;
 
-    public Participant(int ID, String name, String club, String degree, String category, String dateOfBirth){
-
-
+    public Participant(int id, String name, String club, String rank, String category, String age){
+        this.id = new SimpleIntegerProperty(id);
+        this.name = new SimpleStringProperty(name);
+        this.club = new SimpleStringProperty(club);
+        this.rank = new SimpleStringProperty(rank);
+        this.category = new SimpleStringProperty(category);
+        this.age = new SimpleStringProperty(age);
     }
+
+    public int getId(){ return id.get(); }
+
+    public String getName(){
+        return name.get();
+    }
+
+    public String getClub(){
+        return club.get();
+    }
+
+    public String getRank(){
+        return rank.get();
+    }
+
+    public String getCategory(){
+        return category.get();
+    }
+
+    public String getAge(){ return age.get(); }
+
+
 }

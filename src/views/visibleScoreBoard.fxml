@@ -9,7 +9,7 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="935.0" prefWidth="1363.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.visibleScoreBoardController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="935.0" prefWidth="1363.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.VisibleScoreBoardController">
    <children>
       <ImageView fx:id="redTimyoIm" fitHeight="260.0" fitWidth="380.0" layoutX="142.0" layoutY="244.0" opacity="0.1" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="140.0" />
       <ImageView fx:id="blueTimyoIm" fitHeight="250.0" fitWidth="380.0" layoutX="848.0" layoutY="243.0" opacity="0.1" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="140.0" />
@@ -71,7 +71,7 @@
       </HBox>
       <HBox layoutX="14.0" layoutY="14.0" prefHeight="100.0" prefWidth="700.0" AnchorPane.leftAnchor="25.0">
          <children>
-            <Rectangle fx:id="J2Rect" arcHeight="5.0" arcWidth="5.0" fill="LIGHTGRAY" height="100.0" stroke="WHITE" strokeType="INSIDE" width="460.0" />
+            <Rectangle fx:id="J4Rect" arcHeight="5.0" arcWidth="5.0" fill="LIGHTGRAY" height="100.0" stroke="WHITE" strokeType="INSIDE" width="460.0" />
             <Label fx:id="rPJ4Label" alignment="CENTER" contentDisplay="CENTER" prefHeight="100.0" prefWidth="120.0" text="-2" textFill="RED">
                <font>
                   <Font name="System Bold" size="70.0" />
@@ -84,7 +84,7 @@
       </HBox>
       <HBox layoutX="25.0" layoutY="117.0" prefHeight="100.0" prefWidth="700.0" AnchorPane.leftAnchor="25.0">
          <children>
-            <Rectangle fx:id="J1Rect" arcHeight="5.0" arcWidth="5.0" fill="LIGHTGRAY" height="100.0" stroke="WHITE" strokeType="INSIDE" width="460.0" />
+            <Rectangle fx:id="J3Rect" arcHeight="5.0" arcWidth="5.0" fill="LIGHTGRAY" height="100.0" stroke="WHITE" strokeType="INSIDE" width="460.0" />
             <Label fx:id="rPJ3Label" alignment="CENTER" contentDisplay="CENTER" prefHeight="100.0" prefWidth="120.0" text="-2" textFill="RED">
                <font>
                   <Font name="System Bold" size="70.0" />
@@ -105,7 +105,7 @@
                <font>
                   <Font name="System Bold" size="70.0" />
                </font></Label>
-            <Rectangle fx:id="J3Rect" arcHeight="5.0" arcWidth="5.0" fill="#d1d1d1" height="100.0" stroke="WHITE" strokeType="INSIDE" width="460.0" />
+            <Rectangle fx:id="J1Rect" arcHeight="5.0" arcWidth="5.0" fill="#d1d1d1" height="100.0" stroke="WHITE" strokeType="INSIDE" width="460.0" />
          </children>
       </HBox>
       <HBox layoutX="738.0" layoutY="117.0" prefHeight="100.0" prefWidth="700.0" AnchorPane.rightAnchor="25.0">
@@ -118,7 +118,7 @@
                <font>
                   <Font name="System Bold" size="70.0" />
                </font></Label>
-            <Rectangle fx:id="J4Rect" arcHeight="5.0" arcWidth="5.0" fill="LIGHTGRAY" height="100.0" stroke="WHITE" strokeType="INSIDE" width="460.0" />
+            <Rectangle fx:id="J2Rect" arcHeight="5.0" arcWidth="5.0" fill="LIGHTGRAY" height="100.0" stroke="WHITE" strokeType="INSIDE" width="460.0" />
          </children>
       </HBox>
       <Rectangle fx:id="redChuiBackground" arcHeight="5.0" arcWidth="5.0" fill="RED" height="220.0" layoutX="25.0" layoutY="691.0" stroke="BLACK" strokeType="INSIDE" visible="false" width="600.0" AnchorPane.bottomAnchor="25.0" />

@@ -1,5 +1,6 @@
 package sample;
 
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
@@ -10,73 +11,116 @@ import javafx.scene.shape.Rectangle;
 
 import java.io.File;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.ResourceBundle;
 
-public class visibleScoreBoardController implements Initializable{
+public class VisibleScoreBoardController implements Initializable{
 
+    @FXML
     public ImageView redTimyoIm;
+    @FXML
     public ImageView blueTimyoIm;
     //penalty circle containers
+    @FXML
     public Rectangle J1Rect;
+    @FXML
     public Rectangle J2Rect;
+    @FXML
     public Rectangle J3Rect;
+    @FXML
     public Rectangle J4Rect;
     //penalty circles
     public Circle rChuiCirc6;
+    @FXML
     public Circle rChuiCirc5;
+    @FXML
     public Circle rChuiCirc4;
+    @FXML
     public Circle bChuiCirc4;
+    @FXML
     public Circle bChuiCirc5;
+    @FXML
     public Circle bChuiCirc6;
+    @FXML
     public Circle rChuiCirc12;
+    @FXML
     public Circle rChuiCirc11;
+    @FXML
     public Circle rChuiCirc10;
+    @FXML
     public Circle bChuiCirc12;
+    @FXML
     public Circle bChuiCirc10;
+    @FXML
     public Circle bChuiCirc11;
+    @FXML
     public Circle rChuiCirc3;
+    @FXML
     public Circle rChuiCirc2;
+    @FXML
     public Circle rChuiCirc1;
+    @FXML
     public Circle rChuiCirc9;
+    @FXML
     public Circle rChuiCirc8;
+    @FXML
     public Circle rChuiCirc7;
+    @FXML
     public Circle bChuiCirc1;
+    @FXML
     public Circle bChuiCirc2;
+    @FXML
     public Circle bChuiCirc3;
+    @FXML
     public Circle bChuiCirc7;
+    @FXML
     public Circle bChuiCirc8;
+    @FXML
     public Circle bChuiCirc9;
+    @FXML
     //score labels of the four judges
     public Label rPJ4Label;
+    @FXML
     public Label bPJ4Label;
+    @FXML
     public Label rPJ3Label;
+    @FXML
     public Label bPJ3Label;
+    @FXML
     public Label rPJ1Label;
+    @FXML
     public Label bPJ1Label;
+    @FXML
     public Label rPJ2Label;
+    @FXML
     public Label bPJ2Label;
+    @FXML
     //penalties controls
     public Rectangle redChuiBackground;
+    @FXML
     public Rectangle blueChuiBackground;
+    @FXML
     public Label manyRChLabel;
+    @FXML
     public Label manyBChLabel;
+    @FXML
     //timer controls
     public Label minutesLabel;
+    @FXML
     public Label secondLabel;
+    @FXML
     public Label roundsLabel;
+    @FXML
     //yellow card rectangles
     public Rectangle rKamChum1;
+    @FXML
     public Rectangle rKamChum2;
+    @FXML
     public Rectangle bKamChum1;
+    @FXML
     public Rectangle bKamChum2;
-    private int redScore1;
-    private int redScore2;
-    private int redScore3;
-    private int redScore4;
-    private int blueScore1;
-    private int blueScore2;
-    private int blueScore3;
-    private int blueScore4;
 
     public void initialize(URL location, ResourceBundle resources){
     File file = new File("E:/Downloads/kick.png");
@@ -84,98 +128,40 @@ public class visibleScoreBoardController implements Initializable{
     redTimyoIm.setImage(image);
     blueTimyoIm.setImage(image);
 
-    //integer representation of the point labels
-    redScore1 = Integer.parseInt(rPJ1Label.getText());
-    redScore2 = Integer.parseInt(rPJ2Label.getText());
-    redScore3 = Integer.parseInt(rPJ3Label.getText());
-    redScore4 = Integer.parseInt(rPJ4Label.getText());
-    blueScore1 = Integer.parseInt(bPJ1Label.getText());
-    blueScore2 = Integer.parseInt(bPJ2Label.getText());
-    blueScore3 = Integer.parseInt(bPJ3Label.getText());
-    blueScore4 = Integer.parseInt(bPJ4Label.getText());
     }
 
-    public void getWinner(){
-        if(redScore1 > blueScore1){
-            J1Rect.setFill(Color.RED);
-        }else if(redScore1 < blueScore1){
-            J1Rect.setFill(Color.BLUE);
-        }else {
-            J1Rect.setFill(Color.web("#d1d1d1"));
-        }
-        if(redScore2 > blueScore2){
-            J2Rect.setFill(Color.RED);
-        }else if(redScore2 < blueScore2){
-            J2Rect.setFill(Color.BLUE);
-        }else {
-            J2Rect.setFill(Color.web("#d1d1d1"));
-        }
-        if(redScore3 > blueScore3){
-            J3Rect.setFill(Color.RED);
-        }else if(redScore3 < blueScore3){
-            J3Rect.setFill(Color.BLUE);
-        }else {
-            J3Rect.setFill(Color.web("#d1d1d1"));
-        }
-        if(redScore4 > blueScore4){
-            J4Rect.setFill(Color.RED);
-        }else if(redScore4 < blueScore4){
-            J4Rect.setFill(Color.BLUE);
-        }else {
-            J4Rect.setFill(Color.web("#d1d1d1"));
-        }
-
+    public void setTimyoIm(double op, ImageView imageView){
+        imageView.setOpacity(op);
     }
 
-    public void setRedTimyoIm(double op){
-        redTimyoIm.setOpacity(op);
-    }
-
-    public void setBlueTimyoIm(double op){
-        blueTimyoIm.setOpacity(op);
-    }
-
-    public void setRedKamChumRectangle(int kCh, int op){
+    public void setKamChum(int kCh, int op, Rectangle rectangle1, Rectangle rectangle2){
         switch (kCh){
             case 1:
-                rKamChum1.setOpacity(op);
+                rectangle1.setOpacity(op);
                 break;
             case 2:
-                rKamChum2.setOpacity(op);
-                break;
+                rectangle2.setOpacity(op);
         }
     }
 
-    public void unsetRedKamChumRectangle(int kCh, int op){
-        switch (kCh){
-            case 0:
-                rKamChum1.setOpacity(op);
-                break;
+    public void setChuiCircles(int kCh, int function) {
+        switch (function){
             case 1:
-                rKamChum2.setOpacity(op);
-                break;
-        }
-    }
-
-    public void setBlueKamChumRectangle(int kCh, int op){
-        switch (kCh){
-            case 1:
-                bKamChum1.setOpacity(op);
+                setBlueChuiCircles(kCh);
                 break;
             case 2:
-                bKamChum2.setOpacity(op);
+                unsetBlueChuiCircles(kCh);
+                break;
+            case 3:
+                setRedChuiCircles(kCh);
+                break;
+            case 4:
+                unsetRedChuiCircles(kCh);
                 break;
         }
-    }
 
-    public void unsetBlueKamChumRectangle(int kCh, int op){
-        switch (kCh){
-            case 0:
-                bKamChum1.setOpacity(op);
-                break;
-            case 1:
-                bKamChum2.setOpacity(op);
-                break;
+        if (function == 1){
+            setBlueChuiCircles(kCh);
         }
     }
 
@@ -298,7 +284,7 @@ public class visibleScoreBoardController implements Initializable{
         }
     }
 
-    public void setRedChuiCircles(int kCh) {
+    public void setRedChuiCircles(int kCh){
         if (kCh > 12) {
             redChuiBackground.setVisible(true);
             manyRChLabel.setText(Integer.toString(kCh));
@@ -417,4 +403,13 @@ public class visibleScoreBoardController implements Initializable{
             }
         }
 
+    public void setColor(){
+        List<Circle> circles = new ArrayList<>(Arrays.asList(bChuiCirc1, bChuiCirc2, bChuiCirc3, bChuiCirc4, bChuiCirc5, bChuiCirc6, bChuiCirc7, bChuiCirc8, bChuiCirc9, bChuiCirc10, bChuiCirc11, bChuiCirc12, rChuiCirc1, rChuiCirc2, rChuiCirc3, rChuiCirc4, rChuiCirc5, rChuiCirc6, rChuiCirc7, rChuiCirc8, rChuiCirc9, rChuiCirc10, rChuiCirc11, rChuiCirc12));
+        circles.forEach(e-> e.setFill(Color.web("#d1d1d1")));
+    }
+
+    public void setOpacity(){
+        List<Circle> circles = new ArrayList<>(Arrays.asList(bChuiCirc1, bChuiCirc2, bChuiCirc3, bChuiCirc4, bChuiCirc5, bChuiCirc6, bChuiCirc7, bChuiCirc8, bChuiCirc9, bChuiCirc10, bChuiCirc11, bChuiCirc12, rChuiCirc1, rChuiCirc2, rChuiCirc3, rChuiCirc4, rChuiCirc5, rChuiCirc6, rChuiCirc7, rChuiCirc8, rChuiCirc9, rChuiCirc10, rChuiCirc11, rChuiCirc12));
+        circles.forEach(e-> e.setOpacity(0.2));
+    }
 }
