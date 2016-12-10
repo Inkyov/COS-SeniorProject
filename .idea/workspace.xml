@@ -6,18 +6,8 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="Added database&#10;Select/Update/Delete functionality added&#10;All classes needed for work with the database are done&#10;Added custom PointListener&#10;Basic functionality is available&#10;Custom Timeline implemented&#10;">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/images/kick.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/controlsfx_8_20_9.xml" />
+    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/database/Database.java" afterPath="$PROJECT_DIR$/src/database/Database.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sample/Age.java" afterPath="$PROJECT_DIR$/src/sample/Age.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sample/Controller.java" afterPath="$PROJECT_DIR$/src/sample/Controller.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sample/Main.java" afterPath="$PROJECT_DIR$/src/sample/Main.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sample/Participant.java" afterPath="$PROJECT_DIR$/src/sample/Participant.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sample/Tournament.java" afterPath="$PROJECT_DIR$/src/sample/Tournament.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sample/participantsController.java" afterPath="$PROJECT_DIR$/src/sample/participantsController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/views/ShowParticipants.fxml" afterPath="$PROJECT_DIR$/src/views/ShowParticipants.fxml" />
     </list>
     <ignored path="JavaFxApplication.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -857,7 +847,13 @@
       <option name="project" value="LOCAL" />
       <updated>1481352300376</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Creating a random list of participants for a certain tournament&#10;&#10;">
+      <created>1481396140465</created>
+      <option name="number" value="00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1481396140465</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -926,7 +922,8 @@
     <MESSAGE value="Implemented socket class that now receives and sends the points to the corresponding judge.&#10;Working timer&#10;Binding properties for the fields&#10;" />
     <MESSAGE value="Added database&#10;Select/Update/Delete functionality added&#10;All classes needed for work with the database are done&#10;Added custom PointListener&#10;Basic functionality is available&#10;Custom Timeline implemented&#10;" />
     <MESSAGE value="Winner calculation&#10;New UI controls and code for them&#10;" />
-    <option name="LAST_COMMIT_MESSAGE" value="Winner calculation&#10;New UI controls and code for them&#10;" />
+    <MESSAGE value="Creating a random list of participants for a certain tournament&#10;&#10;" />
+    <option name="LAST_COMMIT_MESSAGE" value="Creating a random list of participants for a certain tournament&#10;&#10;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
