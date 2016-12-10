@@ -12,6 +12,7 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception{
         Parent root = FXMLLoader.load(getClass().getResource("../views/scoreBoard.fxml"));
         primaryStage.setScene(new Scene(root, 800, 600));
+        primaryStage.setTitle("Match Grading System");
         primaryStage.setMaximized(true);
         primaryStage.show();
 

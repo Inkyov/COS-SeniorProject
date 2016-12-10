@@ -26,6 +26,10 @@ public class Participant {
         this.tournament = new SimpleStringProperty(tournament);
     }
 
+    public Participant(String name) {
+        this.name = new SimpleStringProperty(name);
+    }
+
     public int getId(){ return id.get(); }
 
     public String getName(){

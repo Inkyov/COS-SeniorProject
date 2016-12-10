@@ -15,6 +15,10 @@ public class Tournament {
     private SimpleStringProperty date_to;
     private SimpleStringProperty type;
 
+    public Tournament(String name){
+        this.name = new SimpleStringProperty(name);
+    }
+
     public Tournament(int id, String name, String date_from, String date_to, String type){
         this.id = new SimpleIntegerProperty(id);
         this.name = new SimpleStringProperty(name);

@@ -149,7 +149,7 @@ public class Controller implements Initializable{
 
     public void initialize(URL location, ResourceBundle resources){
 
-      File file = new File("E:/Downloads/kick.png");
+      File file = new File("resources/images/kick.png");
       Image image = new Image(file.toURI().toString());
       redTimyo.setImage(image);
       blueTimyo.setImage(image);
@@ -532,6 +532,7 @@ public class Controller implements Initializable{
 
     private synchronized void countJudges(){
         int redCount = 0, blueCount = 0;
+
         if(redPoint1Property().get() == bluePoint1Property().get() && redGiven1.get()){
             visibleScoreBoardController.J1Rect.setFill(Color.web("#d1d1d1"));
             redCount--;

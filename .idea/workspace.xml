@@ -7,18 +7,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="Added database&#10;Select/Update/Delete functionality added&#10;All classes needed for work with the database are done&#10;Added custom PointListener&#10;Basic functionality is available&#10;Custom Timeline implemented&#10;">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/images/kick.png" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/controlsfx_8_20_9.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sample/Tournament.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/sample/PointListener.java" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MatchGradingSystem.iml" afterPath="$PROJECT_DIR$/MatchGradingSystem.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/database/Database.java" afterPath="$PROJECT_DIR$/src/database/Database.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sample/Age.java" afterPath="$PROJECT_DIR$/src/sample/Age.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sample/Controller.java" afterPath="$PROJECT_DIR$/src/sample/Controller.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sample/CustomTimeline.java" afterPath="$PROJECT_DIR$/src/sample/CustomTimeline.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sample/Main.java" afterPath="$PROJECT_DIR$/src/sample/Main.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sample/Participant.java" afterPath="$PROJECT_DIR$/src/sample/Participant.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sample/visibleScoreBoardController.java" afterPath="$PROJECT_DIR$/src/sample/visibleScoreBoardController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sample/Tournament.java" afterPath="$PROJECT_DIR$/src/sample/Tournament.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sample/participantsController.java" afterPath="$PROJECT_DIR$/src/sample/participantsController.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/views/ShowParticipants.fxml" afterPath="$PROJECT_DIR$/src/views/ShowParticipants.fxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/views/scoreBoard.fxml" afterPath="$PROJECT_DIR$/src/views/scoreBoard.fxml" />
     </list>
     <ignored path="JavaFxApplication.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -31,6 +30,11 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
+  <component name="CoverageDataManager">
+    <SUITE FILE_PATH="coverage/great$Main.coverage" NAME="Main Coverage Results" MODIFIED="1481390615851" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>database.*</FILTER>
+    </SUITE>
+  </component>
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
   </component>
@@ -77,55 +81,68 @@
     <favorites_list name="JavaFxApplication" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.55128205">
+    <splitter split-orientation="horizontal" split-proportion="0.5378465">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file leaf-file-name="ParticipantsController.java" pinned="false" current-in-tab="true">
+          <file leaf-file-name="ParticipantsController.java" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/sample/ParticipantsController.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.51626015">
-                  <caret line="458" column="13" selection-start-line="458" selection-start-column="13" selection-end-line="458" selection-end-column="13" />
+                <state vertical-scroll-proportion="0.0">
+                  <caret line="103" column="45" selection-start-line="103" selection-start-column="45" selection-end-line="103" selection-end-column="45" />
                   <folding>
                     <element signature="imports" expanded="true" />
-                    <element signature="class#5124:5514" expanded="false" />
-                    <element signature="class#5554:6002" expanded="false" />
-                    <element signature="class#6109:6499" expanded="false" />
-                    <element signature="class#6540:6988" expanded="false" />
-                    <element signature="e#6922#6923#0" expanded="true" />
-                    <element signature="e#6973#6974#0" expanded="true" />
-                    <element signature="class#7136:7526" expanded="false" />
-                    <element signature="class#7566:8014" expanded="false" />
-                    <element signature="class#8112:8502" expanded="false" />
-                    <element signature="class#8543:8991" expanded="false" />
-                    <element signature="e#8925#8926#0" expanded="true" />
-                    <element signature="e#8976#8977#0" expanded="true" />
-                    <element signature="class#9160:9578" expanded="false" />
-                    <element signature="class#9622:10086" expanded="false" />
-                    <element signature="e#10020#10021#0" expanded="true" />
-                    <element signature="e#10071#10072#0" expanded="true" />
-                    <element signature="class#10196:10614" expanded="false" />
-                    <element signature="class#10659:11123" expanded="false" />
-                    <element signature="class#11266:11645" expanded="false" />
-                    <element signature="class#11684:12124" expanded="false" />
-                    <element signature="class#12219:12598" expanded="false" />
-                    <element signature="class#12638:13078" expanded="false" />
+                    <element signature="class#5908:6298" expanded="false" />
+                    <element signature="class#6338:6786" expanded="false" />
+                    <element signature="class#6893:7283" expanded="false" />
+                    <element signature="class#7324:7772" expanded="false" />
+                    <element signature="e#7706#7707#0" expanded="true" />
+                    <element signature="e#7757#7758#0" expanded="true" />
+                    <element signature="class#7869:8259" expanded="false" />
+                    <element signature="class#8299:8747" expanded="false" />
+                    <element signature="class#8845:9235" expanded="false" />
+                    <element signature="class#9276:9724" expanded="false" />
+                    <element signature="e#9658#9659#0" expanded="true" />
+                    <element signature="e#9709#9710#0" expanded="true" />
+                    <element signature="class#9833:10251" expanded="false" />
+                    <element signature="class#10295:10759" expanded="false" />
+                    <element signature="e#10693#10694#0" expanded="true" />
+                    <element signature="e#10744#10745#0" expanded="true" />
+                    <element signature="class#10869:11287" expanded="false" />
+                    <element signature="class#11332:11796" expanded="false" />
+                    <element signature="class#11910:12328" expanded="false" />
+                    <element signature="class#12375:12839" expanded="false" />
+                    <element signature="class#12933:13312" expanded="false" />
+                    <element signature="method#updateItem#0;class#12933:13312" expanded="false" />
+                    <element signature="class#13351:13791" expanded="false" />
+                    <element signature="class#13886:14265" expanded="false" />
+                    <element signature="class#14305:14745" expanded="false" />
+                    <element signature="class#14844:15223" expanded="false" />
+                    <element signature="class#15265:15705" expanded="false" />
+                    <element signature="class#15808:16229" expanded="false" />
+                    <element signature="class#16269:16743" expanded="false" />
+                    <element signature="e#16677#16678#0" expanded="true" />
+                    <element signature="e#16728#16729#0" expanded="true" />
+                    <element signature="class#24099:24526" expanded="false" />
                   </folding>
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="Controller.java" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/sample/Controller.java">
+          <file leaf-file-name="VisibleScoreBoardController.java" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/sample/VisibleScoreBoardController.java">
               <provider selected="true" editor-type-id="text-editor">
                 <state vertical-scroll-proportion="0.0">
-                  <caret line="147" column="75" selection-start-line="147" selection-start-column="75" selection-end-line="147" selection-end-column="75" />
+                  <caret line="124" column="66" selection-start-line="124" selection-start-column="66" selection-end-line="124" selection-end-column="66" />
                   <folding>
-                    <element signature="imports" expanded="true" />
-                    <element signature="method#ChangeLabels#0;class#Controller#0" expanded="false" />
-                    <element signature="method#setKamChum#0;class#Controller#0" expanded="false" />
-                    <element signature="method#timyoIndicator#0;class#Controller#0" expanded="false" />
-                    <element signature="method#setChuis#0;class#Controller#0" expanded="false" />
-                    <element signature="method#countJudges#0;class#Controller#0" expanded="false" />
+                    <element signature="method#initialize#0;class#VisibleScoreBoardController#0" expanded="false" />
+                    <element signature="method#setKamChum#0;class#VisibleScoreBoardController#0" expanded="false" />
+                    <element signature="method#setChuiCircles#0;class#VisibleScoreBoardController#0" expanded="false" />
+                    <element signature="method#setBlueChuiCircles#0;class#VisibleScoreBoardController#0" expanded="false" />
+                    <element signature="method#unsetBlueChuiCircles#0;class#VisibleScoreBoardController#0" expanded="false" />
+                    <element signature="method#setRedChuiCircles#0;class#VisibleScoreBoardController#0" expanded="false" />
+                    <element signature="method#unsetRedChuiCircles#0;class#VisibleScoreBoardController#0" expanded="false" />
+                    <element signature="method#setColor#0;class#VisibleScoreBoardController#0" expanded="false" />
+                    <element signature="method#setOpacity#0;class#VisibleScoreBoardController#0" expanded="false" />
                   </folding>
                 </state>
               </provider>
@@ -135,27 +152,20 @@
             <entry file="file://$PROJECT_DIR$/src/sample/Participant.java">
               <provider selected="true" editor-type-id="text-editor">
                 <state vertical-scroll-proportion="0.0">
-                  <caret line="48" column="18" selection-start-line="48" selection-start-column="18" selection-end-line="48" selection-end-column="18" />
-                  <folding />
+                  <caret line="26" column="5" selection-start-line="26" selection-start-column="5" selection-end-line="26" selection-end-column="5" />
+                  <folding>
+                    <element signature="e#1015#1016#0" expanded="true" />
+                    <element signature="e#1073#1074#0" expanded="true" />
+                  </folding>
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="CustomTimeline.java" pinned="false" current-in-tab="false">
+          <file leaf-file-name="CustomTimeline.java" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/sample/CustomTimeline.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.0">
-                  <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/sample/Main.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.0">
-                  <caret line="14" column="8" selection-start-line="14" selection-start-column="8" selection-end-line="14" selection-end-column="8" />
+                <state vertical-scroll-proportion="0.13513513">
+                  <caret line="9" column="3" selection-start-line="9" selection-start-column="3" selection-end-line="9" selection-end-column="3" />
                   <folding />
                 </state>
               </provider>
@@ -168,8 +178,8 @@
           <file leaf-file-name="Database.java" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/database/Database.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.72357726">
-                  <caret line="164" column="0" selection-start-line="164" selection-start-column="0" selection-end-line="164" selection-end-column="0" />
+                <state vertical-scroll-proportion="0.05882353">
+                  <caret line="155" column="31" selection-start-line="155" selection-start-column="31" selection-end-line="155" selection-end-column="31" />
                   <folding />
                 </state>
               </provider>
@@ -181,8 +191,18 @@
                 <state />
               </provider>
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="-4.8">
-                  <caret line="111" column="74" selection-start-line="111" selection-start-column="74" selection-end-line="111" selection-end-column="74" />
+                <state vertical-scroll-proportion="-5.5636363">
+                  <caret line="176" column="73" selection-start-line="176" selection-start-column="73" selection-end-line="176" selection-end-column="73" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="Age.java" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/sample/Age.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="0.0">
+                  <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
                   <folding />
                 </state>
               </provider>
@@ -192,11 +212,11 @@
             <entry file="file://$PROJECT_DIR$/src/sample/Tournament.java">
               <provider selected="true" editor-type-id="text-editor">
                 <state vertical-scroll-proportion="0.0">
-                  <caret line="11" column="36" selection-start-line="11" selection-start-column="36" selection-end-line="11" selection-end-column="36" />
+                  <caret line="18" column="51" selection-start-line="18" selection-start-column="51" selection-end-line="18" selection-end-column="51" />
                   <folding>
                     <element signature="imports" expanded="true" />
-                    <element signature="e#838#839#0" expanded="true" />
-                    <element signature="e#871#872#0" expanded="true" />
+                    <element signature="e#430#431#0" expanded="true" />
+                    <element signature="e#488#489#0" expanded="true" />
                   </folding>
                 </state>
               </provider>
@@ -248,23 +268,23 @@
         <option value="$PROJECT_DIR$/src/sample/JudgeTwo.java" />
         <option value="$PROJECT_DIR$/src/sample/JudgeThree.java" />
         <option value="$PROJECT_DIR$/src/sample/JudgeOne.java" />
-        <option value="$PROJECT_DIR$/src/sample/Main.java" />
         <option value="$PROJECT_DIR$/src/sample/visibleScoreBoardController.java" />
         <option value="$PROJECT_DIR$/src/sample/Club.java" />
         <option value="$PROJECT_DIR$/src/sample/Rank.java" />
         <option value="$PROJECT_DIR$/src/sample/Category.java" />
-        <option value="$PROJECT_DIR$/src/sample/Age.java" />
         <option value="$PROJECT_DIR$/src/views/ShowParticipants.fxml" />
         <option value="$PROJECT_DIR$/src/sample/Judge.java" />
         <option value="$PROJECT_DIR$/src/views/scoreBoard.fxml" />
         <option value="$PROJECT_DIR$/src/sample/PointListener.java" />
         <option value="$PROJECT_DIR$/src/sample/CustomTimeline.java" />
+        <option value="$PROJECT_DIR$/src/sample/Age.java" />
+        <option value="$PROJECT_DIR$/src/sample/Participant.java" />
+        <option value="$PROJECT_DIR$/src/sample/Tournament.java" />
+        <option value="$PROJECT_DIR$/src/database/Database.java" />
+        <option value="$PROJECT_DIR$/src/sample/ParticipantsController.java" />
+        <option value="$PROJECT_DIR$/src/sample/Main.java" />
         <option value="$PROJECT_DIR$/src/sample/VisibleScoreBoardController.java" />
         <option value="$PROJECT_DIR$/src/sample/Controller.java" />
-        <option value="$PROJECT_DIR$/src/sample/Tournament.java" />
-        <option value="$PROJECT_DIR$/src/sample/Participant.java" />
-        <option value="$PROJECT_DIR$/src/sample/ParticipantsController.java" />
-        <option value="$PROJECT_DIR$/src/database/Database.java" />
       </list>
     </option>
   </component>
@@ -437,6 +457,24 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="judgepanel" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="great" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="great" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="resources" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="images" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -813,7 +851,13 @@
       <option name="project" value="LOCAL" />
       <updated>1481251982887</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Winner calculation&#10;New UI controls and code for them&#10;">
+      <created>1481352300376</created>
+      <option name="number" value="00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1481352300376</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -830,7 +874,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32962137" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -838,16 +882,16 @@
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32962137" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32962137" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.26837417" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26837417" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32628062" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1684435" sideWeight="0.6703755" order="1" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25053304" sideWeight="0.6703755" order="1" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32962137" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2489339" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.42093542" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.42093542" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -881,11 +925,12 @@
     <MESSAGE value="Java software now receives sockets on demand" />
     <MESSAGE value="Implemented socket class that now receives and sends the points to the corresponding judge.&#10;Working timer&#10;Binding properties for the fields&#10;" />
     <MESSAGE value="Added database&#10;Select/Update/Delete functionality added&#10;All classes needed for work with the database are done&#10;Added custom PointListener&#10;Basic functionality is available&#10;Custom Timeline implemented&#10;" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added database&#10;Select/Update/Delete functionality added&#10;All classes needed for work with the database are done&#10;Added custom PointListener&#10;Basic functionality is available&#10;Custom Timeline implemented&#10;" />
+    <MESSAGE value="Winner calculation&#10;New UI controls and code for them&#10;" />
+    <option name="LAST_COMMIT_MESSAGE" value="Winner calculation&#10;New UI controls and code for them&#10;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="232" />
+      <option name="time" value="251" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -1205,34 +1250,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/VisibleScoreBoardController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.8120063">
-          <caret line="417" column="28" selection-start-line="417" selection-start-column="28" selection-end-line="417" selection-end-column="28" />
-          <folding>
-            <element signature="method#setKamChum#0;class#VisibleScoreBoardController#0" expanded="false" />
-            <element signature="method#setChuiCircles#0;class#VisibleScoreBoardController#0" expanded="false" />
-            <element signature="method#setBlueChuiCircles#0;class#VisibleScoreBoardController#0" expanded="false" />
-            <element signature="method#unsetBlueChuiCircles#0;class#VisibleScoreBoardController#0" expanded="false" />
-            <element signature="method#setRedChuiCircles#0;class#VisibleScoreBoardController#0" expanded="false" />
-            <element signature="method#unsetRedChuiCircles#0;class#VisibleScoreBoardController#0" expanded="false" />
-            <element signature="method#setColor#0;class#VisibleScoreBoardController#0" expanded="false" />
-            <element signature="method#setOpacity#0;class#VisibleScoreBoardController#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/views/ShowParticipants.fxml">
-      <provider editor-type-id="JavaFX-Scene-Builder">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-4.8">
-          <caret line="111" column="74" selection-start-line="111" selection-start-column="74" selection-end-line="111" selection-end-column="74" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_71/src.zip!/java/util/function/Predicate.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.33227345">
@@ -1249,101 +1266,142 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/Tournament.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="18" column="51" selection-start-line="18" selection-start-column="51" selection-end-line="18" selection-end-column="51" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#430#431#0" expanded="true" />
+            <element signature="e#488#489#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/Age.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="15" selection-start-line="0" selection-start-column="15" selection-end-line="0" selection-end-column="15" />
+          <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/Participant.java">
+    <entry file="file://$PROJECT_DIR$/src/views/ShowParticipants.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
+      </provider>
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="48" column="18" selection-start-line="48" selection-start-column="18" selection-end-line="48" selection-end-column="18" />
+        <state vertical-scroll-proportion="-5.5636363">
+          <caret line="176" column="73" selection-start-line="176" selection-start-column="73" selection-end-line="176" selection-end-column="73" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/CustomTimeline.java">
+    <entry file="file://$PROJECT_DIR$/src/database/Database.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.05882353">
+          <caret line="155" column="31" selection-start-line="155" selection-start-column="31" selection-end-line="155" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.27027026">
+          <caret line="14" column="54" selection-start-line="14" selection-start-column="54" selection-end-line="14" selection-end-column="54" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/Controller.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="147" column="75" selection-start-line="147" selection-start-column="75" selection-end-line="147" selection-end-column="75" />
+        <state vertical-scroll-proportion="0.35135135">
+          <caret line="151" column="28" selection-start-line="151" selection-start-column="28" selection-end-line="151" selection-end-column="28" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#ChangeLabels#0;class#Controller#0" expanded="false" />
             <element signature="method#setKamChum#0;class#Controller#0" expanded="false" />
             <element signature="method#timyoIndicator#0;class#Controller#0" expanded="false" />
             <element signature="method#setChuis#0;class#Controller#0" expanded="false" />
-            <element signature="method#countJudges#0;class#Controller#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="14" column="8" selection-start-line="14" selection-start-column="8" selection-end-line="14" selection-end-column="8" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/Tournament.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="11" column="36" selection-start-line="11" selection-start-column="36" selection-end-line="11" selection-end-column="36" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#838#839#0" expanded="true" />
-            <element signature="e#871#872#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/ParticipantsController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.51626015">
-          <caret line="458" column="13" selection-start-line="458" selection-start-column="13" selection-end-line="458" selection-end-column="13" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="103" column="45" selection-start-line="103" selection-start-column="45" selection-end-line="103" selection-end-column="45" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="class#5124:5514" expanded="false" />
-            <element signature="class#5554:6002" expanded="false" />
-            <element signature="class#6109:6499" expanded="false" />
-            <element signature="class#6540:6988" expanded="false" />
-            <element signature="e#6922#6923#0" expanded="true" />
-            <element signature="e#6973#6974#0" expanded="true" />
-            <element signature="class#7136:7526" expanded="false" />
-            <element signature="class#7566:8014" expanded="false" />
-            <element signature="class#8112:8502" expanded="false" />
-            <element signature="class#8543:8991" expanded="false" />
-            <element signature="e#8925#8926#0" expanded="true" />
-            <element signature="e#8976#8977#0" expanded="true" />
-            <element signature="class#9160:9578" expanded="false" />
-            <element signature="class#9622:10086" expanded="false" />
-            <element signature="e#10020#10021#0" expanded="true" />
-            <element signature="e#10071#10072#0" expanded="true" />
-            <element signature="class#10196:10614" expanded="false" />
-            <element signature="class#10659:11123" expanded="false" />
-            <element signature="class#11266:11645" expanded="false" />
-            <element signature="class#11684:12124" expanded="false" />
-            <element signature="class#12219:12598" expanded="false" />
-            <element signature="class#12638:13078" expanded="false" />
+            <element signature="class#5908:6298" expanded="false" />
+            <element signature="class#6338:6786" expanded="false" />
+            <element signature="class#6893:7283" expanded="false" />
+            <element signature="class#7324:7772" expanded="false" />
+            <element signature="e#7706#7707#0" expanded="true" />
+            <element signature="e#7757#7758#0" expanded="true" />
+            <element signature="class#7869:8259" expanded="false" />
+            <element signature="class#8299:8747" expanded="false" />
+            <element signature="class#8845:9235" expanded="false" />
+            <element signature="class#9276:9724" expanded="false" />
+            <element signature="e#9658#9659#0" expanded="true" />
+            <element signature="e#9709#9710#0" expanded="true" />
+            <element signature="class#9833:10251" expanded="false" />
+            <element signature="class#10295:10759" expanded="false" />
+            <element signature="e#10693#10694#0" expanded="true" />
+            <element signature="e#10744#10745#0" expanded="true" />
+            <element signature="class#10869:11287" expanded="false" />
+            <element signature="class#11332:11796" expanded="false" />
+            <element signature="class#11910:12328" expanded="false" />
+            <element signature="class#12375:12839" expanded="false" />
+            <element signature="class#12933:13312" expanded="false" />
+            <element signature="method#updateItem#0;class#12933:13312" expanded="false" />
+            <element signature="class#13351:13791" expanded="false" />
+            <element signature="class#13886:14265" expanded="false" />
+            <element signature="class#14305:14745" expanded="false" />
+            <element signature="class#14844:15223" expanded="false" />
+            <element signature="class#15265:15705" expanded="false" />
+            <element signature="class#15808:16229" expanded="false" />
+            <element signature="class#16269:16743" expanded="false" />
+            <element signature="e#16677#16678#0" expanded="true" />
+            <element signature="e#16728#16729#0" expanded="true" />
+            <element signature="class#24099:24526" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/database/Database.java">
+    <entry file="file://$PROJECT_DIR$/src/sample/VisibleScoreBoardController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.72357726">
-          <caret line="164" column="0" selection-start-line="164" selection-start-column="0" selection-end-line="164" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="124" column="66" selection-start-line="124" selection-start-column="66" selection-end-line="124" selection-end-column="66" />
+          <folding>
+            <element signature="method#initialize#0;class#VisibleScoreBoardController#0" expanded="false" />
+            <element signature="method#setKamChum#0;class#VisibleScoreBoardController#0" expanded="false" />
+            <element signature="method#setChuiCircles#0;class#VisibleScoreBoardController#0" expanded="false" />
+            <element signature="method#setBlueChuiCircles#0;class#VisibleScoreBoardController#0" expanded="false" />
+            <element signature="method#unsetBlueChuiCircles#0;class#VisibleScoreBoardController#0" expanded="false" />
+            <element signature="method#setRedChuiCircles#0;class#VisibleScoreBoardController#0" expanded="false" />
+            <element signature="method#unsetRedChuiCircles#0;class#VisibleScoreBoardController#0" expanded="false" />
+            <element signature="method#setColor#0;class#VisibleScoreBoardController#0" expanded="false" />
+            <element signature="method#setOpacity#0;class#VisibleScoreBoardController#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/Participant.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="26" column="5" selection-start-line="26" selection-start-column="5" selection-end-line="26" selection-end-column="5" />
+          <folding>
+            <element signature="e#1015#1016#0" expanded="true" />
+            <element signature="e#1073#1074#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/CustomTimeline.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.13513513">
+          <caret line="9" column="3" selection-start-line="9" selection-start-column="3" selection-end-line="9" selection-end-column="3" />
           <folding />
         </state>
       </provider>

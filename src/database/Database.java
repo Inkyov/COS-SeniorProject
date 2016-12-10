@@ -1,6 +1,7 @@
 package database;
 
 import java.sql.*;
+import java.util.ArrayList;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -16,6 +17,8 @@ public class Database {
     ObservableList<Rank> rankData = FXCollections.observableArrayList();
     ObservableList<Category> categoryData = FXCollections.observableArrayList();
     ObservableList<Age> ageData = FXCollections.observableArrayList();
+    ObservableList<Tournament> tournamentData = FXCollections.observableArrayList();
+    ObservableList<Participant> randomList = FXCollections.observableArrayList();
 
     public Connection getConnection() throws ClassNotFoundException, SQLException{
         Class.forName("org.hsqldb.jdbcDriver");
@@ -119,15 +122,46 @@ public class Database {
         return ageData;
     }
 
-    public void insertParticipant(String name, int club, int rank, int category, int age) throws SQLException, ClassNotFoundException {
+    public ObservableList<Tournament> fillTournament() throws Exception{
         conn = getConnection();
-        String query="Insert Into Participants (Name, Club, Rank, Category, Age) Values (?,?,?,?,?)";
+        String query = "Select Tournament.TourName as Name From Tournament";
+        stmt = conn.createStatement();
+        resultSet = stmt.executeQuery(query);
+        while (resultSet.next()){
+            tournamentData.add(new Tournament(
+                    resultSet.getString("Name")
+            ));
+        }
+        return tournamentData;
+    }
+
+    public ObservableList<Participant> randomList (ArrayList<Integer> values) throws SQLException, ClassNotFoundException {
+        conn = getConnection();
+        String query = "Select Participants.Name From Participants Where Id IN (unnest(?))";
+        PreparedStatement preparedStatement = conn.prepareStatement(query);
+        Integer [] integers = new Integer[values.size()];
+        values.toArray(integers);
+        preparedStatement.setArray(1, conn.createArrayOf("int", integers));
+        resultSet = preparedStatement.executeQuery();
+        while(resultSet.next()){
+            randomList.add(new Participant(
+                    resultSet.getString("Name")
+            ));
+        }
+        return randomList;
+    }
+
+
+    public void insertParticipant(String name, int club, int rank, int category, int age, int tournament) throws SQLException, ClassNotFoundException {
+        conn = getConnection();
+        String query="Insert Into Participants (Name, Club, Rank, Category, Age) Values (?,?,?,?,?,?)";
         PreparedStatement preparedStatement = conn.prepareStatement(query);
         preparedStatement.setString(1, name);
         preparedStatement.setInt(2, club);
         preparedStatement.setInt(3, rank);
         preparedStatement.setInt(4, category);
         preparedStatement.setInt(5, age);
+        preparedStatement.setInt(6, tournament);
         preparedStatement.executeUpdate();
 
         conn.close();
@@ -145,24 +179,20 @@ public class Database {
 
     }
 
-    public void updateParticipant(int id, String name, int club, int rank, int category, int age) throws SQLException, ClassNotFoundException{
+    public void updateParticipant(int id, String name, int club, int rank, int category, int age, int tournament) throws SQLException, ClassNotFoundException{
         conn = getConnection();
-        String query = "Update Participants Set Name = ?, Club = ?, Rank = ?, Category = ?, Age = ? Where ID=?";
+        String query = "Update Participants Set Name = ?, Club = ?, Rank = ?, Category = ?, Age = ?, Tournament = ? Where ID=?";
         PreparedStatement preparedStatement = conn.prepareStatement(query);
         preparedStatement.setString(1, name);
         preparedStatement.setInt(2, club);
         preparedStatement.setInt(3, rank);
         preparedStatement.setInt(4, category);
         preparedStatement.setInt(5, age);
-        preparedStatement.setInt(6, id);
+        preparedStatement.setInt(6, tournament);
+        preparedStatement.setInt(7, id);
         preparedStatement.executeUpdate();
         preparedStatement.close();
         conn.close();
-    }
-
-    public void randomList () throws SQLException, ClassNotFoundException {
-        conn = getConnection();
-
     }
 
 }
