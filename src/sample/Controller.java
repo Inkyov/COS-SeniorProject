@@ -4,8 +4,6 @@ import com.sun.javafx.scene.control.skin.ComboBoxListViewSkin;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.*;
@@ -19,8 +17,8 @@ import javafx.scene.control.ListView;
 import javafx.scene.image.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.*;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 
@@ -86,7 +84,6 @@ public class Controller implements Initializable{
     @FXML
     public MenuItem participantsMenuItem;
     private int round = 1;
-    //private Timeline timer;
     CustomTimeline customTimeline;
     Parent root;
     VisibleScoreBoardController visibleScoreBoardController;
@@ -124,30 +121,18 @@ public class Controller implements Initializable{
     private SimpleIntegerProperty  blueResult = new SimpleIntegerProperty(0);
     public SimpleIntegerProperty blueResultProperty() { return blueResult; }
 
-    private SimpleBooleanProperty pointGiven1 = new SimpleBooleanProperty(false);
-    public SimpleBooleanProperty pointGiven1Property() { return pointGiven1; }
     private SimpleBooleanProperty redGiven1 = new SimpleBooleanProperty(false);
-    public SimpleBooleanProperty redGiven1Property() { return redGiven1; }
     private SimpleBooleanProperty blueGiven1 = new SimpleBooleanProperty(false);
-    public SimpleBooleanProperty blueGiven1Property() { return blueGiven1; }
-    private SimpleBooleanProperty pointGiven2 = new SimpleBooleanProperty(false);
-    public SimpleBooleanProperty pointGiven2Property() { return pointGiven2; }
+
     private SimpleBooleanProperty redGiven2 = new SimpleBooleanProperty(false);
-    public SimpleBooleanProperty redGiven2Property() { return redGiven2; }
     private SimpleBooleanProperty blueGiven2 = new SimpleBooleanProperty(false);
-    public SimpleBooleanProperty blueGiven2Property() { return blueGiven2; }
-    private SimpleBooleanProperty pointGiven3 = new SimpleBooleanProperty(false);
-    public SimpleBooleanProperty pointGiven3Property() { return pointGiven3; }
+
     private SimpleBooleanProperty redGiven3 = new SimpleBooleanProperty(false);
-    public SimpleBooleanProperty redGiven3Property() { return redGiven3; }
     private SimpleBooleanProperty blueGiven3 = new SimpleBooleanProperty(false);
-    public SimpleBooleanProperty blueGiven3Property() { return blueGiven3; }
-    private SimpleBooleanProperty pointGiven4 = new SimpleBooleanProperty(false);
-    public SimpleBooleanProperty pointGiven4Property() { return pointGiven4; }
+
     private SimpleBooleanProperty redGiven4 = new SimpleBooleanProperty(false);
-    public SimpleBooleanProperty redGiven4Property() { return redGiven4; }
     private SimpleBooleanProperty blueGiven4 = new SimpleBooleanProperty(false);
-    public SimpleBooleanProperty blueGiven4Property() { return blueGiven4; }
+
     private SimpleBooleanProperty redOpacity = new SimpleBooleanProperty(false);
     private SimpleBooleanProperty blueOpacity = new SimpleBooleanProperty(false);
     private SimpleIntegerProperty blueChui = new SimpleIntegerProperty(0);
@@ -212,14 +197,14 @@ public class Controller implements Initializable{
       rKChLabel.textProperty().bind(redKamChumProperty().asString());
       redResultProperty().addListener((observable, oldValue, newValue) -> winner() );
       blueResultProperty().addListener((observable, oldValue, newValue) ->  winner() );
-      redPoint1Property().addListener(new PointListener(redPoint1Property(),bluePoint1Property(), this, pointGiven1Property(), redGiven1Property(), blueGiven1Property(), visibleScoreBoardController.J1Rect));
-      redPoint2Property().addListener(new PointListener(redPoint2Property(),bluePoint2Property(), this, pointGiven2Property(), redGiven2Property(), blueGiven2Property(), visibleScoreBoardController.J2Rect));
-      redPoint3Property().addListener(new PointListener(redPoint3Property(),bluePoint3Property(), this, pointGiven3Property(), redGiven3Property(), blueGiven3Property(), visibleScoreBoardController.J3Rect));
-      redPoint4Property().addListener(new PointListener(redPoint4Property(),bluePoint4Property(), this, pointGiven4Property(), redGiven4Property(), blueGiven4Property(), visibleScoreBoardController.J4Rect));
-      bluePoint1Property().addListener(new PointListener(redPoint1Property(),bluePoint1Property(), this, pointGiven1Property(), redGiven1Property(), blueGiven1Property(), visibleScoreBoardController.J1Rect));
-      bluePoint2Property().addListener(new PointListener(redPoint2Property(),bluePoint2Property(), this, pointGiven2Property(), redGiven2Property(), blueGiven2Property(), visibleScoreBoardController.J2Rect));
-      bluePoint3Property().addListener(new PointListener(redPoint3Property(),bluePoint3Property(), this, pointGiven3Property(), redGiven3Property(), blueGiven3Property(), visibleScoreBoardController.J3Rect));
-      bluePoint4Property().addListener(new PointListener(redPoint4Property(),bluePoint4Property(), this, pointGiven4Property(), redGiven4Property(), blueGiven4Property(), visibleScoreBoardController.J4Rect));
+      redPoint1Property().addListener((observable, oldValue, newValue) -> countJudges() );
+      redPoint2Property().addListener((observable, oldValue, newValue) -> countJudges() );
+      redPoint3Property().addListener((observable, oldValue, newValue) -> countJudges() );
+      redPoint4Property().addListener((observable, oldValue, newValue) -> countJudges() );
+      bluePoint1Property().addListener((observable, oldValue, newValue) -> countJudges() );
+      bluePoint2Property().addListener((observable, oldValue, newValue) -> countJudges() );
+      bluePoint3Property().addListener((observable, oldValue, newValue) -> countJudges() );
+      bluePoint4Property().addListener((observable, oldValue, newValue) -> countJudges() );
 
       //Red Timyo indicator
       redTimyo.addEventHandler(MouseEvent.MOUSE_CLICKED, mouseEvent -> timyoIndicator(mouseEvent, redOpacity, redTimyo, visibleScoreBoardController.redTimyoIm, redPoint1Property(), redPoint2Property(), redPoint3Property(), redPoint4Property()));
@@ -357,6 +342,7 @@ public class Controller implements Initializable{
       round = 1;
       secondsLabelProperty().setValue("00");
       minutesProperty().setValue(2);
+      customTimeline = new CustomTimeline(this, 2, 59);
       bluePoint1Property().setValue(-2);
       bluePoint2Property().setValue(-2);
       bluePoint3Property().setValue(-2);
@@ -365,25 +351,15 @@ public class Controller implements Initializable{
       redPoint2Property().setValue(-2);
       redPoint3Property().setValue(-2);
       redPoint4Property().setValue(-2);
-      redKamChum.setValue(0);
-      blueKamChum.setValue(0);
-      redChui.setValue(0);
-      blueChui.setValue(0);
       redResultProperty().setValue(0);
       blueResultProperty().setValue(0);
       roundLabelProperty().setValue("Round 1");
       blueTimyo.setOpacity(0.1);
-      visibleScoreBoardController.setTimyoIm(0.1, visibleScoreBoardController.blueTimyoIm);
       redTimyo.setOpacity(0.1);
-      visibleScoreBoardController.setTimyoIm(0.1, visibleScoreBoardController.redTimyoIm);
       redOpacity.setValue(false);
       blueOpacity.setValue(false);
       visibleScoreBoardController.setColor();
       visibleScoreBoardController.setOpacity();
-      visibleScoreBoardController.rKamChum1.setOpacity(0);
-      visibleScoreBoardController.bKamChum1.setOpacity(0);
-      visibleScoreBoardController.rKamChum2.setOpacity(0);
-      visibleScoreBoardController.bKamChum2.setOpacity(0);
       visibleScoreBoardController.redChuiBackground.setVisible(false);
       visibleScoreBoardController.blueChuiBackground.setVisible(false);
       visibleScoreBoardController.manyBChLabel.setVisible(false);
@@ -405,26 +381,18 @@ public class Controller implements Initializable{
             this.comboBox.setOnKeyReleased(AutoCompleteComboBoxListener.this);
 
             // add a focus listener such that if not in focus, reset the filtered typed keys
-            this.comboBox.getEditor().focusedProperty().addListener(new ChangeListener<Boolean>() {
-                @Override
-                public void changed(ObservableValue observable, Boolean oldValue, Boolean newValue) {
-                    if (newValue) {
-                        // in focus
-                    }
-                    else {
-                        lastLength = 0;
-                        sb.delete(0, sb.length());
-                        selectClosestResultBasedOnTextFieldValue(false, false);
-                    }
+            this.comboBox.getEditor().focusedProperty().addListener((observable, oldValue, newValue) -> {
+                if (newValue) {
+                    // in focus
+                }
+                else {
+                    lastLength = 0;
+                    sb.delete(0, sb.length());
+                    selectClosestResultBasedOnTextFieldValue(false);
                 }
             });
 
-            this.comboBox.setOnMouseClicked(new EventHandler<MouseEvent>() {
-                @Override
-                public void handle(MouseEvent event) {
-                    selectClosestResultBasedOnTextFieldValue(true, true);
-                }
-            });
+            this.comboBox.setOnMouseClicked(event -> selectClosestResultBasedOnTextFieldValue(true));
         }
 
         @Override
@@ -448,15 +416,14 @@ public class Controller implements Initializable{
             // remove selected string index until end so only unselected text will be recorded
             try {
                 sb.delete(ir.getStart(), sb.length());
-            } catch (Exception e) { }
+            } catch (Exception ignored) { }
 
             ObservableList<String> items = comboBox.getItems();
-            for (int i=0; i<items.size(); i++) {
-                if (items.get(i).toString().toLowerCase().startsWith(comboBox.getEditor().getText().toLowerCase())
-                        )
-                {
+            for (String item : items) {
+                if (item.toLowerCase().startsWith(comboBox.getEditor().getText().toLowerCase())
+                        ) {
                     try {
-                        comboBox.getEditor().setText(sb.toString() + items.get(i).toString().substring(sb.toString().length()));
+                        comboBox.getEditor().setText(sb.toString() + item.substring(sb.toString().length()));
                     } catch (Exception e) {
                         comboBox.getEditor().setText(sb.toString());
                     }
@@ -476,18 +443,18 @@ public class Controller implements Initializable{
          *  inFocus - true if combobox has focus. If not, programmatically press enter key to add new entry to list.
          *
          */
-        private void selectClosestResultBasedOnTextFieldValue(boolean affect, boolean inFocus) {
+        private void selectClosestResultBasedOnTextFieldValue(boolean affect) {
             ObservableList<String> items = AutoCompleteComboBoxListener.this.comboBox.getItems();
             boolean found = false;
             for (int i=0; i<items.size(); i++) {
-                if (AutoCompleteComboBoxListener.this.comboBox.getEditor().getText().toLowerCase().equals(items.get(i).toString().toLowerCase())) {
+                if (AutoCompleteComboBoxListener.this.comboBox.getEditor().getText().toLowerCase().equals(items.get(i).toLowerCase())) {
                     try {
                         ListView lv = ((ComboBoxListViewSkin) AutoCompleteComboBoxListener.this.comboBox.getSkin()).getListView();
                         lv.getSelectionModel().clearAndSelect(i);
                         lv.scrollTo(lv.getSelectionModel().getSelectedIndex());
                         found = true;
                         break;
-                    } catch (Exception e) { }
+                    } catch (Exception ignored) { }
                 }
             }
 
@@ -506,7 +473,7 @@ public class Controller implements Initializable{
         simpleIntegerProperties.forEach(e-> e.setValue(e.get() + point));
     }
 
-    public void setKamChum(MouseEvent mouseEvent, SimpleIntegerProperty kamChum, SimpleIntegerProperty sIntP1, SimpleIntegerProperty sIntP2, SimpleIntegerProperty sIntP3, SimpleIntegerProperty sIntP4, Rectangle rectangle1, Rectangle rectangle2){
+    public synchronized void setKamChum(MouseEvent mouseEvent, SimpleIntegerProperty kamChum, SimpleIntegerProperty sIntP1, SimpleIntegerProperty sIntP2, SimpleIntegerProperty sIntP3, SimpleIntegerProperty sIntP4, Rectangle rectangle1, Rectangle rectangle2){
         if (MouseButton.PRIMARY.equals(mouseEvent.getButton())) {
             kamChum.setValue(kamChum.get()+1);
             visibleScoreBoardController.setKamChum(kamChum.get(), 1, rectangle1, rectangle2);
@@ -518,7 +485,7 @@ public class Controller implements Initializable{
         }
     }
 
-    public void timyoIndicator(MouseEvent e, SimpleBooleanProperty op, ImageView controllerImgView, ImageView visibleControllerImgView, SimpleIntegerProperty sIntP1, SimpleIntegerProperty sIntP2, SimpleIntegerProperty sIntP3, SimpleIntegerProperty sIntP4){
+    public synchronized void timyoIndicator(MouseEvent e, SimpleBooleanProperty op, ImageView controllerImgView, ImageView visibleControllerImgView, SimpleIntegerProperty sIntP1, SimpleIntegerProperty sIntP2, SimpleIntegerProperty sIntP3, SimpleIntegerProperty sIntP4){
         if (MouseButton.PRIMARY.equals(e.getButton()) && !op.get()) {
             controllerImgView.setOpacity(1);
             try {
@@ -542,7 +509,7 @@ public class Controller implements Initializable{
         }
     }
 
-    public void setChuis(MouseEvent mouseEvent, SimpleIntegerProperty chuis, SimpleBooleanProperty op, SimpleIntegerProperty sIntProp1, SimpleIntegerProperty sIntProp2, SimpleIntegerProperty sIntProp3, SimpleIntegerProperty sIntProp4, int set, int unset){
+    public synchronized void setChuis(MouseEvent mouseEvent, SimpleIntegerProperty chuis, SimpleBooleanProperty op, SimpleIntegerProperty sIntProp1, SimpleIntegerProperty sIntProp2, SimpleIntegerProperty sIntProp3, SimpleIntegerProperty sIntProp4, int set, int unset){
         if (MouseButton.PRIMARY.equals(mouseEvent.getButton())) {
             chuis.setValue(chuis.get()+1);
             visibleScoreBoardController.setChuiCircles(chuis.get(), set);
@@ -561,5 +528,84 @@ public class Controller implements Initializable{
                 }
             }
         }
+    }
+
+    private synchronized void countJudges(){
+        int redCount = 0, blueCount = 0;
+        if(redPoint1Property().get() == bluePoint1Property().get() && redGiven1.get()){
+            visibleScoreBoardController.J1Rect.setFill(Color.web("#d1d1d1"));
+            redCount--;
+            redGiven1.setValue(false);
+        }else if(redPoint1Property().get() == bluePoint1Property().get() && blueGiven1.get()){
+            visibleScoreBoardController.J1Rect.setFill(Color.web("#d1d1d1"));
+            blueCount--;
+            blueGiven1.setValue(false);
+        }else if(redPoint1Property().get() > bluePoint1Property().get()){
+            visibleScoreBoardController.J1Rect.setFill(Color.RED);
+            redCount++;
+            redGiven1.setValue(true);
+        }else if(redPoint1Property().get() < bluePoint1Property().get()){
+            visibleScoreBoardController.J1Rect.setFill(Color.BLUE);
+            blueCount++;
+            blueGiven1.setValue(true);
+        }
+
+        if(redPoint2Property().get() == bluePoint2Property().get() && redGiven2.get()){
+            visibleScoreBoardController.J2Rect.setFill(Color.web("#d1d1d1"));
+            redCount--;
+            redGiven2.setValue(false);
+        }else if(redPoint2Property().get() == bluePoint2Property().get() && blueGiven2.get()){
+            visibleScoreBoardController.J2Rect.setFill(Color.web("#d1d1d1"));
+            blueCount--;
+            blueGiven2.setValue(false);
+        }else if(redPoint2Property().get() > bluePoint2Property().get()){
+            visibleScoreBoardController.J2Rect.setFill(Color.RED);
+            redCount++;
+            redGiven2.setValue(true);
+        }else if(redPoint2Property().get() < bluePoint2Property().get()){
+            visibleScoreBoardController.J2Rect.setFill(Color.BLUE);
+            blueCount++;
+            blueGiven2.setValue(true);
+        }
+
+        if(redPoint3Property().get() == bluePoint3Property().get() && redGiven3.get()){
+            visibleScoreBoardController.J3Rect.setFill(Color.web("#d1d1d1"));
+            redCount--;
+            redGiven3.setValue(false);
+        }else if(redPoint3Property().get() == bluePoint3Property().get() && blueGiven3.get()){
+            visibleScoreBoardController.J3Rect.setFill(Color.web("#d1d1d1"));
+            blueCount--;
+            blueGiven3.setValue(false);
+        }else if(redPoint3Property().get() > bluePoint3Property().get()){
+            visibleScoreBoardController.J3Rect.setFill(Color.RED);
+            redCount++;
+            redGiven3.setValue(true);
+        }else if(redPoint3Property().get() < bluePoint3Property().get()){
+            visibleScoreBoardController.J3Rect.setFill(Color.BLUE);
+            blueCount++;
+            blueGiven3.setValue(true);
+        }
+
+        if(redPoint4Property().get() == bluePoint4Property().get() && redGiven4.get()){
+            visibleScoreBoardController.J4Rect.setFill(Color.web("#d1d1d1"));
+            redCount--;
+            redGiven4.setValue(false);
+        }else if(redPoint4Property().get() == bluePoint4Property().get() && blueGiven4.get()){
+            visibleScoreBoardController.J4Rect.setFill(Color.web("#d1d1d1"));
+            blueCount--;
+            blueGiven4.setValue(false);
+        }else if(redPoint4Property().get() > bluePoint4Property().get()){
+            visibleScoreBoardController.J4Rect.setFill(Color.RED);
+            redCount++;
+            redGiven4.setValue(true);
+        }else if(redPoint4Property().get() < bluePoint4Property().get()){
+            visibleScoreBoardController.J4Rect.setFill(Color.BLUE);
+            blueCount++;
+            blueGiven4.setValue(true);
+        }
+
+        blueResult.setValue(blueCount);
+        redResult.setValue(redCount);
+
     }
 }

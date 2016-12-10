@@ -136,8 +136,15 @@ public class VisibleScoreBoardController implements Initializable{
 
     public void setKamChum(int kCh, int op, Rectangle rectangle1, Rectangle rectangle2){
         switch (kCh){
-            case 1:
+            case 0:
                 rectangle1.setOpacity(op);
+                break;
+            case 1:
+                if(op == 1){
+                    rectangle1.setOpacity(op);
+                }else if(op == 0){
+                    rectangle2.setOpacity(op);
+                }
                 break;
             case 2:
                 rectangle2.setOpacity(op);
@@ -411,5 +418,9 @@ public class VisibleScoreBoardController implements Initializable{
     public void setOpacity(){
         List<Circle> circles = new ArrayList<>(Arrays.asList(bChuiCirc1, bChuiCirc2, bChuiCirc3, bChuiCirc4, bChuiCirc5, bChuiCirc6, bChuiCirc7, bChuiCirc8, bChuiCirc9, bChuiCirc10, bChuiCirc11, bChuiCirc12, rChuiCirc1, rChuiCirc2, rChuiCirc3, rChuiCirc4, rChuiCirc5, rChuiCirc6, rChuiCirc7, rChuiCirc8, rChuiCirc9, rChuiCirc10, rChuiCirc11, rChuiCirc12));
         circles.forEach(e-> e.setOpacity(0.2));
+        List<Rectangle> rectangles = new ArrayList<>(Arrays.asList(rKamChum1, rKamChum2, bKamChum1, bKamChum2));
+        rectangles.forEach(e->e.setOpacity(0));
+        List<ImageView> images = new ArrayList<>(Arrays.asList(blueTimyoIm, redTimyoIm));
+        images.forEach(e->e.setOpacity(0.1));
     }
 }

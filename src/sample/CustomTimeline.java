@@ -29,7 +29,7 @@ public class CustomTimeline extends Task{
 
     }
 
-    private void performTask(){
+    private synchronized void performTask(){
         timer = new Timeline(new KeyFrame(Duration.millis(100), ae -> {
             String formatted = String.format("%02d", seconds);
             controller.secondsLabelProperty().setValue(formatted);
@@ -57,7 +57,9 @@ public class CustomTimeline extends Task{
         }
 
     public synchronized void pause(){
-        timer.pause();
+        if (timer != null){
+            timer.pause();
+        }
     }
 
     public synchronized void play(){

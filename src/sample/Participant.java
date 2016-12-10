@@ -14,14 +14,16 @@ public class Participant {
     private SimpleStringProperty rank;
     private SimpleStringProperty category;
     private SimpleStringProperty age;
+    private SimpleStringProperty tournament;
 
-    public Participant(int id, String name, String club, String rank, String category, String age){
+    public Participant(int id, String name, String club, String rank, String category, String age, String tournament){
         this.id = new SimpleIntegerProperty(id);
         this.name = new SimpleStringProperty(name);
         this.club = new SimpleStringProperty(club);
         this.rank = new SimpleStringProperty(rank);
         this.category = new SimpleStringProperty(category);
         this.age = new SimpleStringProperty(age);
+        this.tournament = new SimpleStringProperty(tournament);
     }
 
     public int getId(){ return id.get(); }
@@ -43,6 +45,8 @@ public class Participant {
     }
 
     public String getAge(){ return age.get(); }
+
+    public String getTournament(){ return tournament.get(); }
 
 
 }

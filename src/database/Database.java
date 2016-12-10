@@ -10,43 +10,61 @@ public class Database {
     Connection conn;
     Statement stmt;
     ResultSet resultSet;
-    ObservableList<Participant> data = FXCollections.observableArrayList();
+    ObservableList<Participant> participants = FXCollections.observableArrayList();
+    ObservableList<Tournament> tournaments = FXCollections.observableArrayList();
     ObservableList<Club> clubData = FXCollections.observableArrayList();
     ObservableList<Rank> rankData = FXCollections.observableArrayList();
     ObservableList<Category> categoryData = FXCollections.observableArrayList();
     ObservableList<Age> ageData = FXCollections.observableArrayList();
+
     public Connection getConnection() throws ClassNotFoundException, SQLException{
         Class.forName("org.hsqldb.jdbcDriver");
         return DriverManager.getConnection("jdbc:hsqldb:hsql://localhost/","sa", "");
     }
 
-    public void shutdown() throws SQLException{
-        Connection connection = DriverManager.getConnection("jdbc:hsqldb:hsql://localhost/","sa", "");
-        Statement statement = connection.createStatement();
-        statement.execute("SHUTDOWN");
-        connection.close();
+    public ObservableList<Tournament> showTournaments() throws SQLException{
+        try {
+            conn = getConnection();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        String query = "Select TOURID AS TOURID, TOURNAME AS TOURNAME, DATE_FROM AS DATE_FROM, DATE_TO AS DATE_TO, TYPE AS TYPE From Tournament";
+        stmt = conn.createStatement();
+        resultSet = stmt.executeQuery(query);
+        while (resultSet.next()){
+            tournaments.add(new Tournament(
+                    resultSet.getInt("TOURID"),
+                    resultSet.getString("TOURNAME"),
+                    resultSet.getString("Date_From"),
+                    resultSet.getString("Date_To"),
+                    resultSet.getString("Type")
+            ));
+        }
+        return tournaments;
     }
 
     public ObservableList<Participant> showParticipants() throws Exception{
         conn = getConnection();
-        String query="SELECT PARTICIPANTS.ID, PARTICIPANTS.NAME, CLUBS.CLUBNAME AS Club, RANKS.RANKNAME AS Rank, CATEGORIES.CATNAME AS Category, AGES.AGENAME AS Age FROM PARTICIPANTS \n" +
+        String query="SELECT PARTICIPANTS.ID, PARTICIPANTS.NAME, CLUBS.CLUBNAME AS Club, RANKS.RANKNAME AS Rank, CATEGORIES.CATNAME AS Category, AGES.AGENAME AS Age, TOURNAMENT.TOURNAME AS TOURNAMENT FROM PARTICIPANTS \n" +
                 "LEFT JOIN CLUBS ON PARTICIPANTS.CLUB = CLUBS.CLUBID\n" +
                 "LEFT JOIN RANKS ON PARTICIPANTS.RANK = RANKS.RANKID\n" +
                 "LEFT JOIN CATEGORIES ON PARTICIPANTS.CATEGORY = CATEGORIES.CATID\n" +
-                "LEFT JOIN AGES ON PARTICIPANTS.AGE = AGES.AGEID ";
+                "LEFT JOIN AGES ON PARTICIPANTS.AGE = AGES.AGEID\n" +
+                "LEFT JOIN TOURNAMENT ON PARTICIPANTS.TOURNAMENT = TOURNAMENT.TOURID";
         stmt = conn.createStatement();
         resultSet = stmt.executeQuery(query);
         while (resultSet.next()) {
-            data.add(new Participant(
+            participants.add(new Participant(
                     resultSet.getInt("ID"),
                     resultSet.getString("NAME"),
                     resultSet.getString("CLUB"),
                     resultSet.getString("RANK"),
                     resultSet.getString("CATEGORY"),
-                    resultSet.getString("AGE")
+                    resultSet.getString("AGE"),
+                    resultSet.getString("TOURNAMENT")
             ));
         }
-        return data;
+        return participants;
     }
 
     public ObservableList<Club> fillClubs() throws Exception {
@@ -140,6 +158,11 @@ public class Database {
         preparedStatement.executeUpdate();
         preparedStatement.close();
         conn.close();
+    }
+
+    public void randomList () throws SQLException, ClassNotFoundException {
+        conn = getConnection();
+
     }
 
 }
