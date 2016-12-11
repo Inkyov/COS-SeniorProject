@@ -2,18 +2,25 @@ package sample;
 
 import database.Database;
 import javafx.beans.binding.Bindings;
-import javafx.beans.property.IntegerProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
 import javafx.util.StringConverter;
 
+import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -65,15 +72,17 @@ public class ParticipantsController implements Initializable{
     @FXML
     public ComboBox<Category> categoryBox1;
     @FXML
-    public TableColumn<Participant, Integer> tourId;
+    public TableColumn<Tournament, Integer> tourId;
     @FXML
-    public TableColumn<Participant, String> tourName;
+    public TableColumn<Tournament, String> tourName;
     @FXML
-    public TableColumn<Participant, String> tourFrom;
+    public TableColumn<Tournament, String> tourFrom;
     @FXML
-    public TableColumn<Participant, String> tourTo;
+    public TableColumn<Tournament, String> tourTo;
     @FXML
-    public TableColumn<Participant, String> tourType;
+    public TableColumn<Tournament, String> tourType;
+    @FXML
+    public TableColumn<Tournament, String> tourCity;
     @FXML
     public Button listGenerator;
     @FXML
@@ -102,6 +111,8 @@ public class ParticipantsController implements Initializable{
     public ComboBox<Age> ageRandom;
     @FXML
     public ComboBox<Category> categoryRandom;
+    @FXML
+    public Button newTour;
 
     ObservableList<Club> clubData = FXCollections.observableArrayList();
     ObservableList<Rank> rankData = FXCollections.observableArrayList();
@@ -109,8 +120,6 @@ public class ParticipantsController implements Initializable{
     ObservableList<Age> ageData = FXCollections.observableArrayList();
     ObservableList<Participant> participants = FXCollections.observableArrayList();
     ObservableList<Tournament> tournamentData = FXCollections.observableArrayList();
-    ObservableList<Participant> randomParticipants = FXCollections.observableArrayList();
-    ArrayList<Integer> values = new ArrayList<>();
 
     Database database = new Database();
 
@@ -125,6 +134,7 @@ public class ParticipantsController implements Initializable{
         catCol.setCellValueFactory(new PropertyValueFactory<>("Category"));
         ageCol.setCellValueFactory(new PropertyValueFactory<>("Age"));
         tourCol.setCellValueFactory(new PropertyValueFactory<>("Tournament"));
+
         idCol1.setCellValueFactory(new PropertyValueFactory<>("Id"));
         nameCol1.setCellValueFactory(new PropertyValueFactory<>("Name"));
         clubCol1.setCellValueFactory(new PropertyValueFactory<>("Club"));
@@ -138,6 +148,7 @@ public class ParticipantsController implements Initializable{
         tourFrom.setCellValueFactory(new PropertyValueFactory<>("From"));
         tourTo.setCellValueFactory(new PropertyValueFactory<>("To"));
         tourType.setCellValueFactory(new PropertyValueFactory<>("Type"));
+        tourCity.setCellValueFactory(new PropertyValueFactory<>("City"));
 
 
 
@@ -149,10 +160,9 @@ public class ParticipantsController implements Initializable{
             ageData.addAll(database.fillAges());
             tournamentData.addAll(database.fillTournament());
 
-            participantsTable1.setItems(participants);
             tourTable.setItems(database.showTournaments());
             clubBox.getItems().addAll(clubData);
-            clubBox.setCellFactory((comboBox) -> new ListCell<Club>() {
+            clubBox.setCellFactory(e -> new ListCell<Club>() {
                 @Override
                 protected void updateItem(Club club, boolean empty) {
                     super.updateItem(club, empty);
@@ -180,7 +190,7 @@ public class ParticipantsController implements Initializable{
                 }
             });
             clubBox1.getItems().addAll(clubData);
-            clubBox1.setCellFactory((comboBox) -> new ListCell<Club>() {
+            clubBox1.setCellFactory(e -> new ListCell<Club>() {
                 @Override
                 protected void updateItem(Club club, boolean empty) {
                     super.updateItem(club, empty);
@@ -209,7 +219,7 @@ public class ParticipantsController implements Initializable{
             });
 
             rankBox.setItems(rankData);
-            rankBox.setCellFactory((comboBox) -> new ListCell<Rank>() {
+            rankBox.setCellFactory(e -> new ListCell<Rank>() {
                 @Override
                 protected void updateItem(Rank rank, boolean empty) {
                     super.updateItem(rank, empty);
@@ -237,7 +247,7 @@ public class ParticipantsController implements Initializable{
                 }
             });
             rankBox1.setItems(rankData);
-            rankBox1.setCellFactory((comboBox) -> new ListCell<Rank>() {
+            rankBox1.setCellFactory(e -> new ListCell<Rank>() {
                 @Override
                 protected void updateItem(Rank rank, boolean empty) {
                     super.updateItem(rank, empty);
@@ -266,7 +276,7 @@ public class ParticipantsController implements Initializable{
             });
 
             categoryBox.setItems(categoryData);
-            categoryBox.setCellFactory((comboBox) -> new ListCell<Category>() {
+            categoryBox.setCellFactory(e -> new ListCell<Category>() {
                 @Override
                 protected void updateItem(Category category, boolean empty) {
                     super.updateItem(category, empty);
@@ -294,7 +304,7 @@ public class ParticipantsController implements Initializable{
                 }
             });
             categoryBox1.setItems(categoryData);
-            categoryBox1.setCellFactory((comboBox) -> new ListCell<Category>() {
+            categoryBox1.setCellFactory(e -> new ListCell<Category>() {
                 @Override
                 protected void updateItem(Category category, boolean empty) {
                     super.updateItem(category, empty);
@@ -322,7 +332,7 @@ public class ParticipantsController implements Initializable{
                 }
             });
             categoryRandom.setItems(categoryData);
-            categoryRandom.setCellFactory((comboBox) -> new ListCell<Category>() {
+            categoryRandom.setCellFactory(e -> new ListCell<Category>() {
                 @Override
                 protected void updateItem(Category category, boolean empty) {
                     super.updateItem(category, empty);
@@ -351,7 +361,7 @@ public class ParticipantsController implements Initializable{
             });
 
             ageBox.setItems(ageData);
-            ageBox.setCellFactory((comboBox) -> new ListCell<Age>() {
+            ageBox.setCellFactory(e -> new ListCell<Age>() {
                 @Override
                 protected void updateItem(Age age, boolean empty) {
                     super.updateItem(age, empty);
@@ -379,7 +389,7 @@ public class ParticipantsController implements Initializable{
                 }
             });
             ageBox1.setItems(ageData);
-            ageBox1.setCellFactory((comboBox) -> new ListCell<Age>() {
+            ageBox1.setCellFactory(e -> new ListCell<Age>() {
                 @Override
                 protected void updateItem(Age age, boolean empty) {
                     super.updateItem(age, empty);
@@ -407,7 +417,7 @@ public class ParticipantsController implements Initializable{
                 }
             });
             ageRandom.setItems(ageData);
-            ageRandom.setCellFactory((comboBox) -> new ListCell<Age>() {
+            ageRandom.setCellFactory(e -> new ListCell<Age>() {
                 @Override
                 protected void updateItem(Age age, boolean empty) {
                     super.updateItem(age, empty);
@@ -436,7 +446,7 @@ public class ParticipantsController implements Initializable{
             });
 
             tourBox.setItems(tournamentData);
-            tourBox.setCellFactory((comboBox) -> new ListCell<Tournament>(){
+            tourBox.setCellFactory(e -> new ListCell<Tournament>(){
                 @Override
                 protected void updateItem(Tournament tournament, boolean empty) {
                     super.updateItem(tournament, empty);
@@ -464,42 +474,8 @@ public class ParticipantsController implements Initializable{
                 }
             });
 
-            // 1. Wrap the ObservableList in a FilteredList (initially display all data).
-            FilteredList<Participant> filteredData = new FilteredList<>(participants, p -> true);
-            // 2. Set the filter Predicate whenever the filter changes.
-            filteredData.predicateProperty().bind(Bindings.createObjectBinding(() ->
-                    person ->
-                        person.getClub().contains(clubBox1.getEditor().getText())
-                        && person.getRank().contains(rankBox1.getEditor().getText())
-                        && person.getCategory().contains(categoryBox1.getEditor().getText())
-                        && person.getAge().contains(ageBox1.getEditor().getText()),
-                    clubBox1.getEditor().textProperty(),
-                    rankBox1.getEditor().textProperty(),
-                    categoryBox1.getEditor().textProperty(),
-                    ageBox1.getEditor().textProperty()
-            ));
-            // 3. Wrap the FilteredList in a SortedList.
-            SortedList<Participant> sortedData = new SortedList<>(filteredData);
-            // 4. Bind the SortedList comparator to the TableView comparator.
-            sortedData.comparatorProperty().bind(participantsTable.comparatorProperty());
-            // 5. Add sorted (and filtered) data to the table.
-            participantsTable.setItems(sortedData);
+            bindControls(participants);
 
-            FilteredList<Participant> filteredParticipants = new FilteredList<>(participants, p -> true);
-            tourTable.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
-                filteredParticipants.predicateProperty().bind(Bindings.createObjectBinding(()->
-                                participant ->
-                                        participant.getTournament().contains(tourTable.getSelectionModel().getSelectedItem().getName())
-                                        && participant.getCategory().contains(categoryRandom.getEditor().getText())
-                                        && participant.getAge().contains(ageRandom.getEditor().getText()),
-                        tourTable.getSelectionModel().selectedItemProperty(),
-                        categoryRandom.getEditor().textProperty(),
-                        ageRandom.getEditor().textProperty()
-                ));
-            });
-            SortedList<Participant> sortedParticipants = new SortedList<>(filteredParticipants);
-            sortedParticipants.comparatorProperty().bind(participantsTable1.comparatorProperty());
-            participantsTable1.setItems(sortedParticipants);
 
         }catch (Exception e){
             e.printStackTrace();
@@ -509,8 +485,9 @@ public class ParticipantsController implements Initializable{
             if(!Objects.equals(nameBox.getText(), "") || clubBox.getSelectionModel().getSelectedItem() != null || rankBox.getSelectionModel().getSelectedItem() != null || categoryBox.getSelectionModel().getSelectedItem() != null || ageBox.getSelectionModel().getSelectedItem() != null){
                 try {
                     database.insertParticipant(nameBox.getText(), clubBox.getSelectionModel().getSelectedIndex()+1, rankBox.getSelectionModel().getSelectedIndex()+1, categoryBox.getSelectionModel().getSelectedIndex()+1, ageBox.getSelectionModel().getSelectedIndex()+1, tourBox.getSelectionModel().getSelectedIndex()+1);
-                    participantsTable.getItems().clear();
-                    participantsTable.setItems(database.showParticipants());
+                    participants.setAll(database.showParticipants());
+                    participantsTable.setItems(participants);
+                    bindControls(participants);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -522,8 +499,9 @@ public class ParticipantsController implements Initializable{
             Participant participant = participantsTable.getSelectionModel().getSelectedItem();
             try {
                 database.deleteParticipant(participant.getId());
-                participantsTable.getItems().clear();
-                participantsTable.setItems(database.showParticipants());
+                participants.setAll(database.showParticipants());
+                participantsTable.setItems(participants);
+                bindControls(participants);
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -533,10 +511,15 @@ public class ParticipantsController implements Initializable{
             if(participantsTable.getSelectionModel().getSelectedItem() != null){
                 Participant participant = participantsTable.getSelectionModel().getSelectedItem();
                 nameBox.setText(participant.getName());
+                clubBox.setEditable(true);
                 clubBox.getEditor().setText(participant.getClub());
+                rankBox.setEditable(true);
                 rankBox.getEditor().setText(participant.getRank());
+                categoryBox.setEditable(true);
                 categoryBox.getEditor().setText(participant.getCategory());
+                ageBox.setEditable(true);
                 ageBox.getEditor().setText(participant.getAge());
+                tourBox.setEditable(true);
                 tourBox.getEditor().setText(participant.getTournament());
             }
         });
@@ -544,20 +527,16 @@ public class ParticipantsController implements Initializable{
         updateParticipant.addEventHandler(MouseEvent.MOUSE_CLICKED, mouseEvent ->{
             if(participantsTable.getSelectionModel().getSelectedItem() != null || !Objects.equals(nameBox.getText(), "") ||clubBox.getSelectionModel().getSelectedItem() != null || rankBox.getSelectionModel().getSelectedItem() != null || categoryBox.getSelectionModel().getSelectedItem() != null || ageBox.getSelectionModel().getSelectedItem() != null){
                 try {
-                    System.out.println(participantsTable.getSelectionModel().getSelectedItem().getId());
-                    System.out.println(nameBox.getText());
-                    System.out.println(clubBox.getSelectionModel().getSelectedIndex()+1);
-                    System.out.println(rankBox.getSelectionModel().getSelectedIndex()+1);
-                    System.out.println(categoryBox.getSelectionModel().getSelectedIndex()+1);
-                    System.out.println(ageBox.getSelectionModel().getSelectedIndex()+1);
                     database.updateParticipant(participantsTable.getSelectionModel().getSelectedItem().getId(),nameBox.getText(), clubBox.getSelectionModel().getSelectedIndex()+1, rankBox.getSelectionModel().getSelectedIndex()+1, categoryBox.getSelectionModel().getSelectedIndex()+1, ageBox.getSelectionModel().getSelectedIndex()+1, tourBox.getSelectionModel().getSelectedIndex()+1);
-                    participantsTable.getItems().clear();
-                    participantsTable.setItems(database.showParticipants());
+                    participants.setAll(database.showParticipants());
+                    participantsTable.setItems(participants);
+                    bindControls(participants);
                     nameBox.setText("");
-                    clubBox.getEditor().setText("");
-                    rankBox.getEditor().setText("");
-                    categoryBox.getEditor().setText("");
-                    ageBox.getEditor().setText("");
+                    clubBox.setEditable(false);
+                    rankBox.setEditable(false);
+                    categoryBox.setEditable(false);
+                    ageBox.setEditable(false);
+                    tourBox.setEditable(false);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -565,25 +544,85 @@ public class ParticipantsController implements Initializable{
         });
 
         listGenerator.addEventHandler(MouseEvent.MOUSE_CLICKED, mouseEvent -> {
+            ObservableList<Participant> randomParticipants = FXCollections.observableArrayList();
+            ArrayList<Integer> values = new ArrayList<>();
             participantsTable1.getItems().stream().forEach(participant -> values.add(Integer.parseInt(idCol1.getCellData(participant).toString())));
             try {
-                randomParticipants.addAll(database.randomList(values));
+                randomParticipants.setAll(database.randomList(values));
+                randomList.setItems(randomParticipants);
+                randomList.setCellFactory((comboBox) -> new ListCell<Participant>(){
+                    @Override
+                    protected void updateItem(Participant participant, boolean empty) {
+                        super.updateItem(participant, empty);
+
+                        if (participant == null || empty) {
+                            setText(null);
+                        } else {
+                            setText(participant.getName());
+                        }
+                    }
+                });
             } catch (SQLException | ClassNotFoundException e) {
                 e.printStackTrace();
             }
-            randomList.setItems(randomParticipants);
-            randomList.setCellFactory((comboBox) -> new ListCell<Participant>(){
-                @Override
-                protected void updateItem(Participant participant, boolean empty) {
-                    super.updateItem(participant, empty);
+        });
 
-                    if (participant == null || empty) {
-                        setText(null);
-                    } else {
-                        setText(participant.getName());
-                    }
+        newTour.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                try {
+                    FXMLLoader fxmLoader = new FXMLLoader(getClass().getResource("../views/CreateTournament.fxml"));
+                    Parent root = fxmLoader.load();
+                    Stage stage = new Stage();
+                    stage.setTitle("Add Tournament");
+                    stage.getIcons().add(new Image("file:resources/images/icon.png"));
+                    stage.setScene(new Scene(root));
+                    stage.show();
+                } catch (IOException e) {
+                    e.printStackTrace();
                 }
-            });
+            }
         });
     }
+
+    public void bindControls(ObservableList<Participant> participants){
+        // 1. Wrap the ObservableList in a FilteredList (initially display all data).
+        FilteredList<Participant> filteredData = new FilteredList<>(participants, p -> true);
+        // 2. Set the filter Predicate whenever the filter changes.
+        filteredData.predicateProperty().bind(Bindings.createObjectBinding(() ->
+                        participant ->
+                                participant.getClub().contains(clubBox1.getEditor().getText())
+                                        && participant.getRank().contains(rankBox1.getEditor().getText())
+                                        && participant.getCategory().contains(categoryBox1.getEditor().getText())
+                                        && participant.getAge().contains(ageBox1.getEditor().getText()),
+                clubBox1.getEditor().textProperty(),
+                rankBox1.getEditor().textProperty(),
+                categoryBox1.getEditor().textProperty(),
+                ageBox1.getEditor().textProperty()
+        ));
+        // 3. Wrap the FilteredList in a SortedList.
+        SortedList<Participant> sortedData = new SortedList<>(filteredData);
+        // 4. Bind the SortedList comparator to the TableView comparator.
+        sortedData.comparatorProperty().bind(participantsTable.comparatorProperty());
+        // 5. Add sorted (and filtered) data to the table.
+        participantsTable.setItems(sortedData);
+
+        FilteredList<Participant> filteredParticipants = new FilteredList<>(participants, p -> true);
+        tourTable.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            filteredParticipants.predicateProperty().bind(Bindings.createObjectBinding(()->
+                            participant ->
+                                    participant.getTournament().contains(tourTable.getSelectionModel().getSelectedItem().getName())
+                                    && participant.getCategory().contains(categoryRandom.getEditor().getText())
+                                    && participant.getAge().contains(ageRandom.getEditor().getText()),
+                    tourTable.getSelectionModel().selectedItemProperty(),
+                    categoryRandom.getEditor().textProperty(),
+                    ageRandom.getEditor().textProperty()
+            ));
+        });
+        SortedList<Participant> sortedParticipants = new SortedList<>(filteredParticipants);
+        sortedParticipants.comparatorProperty().bind(participantsTable1.comparatorProperty());
+        participantsTable1.setItems(sortedParticipants);
+
+    }
 }
+

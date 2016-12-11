@@ -17,6 +17,14 @@ public class Database {
         return DriverManager.getConnection("jdbc:hsqldb:hsql://localhost/","sa", "");
     }
 
+    public void shutdown() throws SQLException, ClassNotFoundException {
+        conn = getConnection();
+        stmt = conn.createStatement();
+        stmt.execute("SHUTDOWN");
+        conn.close();
+
+    }
+
     public ObservableList<Tournament> showTournaments() throws SQLException{
         ObservableList<Tournament> tournaments = FXCollections.observableArrayList();
         try {

@@ -7,63 +7,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/images/icon.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/artifacts/MatchGradingSystem.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sample/CreateTournament.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/views/CreateTournament.fxml" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/controlsfx_8_20_9.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/JudgePanel/.gitignore" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/JudgePanel/.idea/.name" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/JudgePanel/.idea/compiler.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/JudgePanel/.idea/copyright/profiles_settings.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/JudgePanel/.idea/encodings.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/JudgePanel/.idea/gradle.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/JudgePanel/.idea/misc.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/JudgePanel/.idea/modules.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/JudgePanel/.idea/runConfigurations.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/JudgePanel/.idea/vcs.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/JudgePanel/app/.gitignore" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/JudgePanel/app/build.gradle" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/JudgePanel/app/proguard-rules.pro" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/JudgePanel/app/src/androidTest/java/com/example/inkyov/judgepanel/ApplicationTest.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/JudgePanel/app/src/main/AndroidManifest.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/JudgePanel/app/src/main/java/com/example/inkyov/judgepanel/MainActivity.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/JudgePanel/app/src/main/java/com/example/inkyov/judgepanel/Point.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/JudgePanel/app/src/main/java/com/example/inkyov/judgepanel/PointSocket.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/JudgePanel/app/src/main/java/com/example/inkyov/judgepanel/Register.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/JudgePanel/app/src/main/res/layout/activity_main.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/JudgePanel/app/src/main/res/layout/activity_register.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/JudgePanel/app/src/main/res/layout/content_main.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/JudgePanel/app/src/main/res/menu/menu_main.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/JudgePanel/app/src/main/res/mipmap-hdpi/ic_launcher.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/JudgePanel/app/src/main/res/mipmap-mdpi/ic_launcher.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/JudgePanel/app/src/main/res/mipmap-xhdpi/ic_launcher.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/JudgePanel/app/src/main/res/mipmap-xxhdpi/ic_launcher.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/JudgePanel/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/JudgePanel/app/src/main/res/values-v21/styles.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/JudgePanel/app/src/main/res/values-w820dp/dimens.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/JudgePanel/app/src/main/res/values/colors.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/JudgePanel/app/src/main/res/values/dimens.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/JudgePanel/app/src/main/res/values/strings.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/JudgePanel/app/src/main/res/values/styles.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/JudgePanel/app/src/test/java/com/example/inkyov/judgepanel/ExampleUnitTest.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/JudgePanel/build.gradle" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/JudgePanel/gradle.properties" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/JudgePanel/gradle/wrapper/gradle-wrapper.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/JudgePanel/gradle/wrapper/gradle-wrapper.properties" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/JudgePanel/gradlew" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/JudgePanel/gradlew.bat" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/JudgePanel/settings.gradle" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/views/Participants.fxml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/views/sample.fxml" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/images/kick.png" afterPath="$PROJECT_DIR$/resources/images/kick.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sample/CustomComboBox.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MatchGradingSystem.iml" afterPath="$PROJECT_DIR$/MatchGradingSystem.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/database/Database.java" afterPath="$PROJECT_DIR$/src/database/Database.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sample/Controller.java" afterPath="$PROJECT_DIR$/src/sample/Controller.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sample/Main.java" afterPath="$PROJECT_DIR$/src/sample/Main.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sample/Tournament.java" afterPath="$PROJECT_DIR$/src/sample/Tournament.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sample/visibleScoreBoardController.java" afterPath="$PROJECT_DIR$/src/sample/visibleScoreBoardController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sample/CreateTournament.java" afterPath="$PROJECT_DIR$/src/sample/CreateTournament.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sample/participantsController.java" afterPath="$PROJECT_DIR$/src/sample/participantsController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/views/CreateTournament.fxml" afterPath="$PROJECT_DIR$/src/views/CreateTournament.fxml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/views/ShowParticipants.fxml" afterPath="$PROJECT_DIR$/src/views/ShowParticipants.fxml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/views/scoreBoard.fxml" afterPath="$PROJECT_DIR$/src/views/scoreBoard.fxml" />
     </list>
@@ -129,14 +79,14 @@
     <favorites_list name="JavaFxApplication" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.4760128">
+    <splitter split-orientation="horizontal" split-proportion="0.47228146">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file leaf-file-name="ParticipantsController.java" pinned="false" current-in-tab="true">
+          <file leaf-file-name="ParticipantsController.java" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/sample/ParticipantsController.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="4.4394693">
-                  <caret line="592" column="80" selection-start-line="592" selection-start-column="80" selection-end-line="592" selection-end-column="80" />
+                <state vertical-scroll-proportion="0.0">
+                  <caret line="579" column="33" selection-start-line="579" selection-start-column="33" selection-end-line="579" selection-end-column="33" />
                   <folding>
                     <element signature="imports" expanded="true" />
                     <element signature="class#6068:6458" expanded="false" />
@@ -168,12 +118,14 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="Controller.java" pinned="false" current-in-tab="false">
+          <file leaf-file-name="Controller.java" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/sample/Controller.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.0">
-                  <caret line="312" column="3" selection-start-line="312" selection-start-column="3" selection-end-line="312" selection-end-column="3" />
+                <state vertical-scroll-proportion="0.74626863">
+                  <caret line="523" column="0" selection-start-line="523" selection-start-column="0" selection-end-line="523" selection-end-column="0" />
                   <folding>
+                    <element signature="method#winner#0;class#Controller#0" expanded="false" />
+                    <element signature="method#refresh#0;class#Controller#0" expanded="false" />
                     <element signature="method#ChangeLabels#0;class#Controller#0" expanded="false" />
                     <element signature="method#setKamChum#0;class#Controller#0" expanded="false" />
                     <element signature="method#timyoIndicator#0;class#Controller#0" expanded="false" />
@@ -191,34 +143,19 @@
             <entry file="file://$PROJECT_DIR$/src/database/Database.java">
               <provider selected="true" editor-type-id="text-editor">
                 <state vertical-scroll-proportion="0.0">
-                  <caret line="207" column="34" selection-start-line="207" selection-start-column="34" selection-end-line="207" selection-end-column="34" />
+                  <caret line="23" column="21" selection-start-line="23" selection-start-column="21" selection-end-line="23" selection-end-column="21" />
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="CreateTournament.java" pinned="false" current-in-tab="false">
+          <file leaf-file-name="CreateTournament.java" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/sample/CreateTournament.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.0">
-                  <caret line="35" column="8" selection-start-line="35" selection-start-column="8" selection-end-line="35" selection-end-column="8" />
+                <state vertical-scroll-proportion="-0.15588723">
+                  <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
                   <folding>
                     <element signature="imports" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="Controller.java" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/src/sample/Controller.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.63349915">
-                  <caret line="608" column="38" selection-start-line="608" selection-start-column="38" selection-end-line="608" selection-end-column="38" />
-                  <folding>
-                    <element signature="method#ChangeLabels#0;class#Controller#0" expanded="false" />
-                    <element signature="method#setKamChum#0;class#Controller#0" expanded="false" />
-                    <element signature="method#timyoIndicator#0;class#Controller#0" expanded="false" />
-                    <element signature="method#setChuis#0;class#Controller#0" expanded="false" />
                   </folding>
                 </state>
               </provider>
@@ -304,9 +241,12 @@
         <option value="$PROJECT_DIR$/src/sample/VisibleScoreBoardController.java" />
         <option value="$PROJECT_DIR$/src/sample/Tournament.java" />
         <option value="$PROJECT_DIR$/src/database/Database.java" />
-        <option value="$PROJECT_DIR$/src/sample/CreateTournament.java" />
+        <option value="$PROJECT_DIR$/src/views/CreateTournament.fxml" />
         <option value="$PROJECT_DIR$/src/sample/ParticipantsController.java" />
+        <option value="$PROJECT_DIR$/src/views/ScoreBoard.fxml" />
+        <option value="$PROJECT_DIR$/src/sample/CustomComboBox.java" />
         <option value="$PROJECT_DIR$/src/sample/Controller.java" />
+        <option value="$PROJECT_DIR$/src/sample/CreateTournament.java" />
       </list>
     </option>
   </component>
@@ -369,8 +309,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -456,28 +394,16 @@
               <option name="myItemId" value="src" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-          </PATH>
-          <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="MatchGradinSystem" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="MatchGradinSystem" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="resources" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="images" />
+              <option name="myItemId" value="judgepanel" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
       <pane id="Scratches" />
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -869,7 +795,13 @@
       <option name="project" value="LOCAL" />
       <updated>1481396149027</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Tournaments can be added">
+      <created>1481434879551</created>
+      <option name="number" value="00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1481434879551</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -886,7 +818,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32962137" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -897,7 +829,7 @@
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2973274" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32628062" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.15618336" sideWeight="0.6703755" order="1" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32036248" sideWeight="0.6703755" order="1" side_tool="false" content_ui="combo" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2489339" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -939,7 +871,8 @@
     <MESSAGE value="Added database&#10;Select/Update/Delete functionality added&#10;All classes needed for work with the database are done&#10;Added custom PointListener&#10;Basic functionality is available&#10;Custom Timeline implemented&#10;" />
     <MESSAGE value="Winner calculation&#10;New UI controls and code for them&#10;" />
     <MESSAGE value="Creating a random list of participants for a certain tournament&#10;&#10;" />
-    <option name="LAST_COMMIT_MESSAGE" value="Creating a random list of participants for a certain tournament&#10;&#10;" />
+    <MESSAGE value="Tournaments can be added" />
+    <option name="LAST_COMMIT_MESSAGE" value="Tournaments can be added" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -952,13 +885,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_71/javafx-src.zip!/javafx/scene/control/SkinBase.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7660312">
-          <caret line="156" column="0" selection-start-line="156" selection-start-column="0" selection-end-line="156" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_71/javafx-src.zip!/javafx/scene/input/PickResult.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1126,13 +1052,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_71/javafx-src.zip!/javafx/event/EventHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.67870724">
-          <caret line="44" column="9" selection-start-line="44" selection-start-column="9" selection-end-line="44" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_71/javafx-src.zip!/javafx/scene/control/ComboBox.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.33269963">
@@ -1189,17 +1108,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/views/ScoreBoard.fxml">
-      <provider editor-type-id="JavaFX-Scene-Builder">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.029411765">
-          <caret line="143" column="20" selection-start-line="143" selection-start-column="20" selection-end-line="143" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/Judge.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1234,7 +1142,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="14" column="57" selection-start-line="14" selection-start-column="57" selection-end-line="15" selection-end-column="54" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1242,7 +1149,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.7752066">
           <caret line="51" column="13" selection-start-line="51" selection-start-column="13" selection-end-line="51" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1250,7 +1156,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="45" column="0" selection-start-line="45" selection-start-column="0" selection-end-line="45" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1266,7 +1171,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.33275563">
           <caret line="51" column="0" selection-start-line="51" selection-start-column="0" selection-end-line="51" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1282,25 +1186,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.19669421">
           <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/views/CreateTournament.fxml">
-      <provider editor-type-id="JavaFX-Scene-Builder">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.06257669">
-          <caret line="3" column="33" selection-start-line="3" selection-start-column="33" selection-end-line="4" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/database/Database.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="207" column="34" selection-start-line="207" selection-start-column="34" selection-end-line="207" selection-end-column="34" />
           <folding />
         </state>
       </provider>
@@ -1338,37 +1223,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/CreateTournament.java">
+    <entry file="file://$PROJECT_DIR$/src/database/Database.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="35" column="8" selection-start-line="35" selection-start-column="8" selection-end-line="35" selection-end-column="8" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/VisibleScoreBoardController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="100" column="39" selection-start-line="100" selection-start-column="39" selection-end-line="100" selection-end-column="39" />
-          <folding>
-            <element signature="method#setKamChum#0;class#VisibleScoreBoardController#0" expanded="false" />
-            <element signature="method#setChuiCircles#0;class#VisibleScoreBoardController#0" expanded="false" />
-            <element signature="method#setBlueChuiCircles#0;class#VisibleScoreBoardController#0" expanded="false" />
-            <element signature="method#unsetBlueChuiCircles#0;class#VisibleScoreBoardController#0" expanded="false" />
-            <element signature="method#setRedChuiCircles#0;class#VisibleScoreBoardController#0" expanded="false" />
-            <element signature="method#unsetRedChuiCircles#0;class#VisibleScoreBoardController#0" expanded="false" />
-            <element signature="method#setColor#0;class#VisibleScoreBoardController#0" expanded="false" />
-            <element signature="method#setOpacity#0;class#VisibleScoreBoardController#0" expanded="false" />
-          </folding>
+          <caret line="23" column="21" selection-start-line="23" selection-start-column="21" selection-end-line="23" selection-end-column="21" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/ParticipantsController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="4.4394693">
-          <caret line="592" column="80" selection-start-line="592" selection-start-column="80" selection-end-line="592" selection-end-column="80" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="579" column="33" selection-start-line="579" selection-start-column="33" selection-end-line="579" selection-end-column="33" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="class#6068:6458" expanded="false" />
@@ -1399,15 +1265,84 @@
         </state>
       </provider>
     </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_71/javafx-src.zip!/javafx/event/EventHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5920398">
+          <caret line="44" column="9" selection-start-line="44" selection-start-column="9" selection-end-line="44" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/CustomComboBox.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.46434495">
+          <caret line="60" column="24" selection-start-line="60" selection-start-column="24" selection-end-line="60" selection-end-column="24" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/ScoreBoard.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.310219">
+          <caret line="11" column="26" selection-start-line="11" selection-start-column="26" selection-end-line="11" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/CreateTournament.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.96532845">
+          <caret line="86" column="35" selection-start-line="86" selection-start-column="35" selection-end-line="86" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/VisibleScoreBoardController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="100" column="39" selection-start-line="100" selection-start-column="39" selection-end-line="100" selection-end-column="39" />
+          <folding>
+            <element signature="method#setKamChum#0;class#VisibleScoreBoardController#0" expanded="false" />
+            <element signature="method#setChuiCircles#0;class#VisibleScoreBoardController#0" expanded="false" />
+            <element signature="method#setBlueChuiCircles#0;class#VisibleScoreBoardController#0" expanded="false" />
+            <element signature="method#unsetBlueChuiCircles#0;class#VisibleScoreBoardController#0" expanded="false" />
+            <element signature="method#setRedChuiCircles#0;class#VisibleScoreBoardController#0" expanded="false" />
+            <element signature="method#unsetRedChuiCircles#0;class#VisibleScoreBoardController#0" expanded="false" />
+            <element signature="method#setColor#0;class#VisibleScoreBoardController#0" expanded="false" />
+            <element signature="method#setOpacity#0;class#VisibleScoreBoardController#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/Controller.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.63349915">
-          <caret line="608" column="38" selection-start-line="608" selection-start-column="38" selection-end-line="608" selection-end-column="38" />
+        <state vertical-scroll-proportion="0.74626863">
+          <caret line="523" column="0" selection-start-line="523" selection-start-column="0" selection-end-line="523" selection-end-column="0" />
           <folding>
+            <element signature="method#winner#0;class#Controller#0" expanded="false" />
+            <element signature="method#refresh#0;class#Controller#0" expanded="false" />
             <element signature="method#ChangeLabels#0;class#Controller#0" expanded="false" />
             <element signature="method#setKamChum#0;class#Controller#0" expanded="false" />
             <element signature="method#timyoIndicator#0;class#Controller#0" expanded="false" />
             <element signature="method#setChuis#0;class#Controller#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/CreateTournament.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.15588723">
+          <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>

@@ -1,13 +1,11 @@
 package sample;
 
 import database.Database;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
 import java.net.URL;
@@ -30,6 +28,8 @@ public class CreateTournament implements Initializable{
     public TextField tournamentCity;
     @FXML
     public TextField tournamentType;
+    @FXML
+    public Label prompt;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -37,10 +37,12 @@ public class CreateTournament implements Initializable{
             Database database = new Database();
             try {
                 database.addTournament(tournamentName.getText(), tournamentFrom.getValue().toString(), tournamentTo.getValue().toString(), tournamentType.getText(), tournamentCity.getText());
+                database.shutdown();
+                prompt.setText("Tournament added!");
             } catch (SQLException | ClassNotFoundException e) {
                 e.printStackTrace();
+                prompt.setText("Tournament couldn't be added!");
             }
-
         });
 
     }

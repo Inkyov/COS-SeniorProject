@@ -162,7 +162,7 @@
                                                       <TableColumn fx:id="rankCol1" maxWidth="86.0" minWidth="86.0" prefWidth="86.0" text="Rank" />
                                                       <TableColumn fx:id="catCol1" maxWidth="85.0" minWidth="85.0" prefWidth="85.0" text="Category" />
                                                       <TableColumn fx:id="ageCol1" maxWidth="150.0" minWidth="52.0" prefWidth="67.0" text="Age" />
-                                                      <TableColumn fx:id="tourCol1" maxWidth="150.0" minWidth="94.0" prefWidth="94.0" text="Tournament" />
+                                                      <TableColumn fx:id="tourCol1" minWidth="35.0" prefWidth="94.0" text="Tournament" />
                                                    </columns>
                                                 </TableView>
                                              </children>

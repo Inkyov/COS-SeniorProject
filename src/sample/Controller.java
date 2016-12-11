@@ -17,6 +17,7 @@ import javafx.scene.control.ListView;
 import javafx.scene.image.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.*;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
@@ -83,6 +84,10 @@ public class Controller implements Initializable{
     public Pane timerPane;
     @FXML
     public MenuItem participantsMenuItem;
+    @FXML
+    public MenuItem refreshButt;
+    @FXML
+    public GridPane grid;
     private int round = 1;
     CustomTimeline customTimeline;
     Parent root;
@@ -243,12 +248,15 @@ public class Controller implements Initializable{
               }
           }
       });
-      //ComboBox
-      AutoCompleteComboBoxListener comboBox = new AutoCompleteComboBoxListener(categories);
-      categories.setItems(FXCollections.observableArrayList("Юноши(14-15) -45кг", "Юноши(14-15) -51кг", "Юноши(14-15) -57кг", "Юноши(14-15) -63кг", "Юноши(14-15) -69кг", "Юноши(14-15) -75кг", "Юноши(14-15) +75кг", "Юноши(16-17) -45кг", "Юноши(16-17) -51кг", "Юноши(16-17) -57кг", "Юноши(16-17) -63кг", "Юноши(16-17) -69кг", "Юноши(16-17) -75кг", "Юноши(16-17) +75кг", "Мъже -51кг", "Мъже -57кг", "Мъже -64кг", "Мъже -71кг", "Мъже -78кг", "Мъже -85кг", "Мъже +85кг", "Жени -45кг", "Жени -51кг", "Жени -57кг", "Жени -63кг", "Жени -69кг", "Жени -75кг", "Жени +75кг"));
-      categories.getSelectionModel().selectedIndexProperty().addListener((observable, oldValue, newValue) -> {
-          refresh();
-      });
+        categories.setItems(FXCollections.observableArrayList("Юноши(14-15) -45кг", "Юноши(14-15) -51кг", "Юноши(14-15) -57кг", "Юноши(14-15) -63кг", "Юноши(14-15) -69кг", "Юноши(14-15) -75кг", "Юноши(14-15) +75кг", "Юноши(16-17) -45кг", "Юноши(16-17) -51кг", "Юноши(16-17) -57кг", "Юноши(16-17) -63кг", "Юноши(16-17) -69кг", "Юноши(16-17) -75кг", "Юноши(16-17) +75кг", "Мъже -51кг", "Мъже -57кг", "Мъже -64кг", "Мъже -71кг", "Мъже -78кг", "Мъже -85кг", "Мъже +85кг", "Жени -45кг", "Жени -51кг", "Жени -57кг", "Жени -63кг", "Жени -69кг", "Жени -75кг", "Жени +75кг"));
+        categories.getSelectionModel().selectedIndexProperty().addListener((observable, oldValue, newValue) -> {
+            refresh();
+        });
+      CustomComboBox comboBox = new CustomComboBox(categories);
+
+      refreshButt.setOnAction(e-> refresh());
+      refreshButt.setAccelerator(new KeyCodeCombination(KeyCode.F5));
+      grid.addEventHandler(MouseEvent.MOUSE_CLICKED, mouseEvent -> grid.requestFocus());
 
       customTimeline = new CustomTimeline(this, 2, 59);
       Thread timerThread = new Thread(customTimeline);
@@ -367,108 +375,6 @@ public class Controller implements Initializable{
       visibleScoreBoardController.blueChuiBackground.setVisible(false);
       visibleScoreBoardController.manyBChLabel.setVisible(false);
       visibleScoreBoardController.manyRChLabel.setVisible(false);
-
-    }
-
-    public class AutoCompleteComboBoxListener implements EventHandler<KeyEvent> {
-
-        private ComboBox<String> comboBox;
-        private StringBuilder sb;
-        private int lastLength;
-
-        public AutoCompleteComboBoxListener(ComboBox<String> comboBox) {
-            this.comboBox = comboBox;
-            sb = new StringBuilder();
-
-            this.comboBox.setEditable(true);
-            this.comboBox.setOnKeyReleased(AutoCompleteComboBoxListener.this);
-
-            // add a focus listener such that if not in focus, reset the filtered typed keys
-            this.comboBox.getEditor().focusedProperty().addListener((observable, oldValue, newValue) -> {
-                if (newValue) {
-                    // in focus
-                }
-                else {
-                    lastLength = 0;
-                    sb.delete(0, sb.length());
-                    selectClosestResultBasedOnTextFieldValue(false);
-                }
-            });
-
-            this.comboBox.setOnMouseClicked(event -> selectClosestResultBasedOnTextFieldValue(true));
-        }
-
-        @Override
-        public void handle(KeyEvent event) {
-            // this variable is used to bypass the auto complete process if the length is the same.
-            // this occurs if user types fast, the length of textfield will record after the user
-            // has typed after a certain delay.
-            categories.show();
-            if (lastLength != (comboBox.getEditor().getLength() - comboBox.getEditor().getSelectedText().length()))
-                lastLength = comboBox.getEditor().getLength() - comboBox.getEditor().getSelectedText().length();
-
-            if (event.isControlDown() || event.getCode() == KeyCode.BACK_SPACE ||
-                    event.getCode() == KeyCode.RIGHT || event.getCode() == KeyCode.LEFT ||
-                    event.getCode() == KeyCode.DELETE || event.getCode() == KeyCode.HOME ||
-                    event.getCode() == KeyCode.END || event.getCode() == KeyCode.TAB
-                    )
-                return;
-
-            IndexRange ir = comboBox.getEditor().getSelection();
-            sb.delete(0, sb.length());
-            sb.append(comboBox.getEditor().getText());
-            // remove selected string index until end so only unselected text will be recorded
-            try {
-                sb.delete(ir.getStart(), sb.length());
-            } catch (Exception ignored) { }
-
-            ObservableList<String> items = comboBox.getItems();
-            for (String item : items) {
-                if (item.toLowerCase().startsWith(comboBox.getEditor().getText().toLowerCase())
-                        ) {
-                    try {
-                        comboBox.getEditor().setText(sb.toString() + item.substring(sb.toString().length()));
-                    } catch (Exception e) {
-                        comboBox.getEditor().setText(sb.toString());
-                    }
-                    comboBox.getEditor().positionCaret(sb.toString().length());
-                    comboBox.getEditor().selectEnd();
-                    break;
-                }
-            }
-        }
-
-        /*
-         * selectClosestResultBasedOnTextFieldValue() - selects the item and scrolls to it when
-         * the popup is shown.
-         *
-         * parameters:
-         *  affect - true if combobox is clicked to show popup so text and caret position will be readjusted.
-         *  inFocus - true if combobox has focus. If not, programmatically press enter key to add new entry to list.
-         *
-         */
-        private void selectClosestResultBasedOnTextFieldValue(boolean affect) {
-            ObservableList<String> items = AutoCompleteComboBoxListener.this.comboBox.getItems();
-            boolean found = false;
-            for (int i=0; i<items.size(); i++) {
-                if (AutoCompleteComboBoxListener.this.comboBox.getEditor().getText().toLowerCase().equals(items.get(i).toLowerCase())) {
-                    try {
-                        ListView lv = ((ComboBoxListViewSkin) AutoCompleteComboBoxListener.this.comboBox.getSkin()).getListView();
-                        lv.getSelectionModel().clearAndSelect(i);
-                        lv.scrollTo(lv.getSelectionModel().getSelectedIndex());
-                        found = true;
-                        break;
-                    } catch (Exception ignored) { }
-                }
-            }
-
-            String s = comboBox.getEditor().getText();
-            if (!found && affect) {
-                comboBox.getSelectionModel().clearSelection();
-                comboBox.getEditor().setText(s);
-                comboBox.getEditor().end();
-            }
-        }
 
     }
 

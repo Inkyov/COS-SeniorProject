@@ -5,7 +5,6 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.CreateTournament">
    <children>
       <GridPane layoutX="160.0" layoutY="85.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -39,7 +38,7 @@
                   <DatePicker fx:id="tournamentFrom" layoutX="254.0" layoutY="37.0" AnchorPane.rightAnchor="0.0" />
                   <Label layoutX="318.0" layoutY="7.0" text="From" AnchorPane.rightAnchor="64.0">
                      <font>
-                        <Font size="20.0" />
+                        <Font name="System Bold" size="20.0" />
                      </font>
                   </Label>
                </children>
@@ -49,7 +48,7 @@
                   <DatePicker fx:id="tournamentTo" layoutY="37.0" AnchorPane.leftAnchor="0.0" />
                   <Label layoutX="76.0" layoutY="7.0" text="To" AnchorPane.leftAnchor="76.0">
                      <font>
-                        <Font size="20.0" />
+                        <Font name="System Bold" size="20.0" />
                      </font>
                   </Label>
                </children>
@@ -77,10 +76,19 @@
                <children>
                   <Label alignment="CENTER" layoutX="193.0" layoutY="14.0" text="Type" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
                      <font>
-                        <Font size="20.0" />
+                        <Font name="System Bold" size="20.0" />
                      </font>
                   </Label>
                   <TextField fx:id="tournamentType" layoutX="140.0" layoutY="56.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+               </children>
+            </AnchorPane>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnSpan="3" GridPane.rowIndex="6">
+               <children>
+                  <Label fx:id="prompt" alignment="CENTER" contentDisplay="CENTER" nodeOrientation="LEFT_TO_RIGHT" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                     <font>
+                        <Font name="System Bold" size="30.0" />
+                     </font>
+                  </Label>
                </children>
             </AnchorPane>
          </children>
