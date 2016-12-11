@@ -10,14 +10,13 @@ import javafx.scene.input.KeyEvent;
 public class CustomComboBox implements EventHandler<KeyEvent> {
 
         private ComboBox comboBox;
-        private StringBuilder sb;
-        private ObservableList data;
+    private ObservableList<String> data;
         private boolean moveCaretToPos = false;
         private int caretPos;
 
-        public CustomComboBox(final ComboBox comboBox) {
+        CustomComboBox(final ComboBox<String> comboBox) {
             this.comboBox = comboBox;
-            sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             data = comboBox.getItems();
 
             this.comboBox.setEditable(true);
@@ -54,11 +53,11 @@ public class CustomComboBox implements EventHandler<KeyEvent> {
             }
 
             ObservableList list = FXCollections.observableArrayList();
-            for (int i=0; i<data.size(); i++) {
-                if(data.get(i).toString().toLowerCase().startsWith(
+            for (Object aData : data) {
+                if (aData.toString().toLowerCase().startsWith(
                         CustomComboBox.this.comboBox
                                 .getEditor().getText().toLowerCase())) {
-                    list.add(data.get(i));
+                    list.add(aData);
                 }
             }
             String t = comboBox.getEditor().getText();

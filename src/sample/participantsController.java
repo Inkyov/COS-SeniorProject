@@ -16,10 +16,13 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.*;
 import javafx.stage.Stage;
 import javafx.util.StringConverter;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
@@ -113,6 +116,10 @@ public class ParticipantsController implements Initializable{
     public ComboBox<Category> categoryRandom;
     @FXML
     public Button newTour;
+    @FXML
+    public Button refreshBtn;
+    @FXML
+    public ImageView refreshImage;
 
     ObservableList<Club> clubData = FXCollections.observableArrayList();
     ObservableList<Rank> rankData = FXCollections.observableArrayList();
@@ -121,9 +128,13 @@ public class ParticipantsController implements Initializable{
     ObservableList<Participant> participants = FXCollections.observableArrayList();
     ObservableList<Tournament> tournamentData = FXCollections.observableArrayList();
 
-    Database database = new Database();
+    private Database database = new Database();
 
     public void initialize(URL location, ResourceBundle resources){
+        File file = new File("resources/images/refresh.png");
+        Image image = new Image(file.toURI().toString());
+        refreshImage.setImage(image);
+
         participantsTable.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
         participantsTable1.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
         tourTable.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
@@ -546,7 +557,7 @@ public class ParticipantsController implements Initializable{
         listGenerator.addEventHandler(MouseEvent.MOUSE_CLICKED, mouseEvent -> {
             ObservableList<Participant> randomParticipants = FXCollections.observableArrayList();
             ArrayList<Integer> values = new ArrayList<>();
-            participantsTable1.getItems().stream().forEach(participant -> values.add(Integer.parseInt(idCol1.getCellData(participant).toString())));
+            participantsTable1.getItems().forEach(participant -> values.add(Integer.parseInt(idCol1.getCellData(participant).toString())));
             try {
                 randomParticipants.setAll(database.randomList(values));
                 randomList.setItems(randomParticipants);
@@ -583,9 +594,20 @@ public class ParticipantsController implements Initializable{
                 }
             }
         });
+
+        refreshBtn.setOnAction(event -> {
+            try {
+                tournamentData.setAll(database.showTournaments());
+                tourTable.setItems(tournamentData);
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+
+        });
+
     }
 
-    public void bindControls(ObservableList<Participant> participants){
+    private void bindControls(ObservableList<Participant> participants){
         // 1. Wrap the ObservableList in a FilteredList (initially display all data).
         FilteredList<Participant> filteredData = new FilteredList<>(participants, p -> true);
         // 2. Set the filter Predicate whenever the filter changes.

@@ -16,17 +16,11 @@ import java.util.Objects;
 public class Judge extends Task{
 
     private int port = 0;
-    Socket clientSocket = null;
-    ServerSocket serverSocket = null;
-    VisibleScoreBoardController visibleScoreBoardController;
-    private Controller controller;
     private SimpleIntegerProperty redProperty;
     private SimpleIntegerProperty blueProperty;
 
-    public Judge(int port, Controller controller, VisibleScoreBoardController visibleScoreBoardController, SimpleIntegerProperty redProperty, SimpleIntegerProperty blueProperty) {
-        this.controller = controller;
+    Judge(int port, Controller controller, VisibleScoreBoardController visibleScoreBoardController, SimpleIntegerProperty redProperty, SimpleIntegerProperty blueProperty) {
         this.port = port;
-        this.visibleScoreBoardController = visibleScoreBoardController;
         this.redProperty = redProperty;
         this.blueProperty = blueProperty;
     }
@@ -35,10 +29,10 @@ public class Judge extends Task{
     protected Object call() throws Exception {
         Point point = null;
         try{
-            serverSocket = new ServerSocket(port);
+            ServerSocket serverSocket = new ServerSocket(port);
             System.out.println("Listening: " + port);
             while (true) {
-                clientSocket = serverSocket.accept();
+                Socket clientSocket = serverSocket.accept();
                 ObjectInputStream objectInputStream = new ObjectInputStream(clientSocket.getInputStream());
                 point = (Point) objectInputStream.readObject();
                 int assignRedPoint = redProperty.get();

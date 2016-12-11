@@ -1,11 +1,9 @@
 package sample;
 
-import com.sun.javafx.scene.control.skin.ComboBoxListViewSkin;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.*;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -13,7 +11,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.control.ListView;
 import javafx.scene.image.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.*;
@@ -89,42 +86,42 @@ public class Controller implements Initializable{
     @FXML
     public GridPane grid;
     private int round = 1;
-    CustomTimeline customTimeline;
-    Parent root;
-    VisibleScoreBoardController visibleScoreBoardController;
+    private CustomTimeline customTimeline;
+    private Parent root;
+    private VisibleScoreBoardController visibleScoreBoardController;
 
     private SimpleIntegerProperty redPoint1 = new SimpleIntegerProperty(-2);
-    public SimpleIntegerProperty redPoint1Property() { return redPoint1; }
+    private SimpleIntegerProperty redPoint1Property() { return redPoint1; }
     private SimpleIntegerProperty redPoint2 = new SimpleIntegerProperty(-2);
-    public SimpleIntegerProperty redPoint2Property() { return redPoint2; }
+    private SimpleIntegerProperty redPoint2Property() { return redPoint2; }
     private SimpleIntegerProperty redPoint3 = new SimpleIntegerProperty(-2);
-    public SimpleIntegerProperty redPoint3Property() { return redPoint3; }
+    private SimpleIntegerProperty redPoint3Property() { return redPoint3; }
     private SimpleIntegerProperty redPoint4 = new SimpleIntegerProperty(-2);
-    public SimpleIntegerProperty redPoint4Property() { return redPoint4; }
+    private SimpleIntegerProperty redPoint4Property() { return redPoint4; }
 
     private SimpleIntegerProperty bluePoint1 = new SimpleIntegerProperty(-2);
-    public SimpleIntegerProperty bluePoint1Property() { return bluePoint1; }
+    private SimpleIntegerProperty bluePoint1Property() { return bluePoint1; }
     private SimpleIntegerProperty bluePoint2 = new SimpleIntegerProperty(-2);
-    public SimpleIntegerProperty bluePoint2Property() { return bluePoint2; }
+    private SimpleIntegerProperty bluePoint2Property() { return bluePoint2; }
     private SimpleIntegerProperty bluePoint3 = new SimpleIntegerProperty(-2);
-    public SimpleIntegerProperty bluePoint3Property() { return bluePoint3; }
+    private SimpleIntegerProperty bluePoint3Property() { return bluePoint3; }
     private SimpleIntegerProperty bluePoint4 = new SimpleIntegerProperty(-2);
-    public SimpleIntegerProperty bluePoint4Property() { return bluePoint4; }
+    private SimpleIntegerProperty bluePoint4Property() { return bluePoint4; }
 
     private SimpleIntegerProperty minutes = new SimpleIntegerProperty(2);
-    public SimpleIntegerProperty minutesProperty() { return minutes; }
+    SimpleIntegerProperty minutesProperty() { return minutes; }
 
     private SimpleStringProperty secondsLabel = new SimpleStringProperty("00");
-    public SimpleStringProperty secondsLabelProperty() {return secondsLabel;}
+    SimpleStringProperty secondsLabelProperty() {return secondsLabel;}
 
     private SimpleStringProperty resultLabel = new SimpleStringProperty("The match is equal");
-    public SimpleStringProperty resultLabelProperty() {return resultLabel;}
+    private SimpleStringProperty resultLabelProperty() {return resultLabel;}
 
     private SimpleIntegerProperty redResult = new SimpleIntegerProperty(0);
-    public SimpleIntegerProperty redResultProperty() { return redResult; }
+    private SimpleIntegerProperty redResultProperty() { return redResult; }
 
     private SimpleIntegerProperty  blueResult = new SimpleIntegerProperty(0);
-    public SimpleIntegerProperty blueResultProperty() { return blueResult; }
+    private SimpleIntegerProperty blueResultProperty() { return blueResult; }
 
     private SimpleBooleanProperty redGiven1 = new SimpleBooleanProperty(false);
     private SimpleBooleanProperty blueGiven1 = new SimpleBooleanProperty(false);
@@ -141,16 +138,16 @@ public class Controller implements Initializable{
     private SimpleBooleanProperty redOpacity = new SimpleBooleanProperty(false);
     private SimpleBooleanProperty blueOpacity = new SimpleBooleanProperty(false);
     private SimpleIntegerProperty blueChui = new SimpleIntegerProperty(0);
-    public SimpleIntegerProperty blueChuiProperty() { return blueChui; }
+    private SimpleIntegerProperty blueChuiProperty() { return blueChui; }
     private SimpleIntegerProperty redChui = new SimpleIntegerProperty(0);
-    public SimpleIntegerProperty redChuiProperty() { return redChui; }
+    private SimpleIntegerProperty redChuiProperty() { return redChui; }
     private SimpleIntegerProperty redKamChum = new SimpleIntegerProperty(0);
-    public SimpleIntegerProperty redKamChumProperty() { return redKamChum; }
+    private SimpleIntegerProperty redKamChumProperty() { return redKamChum; }
     private SimpleIntegerProperty blueKamChum = new SimpleIntegerProperty(0);
-    public SimpleIntegerProperty blueKamChumProperty() { return blueKamChum; }
+    private SimpleIntegerProperty blueKamChumProperty() { return blueKamChum; }
 
     private SimpleStringProperty roundLabel = new SimpleStringProperty("Round 1");
-    public SimpleStringProperty roundLabelProperty() { return roundLabel; }
+    private SimpleStringProperty roundLabelProperty() { return roundLabel; }
 
     public void initialize(URL location, ResourceBundle resources){
 
@@ -248,10 +245,9 @@ public class Controller implements Initializable{
               }
           }
       });
-        categories.setItems(FXCollections.observableArrayList("Юноши(14-15) -45кг", "Юноши(14-15) -51кг", "Юноши(14-15) -57кг", "Юноши(14-15) -63кг", "Юноши(14-15) -69кг", "Юноши(14-15) -75кг", "Юноши(14-15) +75кг", "Юноши(16-17) -45кг", "Юноши(16-17) -51кг", "Юноши(16-17) -57кг", "Юноши(16-17) -63кг", "Юноши(16-17) -69кг", "Юноши(16-17) -75кг", "Юноши(16-17) +75кг", "Мъже -51кг", "Мъже -57кг", "Мъже -64кг", "Мъже -71кг", "Мъже -78кг", "Мъже -85кг", "Мъже +85кг", "Жени -45кг", "Жени -51кг", "Жени -57кг", "Жени -63кг", "Жени -69кг", "Жени -75кг", "Жени +75кг"));
-        categories.getSelectionModel().selectedIndexProperty().addListener((observable, oldValue, newValue) -> {
-            refresh();
-        });
+
+      categories.setItems(FXCollections.observableArrayList("Юноши(14-15) -45кг", "Юноши(14-15) -51кг", "Юноши(14-15) -57кг", "Юноши(14-15) -63кг", "Юноши(14-15) -69кг", "Юноши(14-15) -75кг", "Юноши(14-15) +75кг", "Юноши(16-17) -45кг", "Юноши(16-17) -51кг", "Юноши(16-17) -57кг", "Юноши(16-17) -63кг", "Юноши(16-17) -69кг", "Юноши(16-17) -75кг", "Юноши(16-17) +75кг", "Мъже -51кг", "Мъже -57кг", "Мъже -64кг", "Мъже -71кг", "Мъже -78кг", "Мъже -85кг", "Мъже +85кг", "Жени -45кг", "Жени -51кг", "Жени -57кг", "Жени -63кг", "Жени -69кг", "Жени -75кг", "Жени +75кг"));
+      categories.getSelectionModel().selectedIndexProperty().addListener((observable, oldValue, newValue) -> refresh());
       CustomComboBox comboBox = new CustomComboBox(categories);
 
       refreshButt.setOnAction(e-> refresh());
@@ -309,6 +305,7 @@ public class Controller implements Initializable{
                       round = 5;
                   break;
               case 5:
+                  customTimeline.pause();
                   refresh();
                   break;
           }
@@ -335,7 +332,7 @@ public class Controller implements Initializable{
 
   }
 
-    public void winner(){
+    private void winner(){
         if (redResult.get() > blueResult.get() && redResult.get() >= 2){
             resultLabel.setValue("Red is winning");
         }else if(redResult.get() < blueResult.get() && blueResult.get() >= 2) {
@@ -345,7 +342,7 @@ public class Controller implements Initializable{
         }
     }
 
-    public void refresh(){
+    private void refresh(){
       redKamChum.setValue(0);
       blueKamChum.setValue(0);
       redChui.setValue(0);
@@ -383,7 +380,7 @@ public class Controller implements Initializable{
         simpleIntegerProperties.forEach(e-> e.setValue(e.get() + point));
     }
 
-    public synchronized void setKamChum(MouseEvent mouseEvent, SimpleIntegerProperty kamChum, SimpleIntegerProperty sIntP1, SimpleIntegerProperty sIntP2, SimpleIntegerProperty sIntP3, SimpleIntegerProperty sIntP4, Rectangle rectangle1, Rectangle rectangle2){
+    private synchronized void setKamChum(MouseEvent mouseEvent, SimpleIntegerProperty kamChum, SimpleIntegerProperty sIntP1, SimpleIntegerProperty sIntP2, SimpleIntegerProperty sIntP3, SimpleIntegerProperty sIntP4, Rectangle rectangle1, Rectangle rectangle2){
         if (MouseButton.PRIMARY.equals(mouseEvent.getButton())) {
             kamChum.setValue(kamChum.get()+1);
             visibleScoreBoardController.setKamChum(kamChum.get(), 1, rectangle1, rectangle2);
@@ -395,7 +392,7 @@ public class Controller implements Initializable{
         }
     }
 
-    public synchronized void timyoIndicator(MouseEvent e, SimpleBooleanProperty op, ImageView controllerImgView, ImageView visibleControllerImgView, SimpleIntegerProperty sIntP1, SimpleIntegerProperty sIntP2, SimpleIntegerProperty sIntP3, SimpleIntegerProperty sIntP4){
+    private synchronized void timyoIndicator(MouseEvent e, SimpleBooleanProperty op, ImageView controllerImgView, ImageView visibleControllerImgView, SimpleIntegerProperty sIntP1, SimpleIntegerProperty sIntP2, SimpleIntegerProperty sIntP3, SimpleIntegerProperty sIntP4){
         if (MouseButton.PRIMARY.equals(e.getButton()) && !op.get()) {
             controllerImgView.setOpacity(1);
             try {
@@ -419,7 +416,7 @@ public class Controller implements Initializable{
         }
     }
 
-    public synchronized void setChuis(MouseEvent mouseEvent, SimpleIntegerProperty chuis, SimpleBooleanProperty op, SimpleIntegerProperty sIntProp1, SimpleIntegerProperty sIntProp2, SimpleIntegerProperty sIntProp3, SimpleIntegerProperty sIntProp4, int set, int unset){
+    private synchronized void setChuis(MouseEvent mouseEvent, SimpleIntegerProperty chuis, SimpleBooleanProperty op, SimpleIntegerProperty sIntProp1, SimpleIntegerProperty sIntProp2, SimpleIntegerProperty sIntProp3, SimpleIntegerProperty sIntProp4, int set, int unset){
         if (MouseButton.PRIMARY.equals(mouseEvent.getButton())) {
             chuis.setValue(chuis.get()+1);
             visibleScoreBoardController.setChuiCircles(chuis.get(), set);

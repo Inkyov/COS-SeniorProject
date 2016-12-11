@@ -13,8 +13,8 @@ import javafx.util.Duration;
 public class CustomTimeline extends Task{
     private int minutes, seconds;
     private Controller controller;
-    Timeline timer;
-    public SimpleBooleanProperty interrupted = new SimpleBooleanProperty(false);
+    private Timeline timer;
+    private SimpleBooleanProperty interrupted = new SimpleBooleanProperty(false);
 
     CustomTimeline(Controller controller, int minutes, int seconds){
         this.controller = controller;
@@ -30,7 +30,7 @@ public class CustomTimeline extends Task{
     }
 
     private synchronized void performTask(){
-        timer = new Timeline(new KeyFrame(Duration.millis(100), ae -> {
+        timer = new Timeline(new KeyFrame(Duration.millis(1000), ae -> {
             String formatted = String.format("%02d", seconds);
             controller.secondsLabelProperty().setValue(formatted);
             controller.minutesProperty().setValue(minutes-1);
@@ -56,13 +56,13 @@ public class CustomTimeline extends Task{
         timer.setCycleCount(Timeline.INDEFINITE);
         }
 
-    public synchronized void pause(){
+    synchronized void pause(){
         if (timer != null){
             timer.pause();
         }
     }
 
-    public synchronized void play(){
+    synchronized void play(){
         performTask();
         timer.play();
     }

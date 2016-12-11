@@ -37,7 +37,6 @@ public class CreateTournament implements Initializable{
             Database database = new Database();
             try {
                 database.addTournament(tournamentName.getText(), tournamentFrom.getValue().toString(), tournamentTo.getValue().toString(), tournamentType.getText(), tournamentCity.getText());
-                database.shutdown();
                 prompt.setText("Tournament added!");
             } catch (SQLException | ClassNotFoundException e) {
                 e.printStackTrace();

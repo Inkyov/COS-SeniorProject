@@ -8,11 +8,11 @@ import javafx.collections.ObservableList;
 import sample.*;
 
 public class Database {
-    Connection conn;
-    Statement stmt;
-    ResultSet resultSet;
+    private Connection conn;
+    private Statement stmt;
+    private ResultSet resultSet;
 
-    public Connection getConnection() throws ClassNotFoundException, SQLException{
+    private Connection getConnection() throws ClassNotFoundException, SQLException{
         Class.forName("org.hsqldb.jdbcDriver");
         return DriverManager.getConnection("jdbc:hsqldb:hsql://localhost/","sa", "");
     }
