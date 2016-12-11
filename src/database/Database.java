@@ -11,14 +11,6 @@ public class Database {
     Connection conn;
     Statement stmt;
     ResultSet resultSet;
-    ObservableList<Participant> participants = FXCollections.observableArrayList();
-    ObservableList<Tournament> tournaments = FXCollections.observableArrayList();
-    ObservableList<Club> clubData = FXCollections.observableArrayList();
-    ObservableList<Rank> rankData = FXCollections.observableArrayList();
-    ObservableList<Category> categoryData = FXCollections.observableArrayList();
-    ObservableList<Age> ageData = FXCollections.observableArrayList();
-    ObservableList<Tournament> tournamentData = FXCollections.observableArrayList();
-    ObservableList<Participant> randomList = FXCollections.observableArrayList();
 
     public Connection getConnection() throws ClassNotFoundException, SQLException{
         Class.forName("org.hsqldb.jdbcDriver");
@@ -26,12 +18,13 @@ public class Database {
     }
 
     public ObservableList<Tournament> showTournaments() throws SQLException{
+        ObservableList<Tournament> tournaments = FXCollections.observableArrayList();
         try {
             conn = getConnection();
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
-        String query = "Select TOURID AS TOURID, TOURNAME AS TOURNAME, DATE_FROM AS DATE_FROM, DATE_TO AS DATE_TO, TYPE AS TYPE From Tournament";
+        String query = "Select TOURID, TOURNAME, DATE_FROM, DATE_TO, TYPE, CITY From Tournament";
         stmt = conn.createStatement();
         resultSet = stmt.executeQuery(query);
         while (resultSet.next()){
@@ -40,13 +33,15 @@ public class Database {
                     resultSet.getString("TOURNAME"),
                     resultSet.getString("Date_From"),
                     resultSet.getString("Date_To"),
-                    resultSet.getString("Type")
+                    resultSet.getString("Type"),
+                    resultSet.getString("City")
             ));
         }
         return tournaments;
     }
 
     public ObservableList<Participant> showParticipants() throws Exception{
+        ObservableList<Participant> participants = FXCollections.observableArrayList();
         conn = getConnection();
         String query="SELECT PARTICIPANTS.ID, PARTICIPANTS.NAME, CLUBS.CLUBNAME AS Club, RANKS.RANKNAME AS Rank, CATEGORIES.CATNAME AS Category, AGES.AGENAME AS Age, TOURNAMENT.TOURNAME AS TOURNAMENT FROM PARTICIPANTS \n" +
                 "LEFT JOIN CLUBS ON PARTICIPANTS.CLUB = CLUBS.CLUBID\n" +
@@ -71,6 +66,7 @@ public class Database {
     }
 
     public ObservableList<Club> fillClubs() throws Exception {
+        ObservableList<Club> clubData = FXCollections.observableArrayList();
         conn = getConnection();
         String query="SELECT CLUBS.CLUBNAME AS CLUBNAME From CLUBS";
         stmt = conn.createStatement();
@@ -84,6 +80,7 @@ public class Database {
     }
 
     public ObservableList<Rank> fillRanks() throws Exception {
+        ObservableList<Rank> rankData = FXCollections.observableArrayList();
         conn = getConnection();
         String query="SELECT RANKS.RANKNAME AS RANKNAME From RANKS";
         stmt = conn.createStatement();
@@ -97,6 +94,7 @@ public class Database {
     }
 
     public ObservableList<Category> fillCategories() throws Exception {
+        ObservableList<Category> categoryData = FXCollections.observableArrayList();
         conn = getConnection();
         String query="SELECT CATEGORIES.CATNAME AS CATNAME From CATEGORIES";
         stmt = conn.createStatement();
@@ -110,6 +108,7 @@ public class Database {
     }
 
     public ObservableList<Age> fillAges() throws Exception {
+        ObservableList<Age> ageData = FXCollections.observableArrayList();
         conn = getConnection();
         String query="SELECT AGES.AGENAME AS AGENAME From AGES";
         stmt = conn.createStatement();
@@ -123,6 +122,7 @@ public class Database {
     }
 
     public ObservableList<Tournament> fillTournament() throws Exception{
+        ObservableList<Tournament> tournamentData = FXCollections.observableArrayList();
         conn = getConnection();
         String query = "Select Tournament.TourName as Name From Tournament";
         stmt = conn.createStatement();
@@ -136,6 +136,7 @@ public class Database {
     }
 
     public ObservableList<Participant> randomList (ArrayList<Integer> values) throws SQLException, ClassNotFoundException {
+        ObservableList<Participant> randomList = FXCollections.observableArrayList();
         conn = getConnection();
         String query = "Select Participants.Name From Participants Where Id IN (unnest(?))";
         PreparedStatement preparedStatement = conn.prepareStatement(query);
@@ -154,7 +155,7 @@ public class Database {
 
     public void insertParticipant(String name, int club, int rank, int category, int age, int tournament) throws SQLException, ClassNotFoundException {
         conn = getConnection();
-        String query="Insert Into Participants (Name, Club, Rank, Category, Age) Values (?,?,?,?,?,?)";
+        String query="Insert Into Participants (Name, Club, Rank, Category, Age, Tournament) Values (?,?,?,?,?,?)";
         PreparedStatement preparedStatement = conn.prepareStatement(query);
         preparedStatement.setString(1, name);
         preparedStatement.setInt(2, club);
@@ -166,6 +167,19 @@ public class Database {
 
         conn.close();
 
+    }
+
+    public void addTournament(String name, String from, String to, String type, String city) throws SQLException, ClassNotFoundException {
+        conn = getConnection();
+        String query = "Insert Into Tournament (TourName, Date_From, Date_To, Type, City) Values (?,?,?,?,?)";
+        PreparedStatement preparedStatement = conn.prepareStatement(query);
+        preparedStatement.setString(1, name);
+        preparedStatement.setString(2, from);
+        preparedStatement.setString(3, to);
+        preparedStatement.setString(4, type);
+        preparedStatement.setString(5, city);
+        preparedStatement.executeUpdate();
+        conn.close();
     }
 
     public void deleteParticipant(int id) throws SQLException, ClassNotFoundException {

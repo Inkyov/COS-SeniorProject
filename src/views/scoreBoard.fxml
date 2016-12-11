@@ -35,11 +35,6 @@
                <children>
                   <MenuBar prefHeight="25.0" prefWidth="1363.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
                     <menus>
-                      <Menu mnemonicParsing="false" text="File">
-                        <items>
-                          <MenuItem mnemonicParsing="false" text="Close" />
-                        </items>
-                      </Menu>
                       <Menu mnemonicParsing="false" text="Manage">
                         <items>
                           <MenuItem fx:id="participantsMenuItem" mnemonicParsing="false" text="Participants" />

@@ -154,11 +154,13 @@ public class Controller implements Initializable{
       redTimyo.setImage(image);
       blueTimyo.setImage(image);
 
-      FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../views/visibleScoreBoard.fxml"));
+      FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../views/VisibleScoreBoard.fxml"));
       try {
           root = fxmlLoader.load();
           Stage stage = new Stage();
           stage.setScene(new Scene(root, 1680, 850));
+          stage.getIcons().add(new Image("file:resources/images/icon.png"));
+          stage.setTitle("Match Grading System");
           stage.setMaximized(true);
           stage.show();
       } catch (IOException e) {
@@ -233,6 +235,7 @@ public class Controller implements Initializable{
                   root = fxmlLoader.load();
                   Stage stage = new Stage();
                   stage.setTitle("Participants");
+                  stage.getIcons().add(new Image("file:resources/images/icon.png"));
                   stage.setScene(new Scene(root));
                   stage.show();
               }catch (Exception e){
@@ -400,6 +403,7 @@ public class Controller implements Initializable{
             // this variable is used to bypass the auto complete process if the length is the same.
             // this occurs if user types fast, the length of textfield will record after the user
             // has typed after a certain delay.
+            categories.show();
             if (lastLength != (comboBox.getEditor().getLength() - comboBox.getEditor().getSelectedText().length()))
                 lastLength = comboBox.getEditor().getLength() - comboBox.getEditor().getSelectedText().length();
 
@@ -604,7 +608,11 @@ public class Controller implements Initializable{
             blueCount++;
             blueGiven4.setValue(true);
         }
-
+        if(redCount == -1){
+            redCount++;
+        }else if(blueCount == -1){
+            blueCount++;
+        }
         blueResult.setValue(blueCount);
         redResult.setValue(redCount);
 

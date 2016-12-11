@@ -123,7 +123,7 @@ public class VisibleScoreBoardController implements Initializable{
     public Rectangle bKamChum2;
 
     public void initialize(URL location, ResourceBundle resources){
-    File file = new File("E:/Downloads/kick.png");
+    File file = new File("resources/images/kick.png");
     Image image = new Image(file.toURI().toString());
     redTimyoIm.setImage(image);
     blueTimyoIm.setImage(image);
