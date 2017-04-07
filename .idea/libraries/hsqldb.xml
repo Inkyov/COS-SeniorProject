@@ -1,9 +1,0 @@
-<component name="libraryTable">
-  <library name="hsqldb">
-    <CLASSES>
-      <root url="jar://E:/Stuff/JavaFX/hsqldb-2.3.3/hsqldb/lib/hsqldb.jar!/" />
-    </CLASSES>
-    <JAVADOC />
-    <SOURCES />
-  </library>
-</component>
