@@ -22,6 +22,9 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.util.StringConverter;
 
+import java.util.logging.Logger;
+import java.util.logging.Level;
+
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
@@ -123,14 +126,14 @@ public class ParticipantsController implements Initializable{
     @FXML
     public Label participantAdded;
 
-    private SimpleBooleanProperty participantsOpened = new SimpleBooleanProperty(false);
+    private static final Logger LOGGER = Logger.getAnonymousLogger();
     private SimpleBooleanProperty tournamentOpened = new SimpleBooleanProperty(false);
-    ObservableList<Club> clubData = FXCollections.observableArrayList();
-    ObservableList<Rank> rankData = FXCollections.observableArrayList();
-    ObservableList<Category> categoryData = FXCollections.observableArrayList();
-    ObservableList<Age> ageData = FXCollections.observableArrayList();
-    ObservableList<Participant> participants = FXCollections.observableArrayList();
-    ObservableList<Tournament> tournamentData = FXCollections.observableArrayList();
+    private ObservableList<Club> clubData = FXCollections.observableArrayList();
+    private ObservableList<Rank> rankData = FXCollections.observableArrayList();
+    private ObservableList<Category> categoryData = FXCollections.observableArrayList();
+    private ObservableList<Age> ageData = FXCollections.observableArrayList();
+    private ObservableList<Participant> participants = FXCollections.observableArrayList();
+    private ObservableList<Tournament> tournamentData = FXCollections.observableArrayList();
 
     private Database database = new Database();
 
@@ -181,7 +184,6 @@ public class ParticipantsController implements Initializable{
                 @Override
                 protected void updateItem(Club club, boolean empty) {
                     super.updateItem(club, empty);
-
                     if (club == null || empty) {
                         setText(null);
                     } else {
@@ -446,11 +448,11 @@ public class ParticipantsController implements Initializable{
             });
             ageRandom.setConverter(new StringConverter<Age>() {
                 @Override
-                public String toString(Age object) {
-                    if(object == null){
+                public String toString(Age age) {
+                    if(age == null){
                         return "";
                     }else{
-                        return object.getAge();
+                        return age.getAge();
                     }
                 }
 
@@ -493,7 +495,7 @@ public class ParticipantsController implements Initializable{
 
 
         }catch (Exception e){
-            e.printStackTrace();
+            LOGGER.log(Level.SEVERE, "Error", e);
         }
 
 
@@ -506,7 +508,7 @@ public class ParticipantsController implements Initializable{
                     bindControls(participants);
                     participantAdded.setText("Participant added!");
                 } catch (Exception e) {
-                    e.printStackTrace();
+                    LOGGER.log(Level.SEVERE, "Error", e);
                     participantAdded.setText("Adding failed!");
                 }
             }else{
@@ -524,7 +526,7 @@ public class ParticipantsController implements Initializable{
                 bindControls(participants);
                 participantAdded.setText("Deleted!");
                 } catch (Exception e) {
-                e.printStackTrace();
+                    LOGGER.log(Level.SEVERE, "Error", e);
                 }
             }else{
                 participantAdded.setText("Delete failed!");
@@ -564,7 +566,7 @@ public class ParticipantsController implements Initializable{
                     tourBox.setEditable(false);
                     participantAdded.setText("Updated!");
                 } catch (Exception e) {
-                    e.printStackTrace();
+                    LOGGER.log(Level.SEVERE, "Error", e);
                     participantAdded.setText("Update failed!");
                 }
             }else {
@@ -579,7 +581,7 @@ public class ParticipantsController implements Initializable{
             try {
                 randomParticipants.setAll(database.randomList(values));
                 randomList.setItems(randomParticipants);
-                randomList.setCellFactory((comboBox) -> new ListCell<Participant>(){
+                randomList.setCellFactory(comboBox -> new ListCell<Participant>(){
                     @Override
                     protected void updateItem(Participant participant, boolean empty) {
                         super.updateItem(participant, empty);
@@ -592,7 +594,7 @@ public class ParticipantsController implements Initializable{
                     }
                 });
             } catch (SQLException | ClassNotFoundException e) {
-                e.printStackTrace();
+                LOGGER.log(Level.SEVERE, "Error", e);
             }
         });
 
@@ -610,7 +612,7 @@ public class ParticipantsController implements Initializable{
                         stage.show();
                         tournamentOpened.setValue(true);
                     } catch (IOException e) {
-                        e.printStackTrace();
+                        LOGGER.log(Level.SEVERE, "Error", e);
                     }
                 }
 
@@ -624,7 +626,7 @@ public class ParticipantsController implements Initializable{
                     tourTable.setItems(tournamentData);
                     bindControls(participants);
                 } catch (SQLException e) {
-                    e.printStackTrace();
+                    LOGGER.log(Level.SEVERE, "Error", e);
                 }
             }
         });
@@ -654,7 +656,7 @@ public class ParticipantsController implements Initializable{
         participantsTable.setItems(sortedData);
 
         FilteredList<Participant> filteredParticipants = new FilteredList<>(participants, p -> true);
-        tourTable.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+        tourTable.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) ->
             filteredParticipants.predicateProperty().bind(Bindings.createObjectBinding(()->
                             participant ->
                                     participant.getTournament().contains(tourTable.getSelectionModel().getSelectedItem().getName())
@@ -663,8 +665,8 @@ public class ParticipantsController implements Initializable{
                     tourTable.getSelectionModel().selectedItemProperty(),
                     categoryRandom.getEditor().textProperty(),
                     ageRandom.getEditor().textProperty()
-            ));
-        });
+            ))
+        );
         SortedList<Participant> sortedParticipants = new SortedList<>(filteredParticipants);
         sortedParticipants.comparatorProperty().bind(participantsTable1.comparatorProperty());
         participantsTable1.setItems(sortedParticipants);

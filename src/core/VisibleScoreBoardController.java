@@ -16,7 +16,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.ResourceBundle;
 
-public class VisibleScoreBoardController implements Initializable{
+public class VisibleScoreBoardController implements Initializable {
 
     @FXML
     public ImageView redTimyoIm;
@@ -24,14 +24,15 @@ public class VisibleScoreBoardController implements Initializable{
     public ImageView blueTimyoIm;
     //penalty circle containers
     @FXML
-    public Rectangle J1Rect;
+    public Rectangle j1Rect;
     @FXML
-    public Rectangle J2Rect;
+    public Rectangle j2Rect;
     @FXML
-    public Rectangle J3Rect;
+    public Rectangle j3Rect;
     @FXML
-    public Rectangle J4Rect;
+    public Rectangle j4Rect;
     //penalty circles
+    @FXML
     public Circle rChuiCirc6;
     @FXML
     public Circle rChuiCirc5;
@@ -44,7 +45,7 @@ public class VisibleScoreBoardController implements Initializable{
     @FXML
     public Circle bChuiCirc6;
     @FXML
-    public Circle rChuiCirc12;
+    private Circle rChuiCirc12;
     @FXML
     public Circle rChuiCirc11;
     @FXML
@@ -154,201 +155,49 @@ public class VisibleScoreBoardController implements Initializable{
     }
 
     void setChuiCircles(int kCh, int function) {
+        ArrayList<Circle> blueCircles = new ArrayList<>(Arrays.asList(bChuiCirc1, bChuiCirc2, bChuiCirc3, bChuiCirc4, bChuiCirc5, bChuiCirc6, bChuiCirc7, bChuiCirc8, bChuiCirc9, bChuiCirc10, bChuiCirc11, bChuiCirc12));
+        ArrayList<Circle> redCircles = new ArrayList<>(Arrays.asList(rChuiCirc1, rChuiCirc2, rChuiCirc3, rChuiCirc4, rChuiCirc5, rChuiCirc6, rChuiCirc7, rChuiCirc8, rChuiCirc9, rChuiCirc10, rChuiCirc11, rChuiCirc12));
         switch (function){
             case 1:
-                setBlueChuiCircles(kCh);
+                setCircles(kCh, blueChuiBackground, manyBChLabel, blueCircles, "#0000ff");
                 break;
             case 2:
-                unsetCircles(kCh, blueChuiBackground, manyBChLabel, bChuiCirc1, bChuiCirc2, bChuiCirc3, bChuiCirc4, bChuiCirc5, bChuiCirc6, bChuiCirc7, bChuiCirc8, bChuiCirc9, bChuiCirc10, bChuiCirc11, bChuiCirc12);
+                unsetCircles(kCh, blueChuiBackground, manyBChLabel, blueCircles);
                 break;
             case 3:
-                setRedChuiCircles(kCh);
+                setCircles(kCh, redChuiBackground, manyRChLabel, redCircles, "#ffff00");
                 break;
             case 4:
-                unsetCircles(kCh, redChuiBackground, manyRChLabel, rChuiCirc1, rChuiCirc2, rChuiCirc3, rChuiCirc4, rChuiCirc5, rChuiCirc6, rChuiCirc7, rChuiCirc8, rChuiCirc9, rChuiCirc10, rChuiCirc11, rChuiCirc12);
+                unsetCircles(kCh, redChuiBackground, manyRChLabel, redCircles);
                 break;
         }
     }
 
-    private void setBlueChuiCircles(int kCh) {
+    private void setCircles(int kCh, Rectangle rectangle, Label label, ArrayList<Circle> circles, String color) {
         if (kCh > 12) {
-            blueChuiBackground.setVisible(true);
-            manyBChLabel.setText(Integer.toString(kCh));
-            manyBChLabel.setVisible(true);
+            rectangle.setVisible(true);
+            label.setText(Integer.toString(kCh));
+            label.setVisible(true);
         } else {
-            switch (kCh) {
-                case 1:
-                    bChuiCirc1.setFill(Color.BLUE);
-                    bChuiCirc1.setOpacity(1);
-                    break;
-                case 2:
-                    bChuiCirc2.setFill(Color.BLUE);
-                    bChuiCirc2.setOpacity(1);
-                    break;
-                case 3:
-                    bChuiCirc3.setFill(Color.BLUE);
-                    bChuiCirc3.setOpacity(1);
-                    break;
-                case 4:
-                    bChuiCirc4.setFill(Color.BLUE);
-                    bChuiCirc4.setOpacity(1);
-                    break;
-                case 5:
-                    bChuiCirc5.setFill(Color.BLUE);
-                    bChuiCirc5.setOpacity(1);
-                    break;
-                case 6:
-                    bChuiCirc6.setFill(Color.BLUE);
-                    bChuiCirc6.setOpacity(1);
-                    break;
-                case 7:
-                    bChuiCirc7.setFill(Color.BLUE);
-                    bChuiCirc7.setOpacity(1);
-                    break;
-                case 8:
-                    bChuiCirc8.setFill(Color.BLUE);
-                    bChuiCirc8.setOpacity(1);
-                    break;
-                case 9:
-                    bChuiCirc9.setFill(Color.BLUE);
-                    bChuiCirc9.setOpacity(1);
-                    break;
-                case 10:
-                    bChuiCirc10.setFill(Color.BLUE);
-                    bChuiCirc10.setOpacity(1);
-                    break;
-                case 11:
-                    bChuiCirc11.setFill(Color.BLUE);
-                    bChuiCirc11.setOpacity(1);
-                    break;
-                case 12:
-                    bChuiCirc12.setFill(Color.BLUE);
-                    bChuiCirc12.setOpacity(1);
-                    break;
-            }
+            Circle circle = circles.get(kCh);
+            circle.setFill(Color.web(color));
+            circle.setOpacity(1);
         }
     }
 
-    private void unsetCircles(int kCh, Rectangle rectangle, Label manyLabel, Circle circle1, Circle circle2, Circle circle3, Circle circle4, Circle circle5, Circle circle6, Circle circle7, Circle circle8, Circle circle9, Circle circle10, Circle circle11, Circle circle12){
+    private void unsetCircles(int kCh, Rectangle rectangle, Label manyLabel, ArrayList<Circle> circles){
         if(kCh > 12){
             manyLabel.setText(Integer.toString(kCh));
         }else{
-            switch (kCh){
-                case 0:
-                    circle1.setFill(Color.web("#d1d1d1"));
-                    circle1.setOpacity(0.2);
-                    break;
-                case 1:
-                    circle2.setFill(Color.web("#d1d1d1"));
-                    circle2.setOpacity(0.2);
-                    break;
-                case 2:
-                    circle3.setFill(Color.web("#d1d1d1"));
-                    circle3.setOpacity(0.2);
-                    break;
-                case 3:
-                    circle4.setFill(Color.web("#d1d1d1"));
-                    circle4.setOpacity(0.2);
-                    break;
-                case 4:
-                    circle5.setFill(Color.web("#d1d1d1"));
-                    circle5.setOpacity(0.2);
-                    break;
-                case 5:
-                    circle6.setFill(Color.web("#d1d1d1"));
-                    circle6.setOpacity(0.2);
-                    break;
-                case 6:
-                    circle7.setFill(Color.web("#d1d1d1"));
-                    circle7.setOpacity(0.2);
-                    break;
-                case 7:
-                    circle8.setFill(Color.web("#d1d1d1"));
-                    circle8.setOpacity(0.2);
-                    break;
-                case 8:
-                    circle9.setFill(Color.web("#d1d1d1"));
-                    circle9.setOpacity(0.2);
-                    break;
-                case 9:
-                    circle10.setFill(Color.web("#d1d1d1"));
-                    circle10.setOpacity(0.2);
-                    break;
-                case 10:
-                    circle11.setFill(Color.web("#d1d1d1"));
-                    circle11.setOpacity(0.2);
-                    break;
-                case 11:
-                    circle12.setFill(Color.web("#d1d1d1"));
-                    circle12.setOpacity(0.2);
-                    break;
-                case 12:
-                    rectangle.setVisible(false);
-                    manyLabel.setVisible(false);
-                    break;
+            if(kCh != 12 && kCh >= 0){
+                Circle circle = circles.get(kCh);
+                circle.setFill(Color.web("#d1d1d1"));
+                circle.setOpacity(0.2);
             }
+            rectangle.setVisible(false);
+            manyLabel.setVisible(false);
         }
     }
-
-    private void setRedChuiCircles(int kCh){
-        if (kCh > 12) {
-            redChuiBackground.setVisible(true);
-            manyRChLabel.setText(Integer.toString(kCh));
-            manyRChLabel.setVisible(true);
-        } else {
-            switch (kCh) {
-                case 1:
-                    rChuiCirc1.setFill(Color.RED);
-                    rChuiCirc1.setOpacity(1);
-                    break;
-                case 2:
-                    rChuiCirc2.setFill(Color.RED);
-                    rChuiCirc2.setOpacity(1);
-                    break;
-                case 3:
-                    rChuiCirc3.setFill(Color.RED);
-                    rChuiCirc3.setOpacity(1);
-                    break;
-                case 4:
-                    rChuiCirc4.setFill(Color.RED);
-                    rChuiCirc4.setOpacity(1);
-                    break;
-                case 5:
-                    rChuiCirc5.setFill(Color.RED);
-                    rChuiCirc5.setOpacity(1);
-                    break;
-                case 6:
-                    rChuiCirc6.setFill(Color.RED);
-                    rChuiCirc6.setOpacity(1);
-                    break;
-                case 7:
-                    rChuiCirc7.setFill(Color.RED);
-                    rChuiCirc7.setOpacity(1);
-                    break;
-                case 8:
-                    rChuiCirc8.setFill(Color.RED);
-                    rChuiCirc8.setOpacity(1);
-                    break;
-                case 9:
-                    rChuiCirc9.setFill(Color.RED);
-                    rChuiCirc9.setOpacity(1);
-                    break;
-                case 10:
-                    rChuiCirc10.setFill(Color.RED);
-                    rChuiCirc10.setOpacity(1);
-                    break;
-                case 11:
-                    rChuiCirc11.setFill(Color.RED);
-                    rChuiCirc11.setOpacity(1);
-                    break;
-                case 12:
-                    rChuiCirc12.setFill(Color.RED);
-                    rChuiCirc12.setOpacity(1);
-                    break;
-            }
-        }
-    }
-
 
     void setColor(){
         List<Circle> circles = new ArrayList<>(Arrays.asList(bChuiCirc1, bChuiCirc2, bChuiCirc3, bChuiCirc4, bChuiCirc5, bChuiCirc6, bChuiCirc7, bChuiCirc8, bChuiCirc9, bChuiCirc10, bChuiCirc11, bChuiCirc12, rChuiCirc1, rChuiCirc2, rChuiCirc3, rChuiCirc4, rChuiCirc5, rChuiCirc6, rChuiCirc7, rChuiCirc8, rChuiCirc9, rChuiCirc10, rChuiCirc11, rChuiCirc12));

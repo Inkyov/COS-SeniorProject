@@ -69,7 +69,7 @@
       </HBox>
       <HBox layoutX="14.0" layoutY="14.0" prefHeight="100.0" prefWidth="700.0" AnchorPane.leftAnchor="25.0">
          <children>
-            <Rectangle fx:id="J4Rect" arcHeight="5.0" arcWidth="5.0" fill="LIGHTGRAY" height="100.0" stroke="WHITE" strokeType="INSIDE" width="460.0" />
+            <Rectangle fx:id="j4Rect" arcHeight="5.0" arcWidth="5.0" fill="LIGHTGRAY" height="100.0" stroke="WHITE" strokeType="INSIDE" width="460.0" />
             <Label fx:id="rPJ4Label" alignment="CENTER" contentDisplay="CENTER" prefHeight="100.0" prefWidth="120.0" text="-2" textFill="RED">
                <font>
                   <Font name="System Bold" size="70.0" />
@@ -84,7 +84,7 @@
       </HBox>
       <HBox layoutX="25.0" layoutY="117.0" prefHeight="100.0" prefWidth="700.0" AnchorPane.leftAnchor="25.0">
          <children>
-            <Rectangle fx:id="J3Rect" arcHeight="5.0" arcWidth="5.0" fill="LIGHTGRAY" height="100.0" stroke="WHITE" strokeType="INSIDE" width="460.0" />
+            <Rectangle fx:id="j3Rect" arcHeight="5.0" arcWidth="5.0" fill="LIGHTGRAY" height="100.0" stroke="WHITE" strokeType="INSIDE" width="460.0" />
             <Label fx:id="rPJ3Label" alignment="CENTER" contentDisplay="CENTER" prefHeight="100.0" prefWidth="120.0" text="-2" textFill="RED">
                <font>
                   <Font name="System Bold" size="70.0" />
@@ -109,7 +109,7 @@
                   <Font name="System Bold" size="70.0" />
                </font>
             </Label>
-            <Rectangle fx:id="J1Rect" arcHeight="5.0" arcWidth="5.0" fill="#d1d1d1" height="100.0" stroke="WHITE" strokeType="INSIDE" width="460.0" />
+            <Rectangle fx:id="j1Rect" arcHeight="5.0" arcWidth="5.0" fill="#d1d1d1" height="100.0" stroke="WHITE" strokeType="INSIDE" width="460.0" />
          </children>
       </HBox>
       <HBox layoutX="738.0" layoutY="117.0" prefHeight="100.0" prefWidth="700.0" AnchorPane.rightAnchor="25.0">
@@ -124,7 +124,7 @@
                   <Font name="System Bold" size="70.0" />
                </font>
             </Label>
-            <Rectangle fx:id="J2Rect" arcHeight="5.0" arcWidth="5.0" fill="LIGHTGRAY" height="100.0" stroke="WHITE" strokeType="INSIDE" width="460.0" />
+            <Rectangle fx:id="j2Rect" arcHeight="5.0" arcWidth="5.0" fill="LIGHTGRAY" height="100.0" stroke="WHITE" strokeType="INSIDE" width="460.0" />
          </children>
       </HBox>
       <Rectangle fx:id="redChuiBackground" arcHeight="5.0" arcWidth="5.0" fill="RED" height="220.0" layoutX="25.0" layoutY="691.0" stroke="BLACK" strokeType="INSIDE" visible="false" width="600.0" AnchorPane.bottomAnchor="25.0" />

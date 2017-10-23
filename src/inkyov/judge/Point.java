@@ -7,19 +7,19 @@ import java.io.Serializable;
  */
 public class Point implements Serializable{
     private String color;
-    private int point;
+    private int points;
     private static final long serialVersionUID = 78931958389436584L;
 
-    Point(String color, int point){
+    Point(String color, int points){
         this.color = color;
-        this.point = point;
+        this.points = points;
     }
 
     public String getColor(){
         return this.color;
     }
 
-    public int getPoint(){
-        return this.point;
+    public int getPoints(){
+        return this.points;
     }
 }

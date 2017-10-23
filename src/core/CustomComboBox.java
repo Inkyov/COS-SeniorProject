@@ -37,10 +37,7 @@ public class CustomComboBox implements EventHandler<KeyEvent> {
             caretPos = -1;
             moveCaret(comboBox.getEditor().getText().length());
             return;
-        } else if(event.getCode() == KeyCode.BACK_SPACE) {
-            moveCaretToPos = true;
-            caretPos = comboBox.getEditor().getCaretPosition();
-        } else if(event.getCode() == KeyCode.DELETE) {
+        } else if(event.getCode() == KeyCode.BACK_SPACE || event.getCode() == KeyCode.DELETE ) {
             moveCaretToPos = true;
             caretPos = comboBox.getEditor().getCaretPosition();
         }
@@ -53,9 +50,7 @@ public class CustomComboBox implements EventHandler<KeyEvent> {
 
         ObservableList list = FXCollections.observableArrayList();
         for (Object aData : data) {
-            if (aData.toString().toLowerCase().startsWith(
-                    CustomComboBox.this.comboBox
-                            .getEditor().getText().toLowerCase())) {
+            if (aData.toString().toLowerCase().startsWith(CustomComboBox.this.comboBox.getEditor().getText().toLowerCase())) {
                 list.add(aData);
             }
         }

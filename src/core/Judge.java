@@ -32,23 +32,22 @@ public class Judge extends Task{
         try{
             ServerSocket serverSocket = new ServerSocket(port);
             System.out.println("Listening: " + port);
-            while (true) {
+            do {
                 Socket clientSocket = serverSocket.accept();
                 ObjectInputStream objectInputStream = new ObjectInputStream(clientSocket.getInputStream());
                 point = (Point) objectInputStream.readObject();
                 int assignRedPoint = redProperty.get();
                 int assignBluePoint = blueProperty.get();
-                if(Objects.equals(point.getColor(), "red")){
-                    assignRedPoint +=  point.getPoint();
+                if (Objects.equals(point.getColor(), "red")) {
+                    assignRedPoint += point.getPoints();
                     final int finalAssignPoint = assignRedPoint;
-                    Platform.runLater(()-> redProperty.setValue(finalAssignPoint));
-                }else{
-                    assignBluePoint +=  point.getPoint();
+                    Platform.runLater(() -> redProperty.setValue(finalAssignPoint));
+                } else {
+                    assignBluePoint += point.getPoints();
                     final int finalAssignPoint = assignBluePoint;
-                    Platform.runLater(()-> blueProperty.setValue(finalAssignPoint));
+                    Platform.runLater(() -> blueProperty.setValue(finalAssignPoint));
                 }
-
-            }
+            } while (true);
         }catch (Exception e) {
             e.printStackTrace();
         }

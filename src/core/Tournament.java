@@ -11,8 +11,8 @@ import javafx.beans.property.SimpleStringProperty;
 public class Tournament {
     private SimpleIntegerProperty id;
     private SimpleStringProperty name;
-    private SimpleStringProperty date_from;
-    private SimpleStringProperty date_to;
+    private SimpleStringProperty dateFrom;
+    private SimpleStringProperty dateTo;
     private SimpleStringProperty type;
     private SimpleStringProperty city;
 
@@ -20,11 +20,11 @@ public class Tournament {
         this.name = new SimpleStringProperty(name);
     }
 
-    public Tournament(int id, String name, String date_from, String date_to, String type, String city){
+    public Tournament(int id, String name, String dateFrom, String dateTo, String type, String city){
         this.id = new SimpleIntegerProperty(id);
         this.name = new SimpleStringProperty(name);
-        this.date_from = new SimpleStringProperty(date_from);
-        this.date_to = new SimpleStringProperty(date_to);
+        this.dateFrom = new SimpleStringProperty(dateFrom);
+        this.dateTo = new SimpleStringProperty(dateTo);
         this.type = new SimpleStringProperty(type);
         this.city = new SimpleStringProperty(city);
     }
@@ -36,11 +36,11 @@ public class Tournament {
     }
 
     public String getFrom(){
-        return date_from.get();
+        return dateFrom.get();
     }
 
     public String getTo(){
-        return date_to.get();
+        return dateTo.get();
     }
 
     public String getType(){

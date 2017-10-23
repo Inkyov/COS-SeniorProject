@@ -11,6 +11,8 @@ import javafx.scene.control.TextField;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * Created by Inkyov on 12/11/2016.
@@ -23,7 +25,7 @@ public class CreateTournament implements Initializable{
     @FXML
     public DatePicker tournamentTo;
     @FXML
-    public Button createTournament;
+    public Button createTournamentButton;
     @FXML
     public TextField tournamentCity;
     @FXML
@@ -31,15 +33,17 @@ public class CreateTournament implements Initializable{
     @FXML
     public Label prompt;
 
+    private static final Logger LOGGER = Logger.getAnonymousLogger();
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        createTournament.setOnAction(event -> {
+        createTournamentButton.setOnAction(event -> {
             Database database = new Database();
             try {
                 database.addTournament(tournamentName.getText(), tournamentFrom.getValue().toString(), tournamentTo.getValue().toString(), tournamentType.getText(), tournamentCity.getText());
                 prompt.setText("Tournament added!");
             } catch (SQLException | ClassNotFoundException e) {
-                e.printStackTrace();
+                LOGGER.log(Level.SEVERE, "Error", e);
                 prompt.setText("Tournament couldn't be added!");
             }
         });
