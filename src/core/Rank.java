@@ -7,13 +7,13 @@ import javafx.beans.property.SimpleStringProperty;
  */
 public class Rank {
 
-    private SimpleStringProperty rankName;
+  private SimpleStringProperty rankName;
 
-    public Rank(String rankName){
-        this.rankName = new SimpleStringProperty(rankName);
-    }
+  public Rank(String rankName) {
+    this.rankName = new SimpleStringProperty(rankName);
+  }
 
-    public String getRankName(){
-        return rankName.get();
-    }
+  public String getRankName() {
+    return rankName.get();
+  }
 }

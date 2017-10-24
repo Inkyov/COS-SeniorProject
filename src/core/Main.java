@@ -10,23 +10,23 @@ import javafx.stage.Stage;
 
 public class Main extends Application {
 
-    @Override
-    public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("../views/ScoreBoard.fxml"));
-        primaryStage.setScene(new Scene(root, 800, 600));
-        primaryStage.setTitle("Match Grading System");
-        primaryStage.getIcons().add(new Image("file:resources/images/icon.png"));
-        primaryStage.setMaximized(true);
-        primaryStage.show();
+  @Override
+  public void start(Stage primaryStage) throws Exception {
+    Parent root = FXMLLoader.load(getClass().getResource("../views/ScoreBoard.fxml"));
+    primaryStage.setScene(new Scene(root, 800, 600));
+    primaryStage.setTitle("Match Grading System");
+    primaryStage.getIcons().add(new Image("file:resources/images/icon.png"));
+    primaryStage.setMaximized(true);
+    primaryStage.show();
 
-        primaryStage.setOnCloseRequest(event -> {
-            Platform.exit();
-            System.exit(0);
-        });
-    }
+    primaryStage.setOnCloseRequest(event -> {
+      Platform.exit();
+      System.exit(0);
+    });
+  }
 
 
-    public static void main(String[] args) {
-        launch(args);
-    }
+  public static void main(String[] args) {
+    launch(args);
+  }
 }

@@ -7,13 +7,13 @@ import javafx.beans.property.SimpleStringProperty;
  */
 public class Club {
 
-    private SimpleStringProperty clubName;
+  private SimpleStringProperty clubName;
 
-    public Club(String clubName){
-        this.clubName = new SimpleStringProperty(clubName);
-    }
+  public Club(String clubName) {
+    this.clubName = new SimpleStringProperty(clubName);
+  }
 
-    public String getClubName(){
-        return clubName.get();
-    }
+  public String getClubName() {
+    return clubName.get();
+  }
 }

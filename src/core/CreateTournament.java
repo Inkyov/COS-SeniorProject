@@ -17,36 +17,36 @@ import java.util.logging.Logger;
 /**
  * Created by Inkyov on 12/11/2016.
  */
-public class CreateTournament implements Initializable{
-    @FXML
-    public TextField tournamentName;
-    @FXML
-    public DatePicker tournamentFrom;
-    @FXML
-    public DatePicker tournamentTo;
-    @FXML
-    public Button createTournamentButton;
-    @FXML
-    public TextField tournamentCity;
-    @FXML
-    public TextField tournamentType;
-    @FXML
-    public Label prompt;
+public class CreateTournament implements Initializable {
+  @FXML
+  public TextField tournamentName;
+  @FXML
+  public DatePicker tournamentFrom;
+  @FXML
+  public DatePicker tournamentTo;
+  @FXML
+  public Button createTournamentButton;
+  @FXML
+  public TextField tournamentCity;
+  @FXML
+  public TextField tournamentType;
+  @FXML
+  public Label prompt;
 
-    private static final Logger LOGGER = Logger.getAnonymousLogger();
+  private static final Logger LOGGER = Logger.getAnonymousLogger();
 
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-        createTournamentButton.setOnAction(event -> {
-            Database database = new Database();
-            try {
-                database.addTournament(tournamentName.getText(), tournamentFrom.getValue().toString(), tournamentTo.getValue().toString(), tournamentType.getText(), tournamentCity.getText());
-                prompt.setText("Tournament added!");
-            } catch (SQLException | ClassNotFoundException e) {
-                LOGGER.log(Level.SEVERE, "Error", e);
-                prompt.setText("Tournament couldn't be added!");
-            }
-        });
+  @Override
+  public void initialize(URL location, ResourceBundle resources) {
+    createTournamentButton.setOnAction(event -> {
+      Database database = new Database();
+      try {
+        database.addTournament(tournamentName.getText(), tournamentFrom.getValue().toString(), tournamentTo.getValue().toString(), tournamentType.getText(), tournamentCity.getText());
+        prompt.setText("Tournament added!");
+      } catch (SQLException | ClassNotFoundException e) {
+        LOGGER.log(Level.SEVERE, "Error", e);
+        prompt.setText("Tournament couldn't be added!");
+      }
+    });
 
-    }
+  }
 }

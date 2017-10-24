@@ -7,13 +7,13 @@ import javafx.beans.property.SimpleStringProperty;
  */
 public class Category {
 
-    private SimpleStringProperty catName;
+  private SimpleStringProperty catName;
 
-    public Category(String catName){
-        this.catName = new SimpleStringProperty(catName);
-    }
+  public Category(String catName) {
+    this.catName = new SimpleStringProperty(catName);
+  }
 
-    public String getCategoryName(){
-        return catName.get();
-    }
+  public String getCategoryName() {
+    return catName.get();
+  }
 }

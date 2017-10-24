@@ -7,13 +7,13 @@ import javafx.beans.property.SimpleStringProperty;
  */
 
 public class Age {
-    private SimpleStringProperty ageNumber;
+  private SimpleStringProperty ageNumber;
 
-    public Age(String ageName){
-        this.ageNumber = new SimpleStringProperty(ageName);
-    }
+  public Age(String ageName) {
+    this.ageNumber = new SimpleStringProperty(ageName);
+  }
 
-    public String getAge(){
-        return ageNumber.get();
-    }
+  public String getAge() {
+    return ageNumber.get();
+  }
 }

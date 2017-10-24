@@ -26,15 +26,18 @@ import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
+import sun.rmi.runtime.Log;
 
 import java.io.File;
 import java.io.IOException;
-import java.lang.reflect.Array;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import java.util.stream.IntStream;
 
 
 public class Controller implements Initializable {
@@ -221,6 +224,8 @@ public class Controller implements Initializable {
     return roundLabel;
   }
 
+  private static final Logger LOGGER = Logger.getAnonymousLogger();
+
   public void initialize(URL location, ResourceBundle resources) {
 
     File file = new File("resources/images/kick.png");
@@ -238,29 +243,39 @@ public class Controller implements Initializable {
       stage.setMaximized(true);
       stage.show();
     } catch (IOException e) {
-      e.printStackTrace();
+      LOGGER.log(Level.SEVERE, "Unable to open the scoreboard!", e);
     }
     visibleScoreBoardController = fxmlLoader.getController();
 
-    rPJ1Label.textProperty().bind(redPoint1Property().asString());
-    rPJ2Label.textProperty().bind(redPoint2Property().asString());
-    rPJ3Label.textProperty().bind(redPoint3Property().asString());
-    rPJ4Label.textProperty().bind(redPoint4Property().asString());
+    List<SimpleIntegerProperty> redIntegerProperties = new ArrayList<>(Arrays.asList(redPoint1Property(), redPoint2Property(), redPoint3Property(), redPoint4Property()));
+    List<SimpleIntegerProperty> blueIntegerProperties = new ArrayList<>(Arrays.asList(bluePoint1Property(), bluePoint2Property(), bluePoint3Property(), bluePoint4Property()));
+    List<Label> redLabels = new ArrayList<>(Arrays.asList(rPJ1Label, rPJ2Label, rPJ3Label, rPJ4Label));
+    List<Label> redVisibleScoreboardLabels = new ArrayList<>(Arrays.asList(visibleScoreBoardController.rPJ1Label, visibleScoreBoardController.rPJ2Label, visibleScoreBoardController.rPJ3Label, visibleScoreBoardController.rPJ4Label));
+    List<Label> blueLabels = new ArrayList<>(Arrays.asList(bPJ1Label, bPJ2Label, bPJ3Label, bPJ4Label));
+    List<Label> blueVisibleScoreboardLabels = new ArrayList<>(Arrays.asList(visibleScoreBoardController.rPJ1Label, visibleScoreBoardController.rPJ2Label, visibleScoreBoardController.rPJ3Label, visibleScoreBoardController.rPJ4Label));
 
-    bPJ1Label.textProperty().bind(bluePoint1Property().asString());
-    bPJ2Label.textProperty().bind(bluePoint2Property().asString());
-    bPJ3Label.textProperty().bind(bluePoint3Property().asString());
-    bPJ4Label.textProperty().bind(bluePoint4Property().asString());
+    IntStream
+        .range(0, redLabels.size())
+        .forEach(idx ->
+            redLabels.get(idx).textProperty().bind(redIntegerProperties.get(idx).asString())
+        );
 
-    visibleScoreBoardController.rPJ1Label.textProperty().bind(redPoint1Property().asString());
-    visibleScoreBoardController.rPJ2Label.textProperty().bind(redPoint2Property().asString());
-    visibleScoreBoardController.rPJ3Label.textProperty().bind(redPoint3Property().asString());
-    visibleScoreBoardController.rPJ4Label.textProperty().bind(redPoint4Property().asString());
+    IntStream
+        .range(0, blueLabels.size())
+        .forEach(idx -> blueLabels.get(idx).textProperty().bind(blueIntegerProperties.get(idx).asString())
+        );
 
-    visibleScoreBoardController.bPJ1Label.textProperty().bind(bluePoint1Property().asString());
-    visibleScoreBoardController.bPJ2Label.textProperty().bind(bluePoint2Property().asString());
-    visibleScoreBoardController.bPJ3Label.textProperty().bind(bluePoint3Property().asString());
-    visibleScoreBoardController.bPJ4Label.textProperty().bind(bluePoint4Property().asString());
+    IntStream
+        .range(0, redVisibleScoreboardLabels.size())
+        .forEach(idx ->
+            redVisibleScoreboardLabels.get(idx).textProperty().bind(redIntegerProperties.get(idx).asString())
+        );
+
+    IntStream
+        .range(0, blueVisibleScoreboardLabels.size())
+        .forEach(idx ->
+            blueVisibleScoreboardLabels.get(idx).textProperty().bind(blueIntegerProperties.get(idx).asString())
+        );
 
     minutesLabel.textProperty().bind(minutesProperty().asString());
     visibleScoreBoardController.minutesLabel.textProperty().bind(minutesProperty().asString());
@@ -285,33 +300,29 @@ public class Controller implements Initializable {
     redResultProperty().addListener((observable, oldValue, newValue) -> winner());
     blueResultProperty().addListener((observable, oldValue, newValue) -> winner());
 
-    redPoint1Property().addListener((observable, oldValue, newValue) -> countJudges());
-    redPoint2Property().addListener((observable, oldValue, newValue) -> countJudges());
-    redPoint3Property().addListener((observable, oldValue, newValue) -> countJudges());
-    redPoint4Property().addListener((observable, oldValue, newValue) -> countJudges());
-
-    bluePoint1Property().addListener((observable, oldValue, newValue) -> countJudges());
-    bluePoint2Property().addListener((observable, oldValue, newValue) -> countJudges());
-    bluePoint3Property().addListener((observable, oldValue, newValue) -> countJudges());
-    bluePoint4Property().addListener((observable, oldValue, newValue) -> countJudges());
+    redIntegerProperties.forEach(property -> {
+      System.out.println(property);
+      property.addListener((observable, oldValue, newValue) -> countJudges());
+    });
+    blueIntegerProperties.forEach(property -> property.addListener((observable, oldValue, newValue) -> countJudges()));
 
     //Red Timyo indicator
-    redTimyo.addEventHandler(MouseEvent.MOUSE_CLICKED, mouseEvent -> timyoIndicator(mouseEvent, redOpacity, redTimyo, visibleScoreBoardController.redTimyoIm, redPoint1Property(), redPoint2Property(), redPoint3Property(), redPoint4Property()));
+    redTimyo.addEventHandler(MouseEvent.MOUSE_CLICKED, mouseEvent -> timyoIndicator(mouseEvent, redOpacity, redTimyo, visibleScoreBoardController.redTimyoIm, redIntegerProperties));
 
     //Blue Timyo indicator
-    blueTimyo.addEventHandler(MouseEvent.MOUSE_CLICKED, mouseEvent -> timyoIndicator(mouseEvent, blueOpacity, blueTimyo, visibleScoreBoardController.blueTimyoIm, bluePoint1Property(), bluePoint2Property(), bluePoint3Property(), bluePoint4Property()));
+    blueTimyo.addEventHandler(MouseEvent.MOUSE_CLICKED, mouseEvent -> timyoIndicator(mouseEvent, blueOpacity, blueTimyo, visibleScoreBoardController.blueTimyoIm, blueIntegerProperties));
 
     //Red Chuis
-    rChLbl.addEventHandler(MouseEvent.MOUSE_CLICKED, mouseEvent -> setChuis(mouseEvent, redChui, redOpacity, redPoint1Property(), redPoint2Property(), redPoint3Property(), redPoint4Property(), 3, 4));
+    rChLbl.addEventHandler(MouseEvent.MOUSE_CLICKED, mouseEvent -> setChuis(mouseEvent, redChui, redOpacity, redIntegerProperties, 3, 4));
 
     //Blue Chuis
-    bChLbl.addEventHandler(MouseEvent.MOUSE_CLICKED, mouseEvent -> setChuis(mouseEvent, blueChui, blueOpacity, bluePoint1Property(), bluePoint2Property(), bluePoint3Property(), bluePoint4Property(), 1, 2));
+    bChLbl.addEventHandler(MouseEvent.MOUSE_CLICKED, mouseEvent -> setChuis(mouseEvent, blueChui, blueOpacity, blueIntegerProperties, 1, 2));
 
     //Blue Kam Chum
-    bKChLabel.addEventHandler(MouseEvent.MOUSE_CLICKED, mouseEvent -> setKamChum(mouseEvent, blueKamChum, bluePoint1Property(), bluePoint2Property(), bluePoint3Property(), bluePoint4Property(), visibleScoreBoardController.bKamChum1, visibleScoreBoardController.bKamChum2));
+    bKChLabel.addEventHandler(MouseEvent.MOUSE_CLICKED, mouseEvent -> setKamChum(mouseEvent, blueKamChum, blueIntegerProperties, visibleScoreBoardController.bKamChum1, visibleScoreBoardController.bKamChum2));
 
     //Red Kam Chum
-    rKChLabel.addEventHandler(MouseEvent.MOUSE_CLICKED, mouseEvent -> setKamChum(mouseEvent, redKamChum, redPoint1Property(), redPoint2Property(), redPoint3Property(), redPoint4Property(), visibleScoreBoardController.rKamChum1, visibleScoreBoardController.rKamChum2));
+    rKChLabel.addEventHandler(MouseEvent.MOUSE_CLICKED, mouseEvent -> setKamChum(mouseEvent, redKamChum, redIntegerProperties, visibleScoreBoardController.rKamChum1, visibleScoreBoardController.rKamChum2));
 
 
     participantsMenuItem.setOnAction(new EventHandler<ActionEvent>() {
@@ -326,7 +337,7 @@ public class Controller implements Initializable {
           stage.setScene(new Scene(root));
           stage.show();
         } catch (Exception e) {
-          e.printStackTrace();
+          LOGGER.log(Level.SEVERE, "Unable to open participants window!", e);
         }
       }
     });
@@ -374,16 +385,16 @@ public class Controller implements Initializable {
           visibleScoreBoardController.redTimyoIm.setOpacity(0.1);
           round = 3;
           if (blueTimyo.getOpacity() != 1) {
-            changeLabels(-2, bluePoint1Property(), bluePoint2Property(), bluePoint3Property(), bluePoint4Property());
+            changeLabels(-2, blueIntegerProperties);
           } else {
             blueTimyo.setOpacity(0.1);
-            changeLabels(-2, bluePoint1Property(), bluePoint2Property(), bluePoint3Property(), bluePoint4Property());
+            changeLabels(-2, blueIntegerProperties);
           }
           if (redTimyo.getOpacity() != 1) {
-            changeLabels(-2, redPoint1Property(), redPoint2Property(), redPoint3Property(), redPoint4Property());
+            changeLabels(-2, redIntegerProperties);
           } else {
             redTimyo.setOpacity(0.1);
-            changeLabels(-2, redPoint1Property(), redPoint2Property(), redPoint3Property(), redPoint4Property());
+            changeLabels(-2, redIntegerProperties);
           }
           break;
         case 3:
@@ -406,6 +417,7 @@ public class Controller implements Initializable {
           customTimeline.pause();
           refresh();
           break;
+        default: break;
       }
     });
 
@@ -441,6 +453,8 @@ public class Controller implements Initializable {
   }
 
   private void refresh() {
+    List<SimpleIntegerProperty> integerProperties = new ArrayList<>(Arrays.asList(redPoint1Property(), redPoint2Property(), redPoint3Property(), redPoint4Property(), bluePoint1Property(), bluePoint2Property(), bluePoint3Property(), bluePoint4Property()));
+    integerProperties.forEach(property -> property.setValue(-2));
     customTimeline.pause();
     redKamChum.setValue(0);
     blueKamChum.setValue(0);
@@ -450,14 +464,6 @@ public class Controller implements Initializable {
     secondsLabelProperty().setValue("00");
     minutesProperty().setValue(2);
     customTimeline = new CustomTimeline(this, 2, 59);
-    bluePoint1Property().setValue(-2);
-    bluePoint2Property().setValue(-2);
-    bluePoint3Property().setValue(-2);
-    bluePoint4Property().setValue(-2);
-    redPoint1Property().setValue(-2);
-    redPoint2Property().setValue(-2);
-    redPoint3Property().setValue(-2);
-    redPoint4Property().setValue(-2);
     redResultProperty().setValue(0);
     blueResultProperty().setValue(0);
     roundLabelProperty().setValue("Рунд 1");
@@ -474,61 +480,62 @@ public class Controller implements Initializable {
 
   }
 
-  private synchronized void changeLabels(int point, SimpleIntegerProperty sIntProp1, SimpleIntegerProperty sIntProp2, SimpleIntegerProperty sIntProp3, SimpleIntegerProperty sIntProp4) {
-    List<SimpleIntegerProperty> simpleIntegerProperties = new ArrayList<>(Arrays.asList(sIntProp1, sIntProp2, sIntProp3, sIntProp4));
-    simpleIntegerProperties.forEach(e -> e.setValue(e.get() + point));
+  private synchronized void changeLabels(int point, List<SimpleIntegerProperty> integerProps) {
+    integerProps.forEach(property -> property.setValue(property.get() + point));
   }
 
-  private synchronized void setKamChum(MouseEvent mouseEvent, SimpleIntegerProperty kamChum, SimpleIntegerProperty sIntP1, SimpleIntegerProperty sIntP2, SimpleIntegerProperty sIntP3, SimpleIntegerProperty sIntP4, Rectangle rectangle1, Rectangle rectangle2) {
+  private synchronized void setKamChum(MouseEvent mouseEvent, SimpleIntegerProperty kamChum, List<SimpleIntegerProperty> integerProps, Rectangle rectangle1, Rectangle rectangle2) {
     if (MouseButton.PRIMARY.equals(mouseEvent.getButton())) {
       kamChum.setValue(kamChum.get() + 1);
       visibleScoreBoardController.setKamChum(kamChum.get(), 1, rectangle1, rectangle2);
-      changeLabels(-1, sIntP1, sIntP2, sIntP3, sIntP4);
+      changeLabels(-1, integerProps);
     } else if (MouseButton.SECONDARY.equals(mouseEvent.getButton())) {
       kamChum.setValue(kamChum.get() - 1);
       visibleScoreBoardController.setKamChum(kamChum.get(), 0, rectangle1, rectangle2);
-      changeLabels(1, sIntP1, sIntP2, sIntP3, sIntP4);
+      changeLabels(1, integerProps);
     }
   }
 
-  private synchronized void timyoIndicator(MouseEvent e, SimpleBooleanProperty op, ImageView controllerImgView, ImageView visibleControllerImgView, SimpleIntegerProperty sIntP1, SimpleIntegerProperty sIntP2, SimpleIntegerProperty sIntP3, SimpleIntegerProperty sIntP4) {
+  private synchronized void timyoIndicator(MouseEvent e, SimpleBooleanProperty op, ImageView controllerImgView, ImageView visibleControllerImgView, List<SimpleIntegerProperty> integerProps) {
     if (MouseButton.PRIMARY.equals(e.getButton()) && !op.get()) {
       controllerImgView.setOpacity(1);
       try {
         visibleScoreBoardController.setTimyoIm(1, visibleControllerImgView);
       } catch (NullPointerException ex) {
-        ex.printStackTrace();
+        LOGGER.log(Level.SEVERE, "Error", e);
+
       }
-      changeLabels(2, sIntP1, sIntP2, sIntP3, sIntP4);
+      changeLabels(2, integerProps);
       op.setValue(true);
     } else if (MouseButton.SECONDARY.equals(e.getButton()) && op.get()) {
       controllerImgView.setOpacity(0.1);
       try {
         visibleScoreBoardController.setTimyoIm(0.1, visibleControllerImgView);
       } catch (NullPointerException ex) {
-        ex.printStackTrace();
+        LOGGER.log(Level.SEVERE, "Error", e);
+
       }
-      changeLabels(-2, sIntP1, sIntP2, sIntP3, sIntP4);
+      changeLabels(-2, integerProps);
       op.setValue(false);
 
     }
   }
 
-  private synchronized void setChuis(MouseEvent mouseEvent, SimpleIntegerProperty chuis, SimpleBooleanProperty op, SimpleIntegerProperty sIntProp1, SimpleIntegerProperty sIntProp2, SimpleIntegerProperty sIntProp3, SimpleIntegerProperty sIntProp4, int set, int unset) {
+  private synchronized void setChuis(MouseEvent mouseEvent, SimpleIntegerProperty chuis, SimpleBooleanProperty op, List<SimpleIntegerProperty> integerProps, int set, int unset) {
     if (MouseButton.PRIMARY.equals(mouseEvent.getButton())) {
       chuis.setValue(chuis.get() + 1);
       visibleScoreBoardController.setChuiCircles(chuis.get(), set);
       if (chuis.get() % 3 == 0) {
-        changeLabels(-1, sIntProp1, sIntProp2, sIntProp3, sIntProp4);
+        changeLabels(-1, integerProps);
       }
     } else if (MouseButton.SECONDARY.equals(mouseEvent.getButton())) {
       chuis.setValue(chuis.get() - 1);
       visibleScoreBoardController.setChuiCircles(chuis.get(), unset);
       if (chuis.get() % 3 == 0) {
-        changeLabels(1, sIntProp1, sIntProp2, sIntProp3, sIntProp4);
+        changeLabels(1, integerProps);
         if (chuis.get() == 0 && !op.get()) {
           blueChui.setValue(0);
-          changeLabels(0, sIntProp1, sIntProp2, sIntProp3, sIntProp4);
+          changeLabels(0, integerProps);
         }
       }
     }
@@ -538,7 +545,6 @@ public class Controller implements Initializable {
     int redCount = 0;
     int blueCount = 0;
     String grayColor = "#d1d1d1";
-
 
     if (redPoint1Property().get() == bluePoint1Property().get() && redGiven1.get()) {
       visibleScoreBoardController.j1Rect.setFill(Color.web(grayColor));
@@ -635,11 +641,13 @@ public class Controller implements Initializable {
       blueCount++;
       blueGiven4.setValue(true);
     }
+
     if (redCount == -1) {
       redCount++;
     } else if (blueCount == -1) {
       blueCount++;
     }
+
     blueResult.setValue(blueCount);
     redResult.setValue(redCount);
 
